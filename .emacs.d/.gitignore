@@ -1,0 +1,7 @@
+auto-save-list/
+kkcrc
+%backup%~
+session*
+#
+bak/*
+!bak/.gitkeep
