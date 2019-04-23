@@ -9,11 +9,11 @@ fi
 export CVSROOT=":pserver:hirai@10.78.112.116:/usr/local/cvsroot"
 export SVNROOT="https://133.181.137.151/FP/repos/"
 
-export HTTP_PROXY="http://10.77.8.70:8080"
-export http_proxy="http://10.77.8.70:8080"
-export FTP_PROXY="http://10.77.8.70:8080"
-export ftp_proxy="http://10.77.8.70:8080"
-export proxy="http://10.77.8.70:8080"
+#export HTTP_PROXY="http://10.77.8.70:8080"
+#export http_proxy="http://10.77.8.70:8080"
+#export FTP_PROXY="http://10.77.8.70:8080"
+#export ftp_proxy="http://10.77.8.70:8080"
+#export proxy="http://10.77.8.70:8080"
 
 export EDITOR="emacs"
 
@@ -21,7 +21,7 @@ export EDITOR="emacs"
 alias       DIFF='touch DIFF; rm DIFF; ln -s ~/DIFF .; cvs diff -c > ~/DIFF/diff`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`".txt"'
 
 alias langc="export LANG=C"
-alias langj="LANG=ja_JP.utf8"
+alias langj="export LANG=ja_JP.utf8"
 
 alias       em='emacs &'
 alias       gt='gnome-terminal &'
