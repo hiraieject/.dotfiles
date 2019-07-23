@@ -9,11 +9,11 @@ fi
 export CVSROOT=":pserver:hirai@10.78.112.116:/usr/local/cvsroot"
 export SVNROOT="https://133.181.137.151/FP/repos/"
 
-#export HTTP_PROXY="http://10.77.8.70:8080"
-#export http_proxy="http://10.77.8.70:8080"
-#export FTP_PROXY="http://10.77.8.70:8080"
-#export ftp_proxy="http://10.77.8.70:8080"
-#export proxy="http://10.77.8.70:8080"
+export HTTP_PROXY="http://10.77.8.70:8080"
+export http_proxy="http://10.77.8.70:8080"
+export FTP_PROXY="http://10.77.8.70:8080"
+export ftp_proxy="http://10.77.8.70:8080"
+export proxy="http://10.77.8.70:8080"
 
 export EDITOR="emacs"
 
@@ -22,6 +22,7 @@ alias       DIFF='touch DIFF; rm DIFF; ln -s ~/DIFF .; cvs diff -c > ~/DIFF/diff
 
 alias langc="export LANG=C"
 alias langj="export LANG=ja_JP.utf8"
+export LANG=ja_JP.utf8
 
 alias       em='emacs &'
 alias       gt='gnome-terminal &'
@@ -47,3 +48,10 @@ alias       SDIFF='export LANG=C; touch DIFF; rm DIFF; ln -s ~/DIFF .; svn diff 
 ##alias       PATCH='/usr/bin/patch -p0 --binary'
 ## 改行コードがCRLFのファイルでも正常に当てるために binary オプションが必要
 alias       PATCH='/usr/bin/patch -p0 --binary'
+
+case $TERM in
+    kterm|xterm|xterm-256color|mlterm|cygwin|vt102)
+	_termtitle="\h:\w"
+	export PS1="\[\e]0;${_termtitle}\007\]${PS1}"
+	;;
+esac
