@@ -46,7 +46,7 @@ alias       wbsrc='cd ~/startup_whiteboard/current_startupr6591_whiteboard/usr/s
 alias       DIFF='touch DIFF; rm DIFF; ln -s ~/DIFF .; cvs diff -c > ~/DIFF/diff`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`".txt"'
 alias       SDIFF='export LANG=C; touch DIFF; rm DIFF; ln -s ~/DIFF .; svn diff > ~/DIFF/diff`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`".txt"'
 ##alias       PATCH='/usr/bin/patch -p0 --binary'
-## ²ş¹Ô¥³¡¼¥É¤¬CRLF¤Î¥Õ¥¡¥¤¥ë¤Ç¤âÀµ¾ï¤ËÅö¤Æ¤ë¤¿¤á¤Ë binary ¥ª¥×¥·¥ç¥ó¤¬É¬Í×
+## æ”¹è¡Œã‚³ãƒ¼ãƒ‰ãŒCRLFã®ãƒ•ã‚¡ã‚¤ãƒ«ã§ã‚‚æ­£å¸¸ã«å½“ã¦ã‚‹ãŸã‚ã« binary ã‚ªãƒ—ã‚·ãƒ§ãƒ³ãŒå¿…è¦
 alias       PATCH='/usr/bin/patch -p0 --binary'
 
 case $TERM in
