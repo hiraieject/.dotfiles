@@ -7,7 +7,7 @@
 ;; You may delete these explanatory comments.
 ;;(package-initialize)
 
-;; domain¤Ê¤·¤Î¥Û¥¹¥ÈÌ¾¼èÆÀ
+;; domainãªã—ã®ãƒ›ã‚¹ãƒˆåå–å¾—
 (defvar system-name-simple
   (replace-regexp-in-string "\\..*\\'" "" (system-name))
   "The simple host name of the machine Emacs is running on, which is without domain information.")
@@ -23,60 +23,64 @@
 	  (cons '(tool-bar-lines . 0)
 	    default-frame-alist))))
 
-(setq inhibit-startup-message t)        ; ¥¹¥¿¡¼¥È»ş¤Î¥á¥Ã¥»¡¼¥¸¤ÎÍŞÀ©
-(setq line-number-mode t)               ; ¹Ô¿ô¤òÉ½¼¨
-(setq column-number-mode t)             ; ¥«¥é¥àÈÖ¹æ¤ÎÉ½¼¨
-(setq scroll-step 1)			; ¥¹¥¯¥í¡¼¥ë¹Ô¿ô
-(setq-default tab-width 8)		; TABÉı
-(setq compile-command "make ")		; M-x compile ¥³¥Ş¥ó¥É
-(setq-default truncate-lines t)		; ¹ÔÀŞ¤êÊÖ¤¹
-(setq delete-auto-save-files t)		; ½ªÎ»»ş¤Ë¥ª¡¼¥È¥»¡¼¥Ö¥Õ¥¡¥¤¥ë¤ò¾Ã¤¹
-;;(display-time)			; ¥â¡¼¥É¥é¥¤¥ó¤Ë»ş¹ïÉ½¼¨
-(which-function-mode 1)			; ¸½ºß¤Î´Ø¿ôÌ¾¤ò¥â¡¼¥É¥é¥¤¥ó¤ËÉ½¼¨
+(setq inhibit-startup-message t)        ; ã‚¹ã‚¿ãƒ¼ãƒˆæ™‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®æŠ‘åˆ¶
+(setq line-number-mode t)               ; è¡Œæ•°ã‚’è¡¨ç¤º
+(setq column-number-mode t)             ; ã‚«ãƒ©ãƒ ç•ªå·ã®è¡¨ç¤º
+(setq scroll-step 1)			; ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«è¡Œæ•°
+(setq-default tab-width 8)		; TABå¹…
+(setq compile-command "make ")		; M-x compile ã‚³ãƒãƒ³ãƒ‰
+(setq-default truncate-lines t)		; è¡ŒæŠ˜ã‚Šè¿”ã™
+(setq delete-auto-save-files t)		; çµ‚äº†æ™‚ã«ã‚ªãƒ¼ãƒˆã‚»ãƒ¼ãƒ–ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ¶ˆã™
+;;(display-time)			; ãƒ¢ãƒ¼ãƒ‰ãƒ©ã‚¤ãƒ³ã«æ™‚åˆ»è¡¨ç¤º
+(which-function-mode 1)			; ç¾åœ¨ã®é–¢æ•°åã‚’ãƒ¢ãƒ¼ãƒ‰ãƒ©ã‚¤ãƒ³ã«è¡¨ç¤º
 (setq truncate-partial-width-windows nil)
 
-;;; ¥Ç¥Õ¥©¥ë¥È¤ÎÊ¸»ú¥³¡¼¥É
-;(set-default-coding-systems 'euc-jp-unix)  <- shellÅù¤ÇÊ¸»ú²½¤±¤¹¤ë¤Î¤ÇÌµ¸ú²½
+;;; ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®æ–‡å­—ã‚³ãƒ¼ãƒ‰
+;(set-default-coding-systems 'euc-jp-unix)  <- shellç­‰ã§æ–‡å­—åŒ–ã‘ã™ã‚‹ã®ã§ç„¡åŠ¹åŒ–
 (setq-default buffer-file-coding-system 'euc-jp-unix)
 
-;;; ¥­¡¼¥ï¡¼¥É¤Ç¿§Ê¬¤±¤¹¤ë
+;;; ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã§è‰²åˆ†ã‘ã™ã‚‹
 (global-font-lock-mode t)
 
-;;; ¥ê¡¼¥¸¥ç¥ó¤ò¥Ï¥¤¥é¥¤¥È¤¹¤ë
+;;; ãƒªãƒ¼ã‚¸ãƒ§ãƒ³ã‚’ãƒã‚¤ãƒ©ã‚¤ãƒˆã™ã‚‹
 (transient-mark-mode t)
 
-;;; °ì¹Ô¤Å¤Ä¥¹¥¯¥í¡¼¥ë ¡Ä ÄÌ¾ï¥Ğ¥Ã¥Õ¥¡ÍÑ
+;;; ä¸€è¡Œã¥ã¤ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ« â€¦ é€šå¸¸ãƒãƒƒãƒ•ã‚¡ç”¨
 (setq scroll-conservatively 35
 	  scroll-margin 0
 	  scroll-step 1)
-;;; °ì¹Ô¤Å¤Ä¥¹¥¯¥í¡¼¥ë ¡Ä shell ¥Ğ¥Ã¥Õ¥¡ÍÑ
+;;; ä¸€è¡Œã¥ã¤ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ« â€¦ shell ãƒãƒƒãƒ•ã‚¡ç”¨
 (setq comint-scroll-show-maximum-output t)
 
-;;; kill-ring¤ò»²¾È -- browse-kill-ring
-;;  ²¼µ­ my-pcl-cvs-patch ¤Î¥¨¥é¡¼¤ò¤Ê¤¯¤¹¤¿¤á¤À¤±¤ËÆ³Æş
+;;; kill-ringã‚’å‚ç…§ -- browse-kill-ring
+;;  ä¸‹è¨˜ my-pcl-cvs-patch ã®ã‚¨ãƒ©ãƒ¼ã‚’ãªãã™ãŸã‚ã ã‘ã«å°å…¥
 ;;;;(require 'browse-kill-ring)
 
-;;; pcl-cvsÀßÄê
-;;  pserver ¤Ï³Æ¼«¤Î´Ä¶­¤Ë¹ç¤ï¤»¤ÆÀßÄê¤·¤Æ²¼¤µ¤¤¡£
-(setq cvs-cvsroot ":pserver:USER@10.69.95.194:/usr/local/cvsroot");; ¢« Í×ÊÔ½¸
-;; Ê¸»ú²½¤±ÂĞºö¥Ñ¥Ã¥Á ¡Ä ¥í¥°¤ò°ìÅÙ¥Õ¥¡¥¤¥ë¤ËÍî¤·¤Æ cvs ci -F ¤¹¤ë
+;;; pcl-cvsè¨­å®š
+;;  pserver ã¯å„è‡ªã®ç’°å¢ƒã«åˆã‚ã›ã¦è¨­å®šã—ã¦ä¸‹ã•ã„ã€‚
+(setq cvs-cvsroot ":pserver:USER@10.69.95.194:/usr/local/cvsroot");; â† è¦ç·¨é›†
+;; æ–‡å­—åŒ–ã‘å¯¾ç­–ãƒ‘ãƒƒãƒ â€¦ ãƒ­ã‚°ã‚’ä¸€åº¦ãƒ•ã‚¡ã‚¤ãƒ«ã«è½ã—ã¦ cvs ci -F ã™ã‚‹
 ;;;(eval-after-load "pcvs"
 ;;;  '(progn (load "my-pcl-cvs-patch")
 ;;;		  (setq my-cvs-do-commit-logfile-coding-system 'euc-japan-unix)))
 (modify-coding-system-alist 'process "cvs" '(undecided . euc-jp-unix))
-;; log ¤Ï¤É¤Î¥³¡¼¥É¤Ç½ñ¤¯¤«·è¤á¤Æ ¢ª ÆÃÄêÊ¸»ú¤¬²½¤±¤ë¤¿¤áÊÌÅÓÂĞºöÉ¬Í×
+;; log ã¯ã©ã®ã‚³ãƒ¼ãƒ‰ã§æ›¸ãã‹æ±ºã‚ã¦ â†’ ç‰¹å®šæ–‡å­—ãŒåŒ–ã‘ã‚‹ãŸã‚åˆ¥é€”å¯¾ç­–å¿…è¦
 (modify-coding-system-alist 'process "cvs" '(undecided . euc-jp-unix))
 
 (autoload 'diff-mode "diff-mode" "Diff major mode" t)
 (add-to-list 'auto-mode-alist '("\\.\\(diffs?\\|patch\\|rej\\)\\'" . diff-mode))
 
-;;; ediff »ş¤Ë¥ß¥Ë¥¦¥£¥ó¥É¥¦¤ò½Ğ¤µ¤Ê¤¤
+;;; ediff æ™‚ã«ãƒŸãƒ‹ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’å‡ºã•ãªã„
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
-;;; ¥Ğ¥Ã¥Õ¥¡¡¼¥ê¥¹¥ÈÉ½¼¨»ş¤ËÊ¬³ä¤·¤Ê¤¤
+;;; ãƒãƒƒãƒ•ã‚¡ãƒ¼ãƒªã‚¹ãƒˆè¡¨ç¤ºæ™‚ã«åˆ†å‰²ã—ãªã„
 (global-set-key "\C-x\C-b" 'buffer-menu)
 
-;; -------------------------------------------- ¹ÔÈÖ¹æ
+;; -------------------------------------------- google input
+(setq default-input-method "japanese-mozc")
+(require 'mozc)
+
+;; -------------------------------------------- è¡Œç•ªå·
 ;;(require 'wb-line-number)
 ;;(wb-line-number-enable)
 (set-scroll-bar-mode nil)                 ; no scroll bar, even in x-window system
@@ -92,25 +96,25 @@
 
 ;; -------------------------------------------- backup file
 
-;;;; £±À¤Âå¥Ğ¥Ã¥¯¥¢¥Ã¥×
-;(setq make-backup-files t)	; backup file ºî¤ë
+;;;; ï¼‘ä¸–ä»£ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—
+;(setq make-backup-files t)	; backup file ä½œã‚‹
 ;(setq vc-make-backup-files t)
 ;defun make-backup-file-name (filename)
 ;  (expand-file-name
 ;    (concat "~/.emacs.d/bak/" (file-name-nondirectory filename) "~")
 ;    (file-name-directory filename)))
 
-;;;; Ê£¿ôÀ¤Âå¥Ğ¥Ã¥¯¥¢¥Ã¥×
-(setq make-backup-files t)	; backup file ºî¤ë
+;;;; è¤‡æ•°ä¸–ä»£ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—
+(setq make-backup-files t)	; backup file ä½œã‚‹
 (setq vc-make-backup-files t)
-;; ³ÊÇ¼¥Ç¥£¥ì¥¯¥È¥ê¡¼¤ÎÊÑ¹¹
-;;   (ÂĞ¾İ¥Ç¥£¥ì¥¯¥È¥ê¡¼ . ³ÊÇ¼¥Ç¥£¥ì¥¯¥È¥ê¡¼) ¤Î¥ê¥¹¥È
+;; æ ¼ç´ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ¼ã®å¤‰æ›´
+;;   (å¯¾è±¡ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ¼ . æ ¼ç´ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ¼) ã®ãƒªã‚¹ãƒˆ
 (setq backup-directory-alist '((".*" . "~/.emacs.d/bak")))
-;; ÈÖ¹æÉÕ¤±¤Ë¤è¤ëÊ£¿ôÊİÂ¸
-(setq version-control     t)  ;; ¼Â¹Ô¤ÎÍ­Ìµ
-(setq kept-new-versions   5)  ;; ºÇ¿·¤ÎÊİ»ı¿ô
-(setq kept-old-versions   1)  ;; ºÇ¸Å¤ÎÊİ»ı¿ô
-(setq delete-old-versions t)  ;; ÈÏ°Ï³°¤òºï½ü
+;; ç•ªå·ä»˜ã‘ã«ã‚ˆã‚‹è¤‡æ•°ä¿å­˜
+(setq version-control     t)  ;; å®Ÿè¡Œã®æœ‰ç„¡
+(setq kept-new-versions   5)  ;; æœ€æ–°ã®ä¿æŒæ•°
+(setq kept-old-versions   1)  ;; æœ€å¤ã®ä¿æŒæ•°
+(setq delete-old-versions t)  ;; ç¯„å›²å¤–ã‚’å‰Šé™¤
 
 ;; -------------------------------------------- CC-mode / GTAGS
 ;;;(setq load-path (cons "/usr/local/share/gtags" load-path))
@@ -128,7 +132,7 @@
                 ) auto-mode-alist))
 
 
-;cc-mode ¤Î¥«¥¹¥¿¥Ş¥¤¥º
+;cc-mode ã®ã‚«ã‚¹ã‚¿ãƒã‚¤ã‚º
 (autoload 'gtags-mode "gtags" "" t)
 (add-hook 'c-mode-common-hook
 	'(lambda ()
@@ -141,16 +145,16 @@
 ;	  (setq tab-width 8)
 	  (setq c-basic-offset 4)
 	  (setq tab-width 4)
-	  (setq c-auto-newline nil)	; ¼«Æ°²ş¹Ô
+	  (setq c-auto-newline nil)	; è‡ªå‹•æ”¹è¡Œ
 	  (gtags-mode 1)		; GTAGS
 	  (gtags-make-complete-list)
 	  (local-set-key "\M-t" 'gtags-find-tag)
           (local-set-key "\M-r" 'gtags-find-rtag)
 	  (local-set-key "\M-s" 'gtags-find-symbol)
 	  (local-set-key "\M-p" 'gtags-find-pattern)
-	  ;;(local-set-key "\M-f" 'gtags-find-file)    ;¥Õ¥¡¥¤¥ë¤Ë¥¸¥ã¥ó¥×
+	  ;;(local-set-key "\M-f" 'gtags-find-file)    ;ãƒ•ã‚¡ã‚¤ãƒ«ã«ã‚¸ãƒ£ãƒ³ãƒ—
           (local-set-key "\C-t" 'gtags-pop-stack)
-	  (setq comment-start "// ") ; //·Á¼°¤Î¥³¥á¥ó¥È
+	  (setq comment-start "// ") ; //å½¢å¼ã®ã‚³ãƒ¡ãƒ³ãƒˆ
 	  (setq comment-end "")
 	  ))
 
@@ -171,7 +175,7 @@
 	 (set-c-style "C++")
 	 )
 
-; GTAGS ¤ÎÀ¸À®¥³¥Ş¥ó¥É
+; GTAGS ã®ç”Ÿæˆã‚³ãƒãƒ³ãƒ‰
 (defun gtags ()
 	"create gtags file."
 	(interactive)
@@ -180,21 +184,21 @@
 	(gtags-make-complete-list)
 	)
 
-;;gtags mode ¤Î»È¤¤Êı
-;; M-t:´Ø¿ô¤ÎÄêµÁ¸µ¤Ø°ÜÆ°
-;; M-r:´Ø¿ô¤ò»²¾È¸µ¤Î°ìÍ÷¤òÉ½¼¨¡¥RET ¤Ç»²¾È¸µ¤Ø¥¸¥ã¥ó¥×¤Ç¤­¤ë
-;; M-s:ÊÑ¿ô¤ÎÄêµÁ¸µ¤È»²¾È¸µ¤Î°ìÍ÷¤òÉ½¼¨¡¥RET ¤Ç³ºÅö²Õ½ê¤Ø¥¸¥ã¥ó¥×¤Ç¤­¤ë¡¥
-;; C-t:Á°¤Î¥Ğ¥Ã¥Õ¥¡¤ØÌá¤ë 
-;; gtags-find-pattern:´ØÏ¢¥Õ¥¡¥¤¥ë¤«¤é¤Î¸¡º÷¡¥
-;; gtags-find-tag-from-here:¥«¡¼¥½¥ë°ÌÃÖ¤Î´Ø¿ôÄêµÁ¤Ø°ÜÆ°¡¥ 
+;;gtags mode ã®ä½¿ã„æ–¹
+;; M-t:é–¢æ•°ã®å®šç¾©å…ƒã¸ç§»å‹•
+;; M-r:é–¢æ•°ã‚’å‚ç…§å…ƒã®ä¸€è¦§ã‚’è¡¨ç¤ºï¼RET ã§å‚ç…§å…ƒã¸ã‚¸ãƒ£ãƒ³ãƒ—ã§ãã‚‹
+;; M-s:å¤‰æ•°ã®å®šç¾©å…ƒã¨å‚ç…§å…ƒã®ä¸€è¦§ã‚’è¡¨ç¤ºï¼RET ã§è©²å½“ç®‡æ‰€ã¸ã‚¸ãƒ£ãƒ³ãƒ—ã§ãã‚‹ï¼
+;; C-t:å‰ã®ãƒãƒƒãƒ•ã‚¡ã¸æˆ»ã‚‹ 
+;; gtags-find-pattern:é–¢é€£ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ã®æ¤œç´¢ï¼
+;; gtags-find-tag-from-here:ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ã®é–¢æ•°å®šç¾©ã¸ç§»å‹•ï¼ 
 
 ;; GDB setting
 ;;(defvar gud-gdb-history (list "mn10300-linux-gdb --annotate=1 apl_dispsrv.out"))
 ;;(defvar gud-gdb-history (list "/opt/montavista/pro/devkit/arm/v5t_le/bin/arm_v5t_le-gdb --annotate=1 drawtool"))
 ;;;(defvar gud-gdb-history (list "/usr/local/mips-4.3/bin/mips-linux-gnu-gdb --annotate=1 drawtool"))
-(defvar gud-gdb-history (list "/opt/redhat/arm-2010q1/bin/arm-none-linux-gnueabi-gdb --annotate=1 "))
+;;;(defvar gud-gdb-history (list "/opt/redhat/arm-2010q1/bin/arm-none-linux-gnueabi-gdb --annotate=1 "))
 ;;(defvar gud-gdb-history (list "/home/hirai/sigma/131002_lfbc70/sdk4.2.1rc4/cs_rootfs_1.3.0/host/bin/mipsel-linux-gdb --annotate=1 drawtool"))
-					; M-x gdb ¤Î¥Ç¥Õ¥©¥ë¥È¥³¥Ş¥ó¥É¥é¥¤¥ó
+					; M-x gdb ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³
 
 ;; -------------------------------------------- key bind
 
@@ -268,6 +272,10 @@
 	(interactive)
 	(set-buffer-file-coding-system (quote utf-8) nil))
 
+(defun utf16 ()
+	(interactive)
+	(set-buffer-file-coding-system (quote utf-16) nil))
+
 
 ;; ===========================================================================
 
@@ -281,11 +289,11 @@
 (setq transient-mark-mode t)
 
 ;; GDB setting
-(defvar gud-gdb-history (list "arm_v5t_le-gdb "))
+;;(defvar gud-gdb-history (list "arm_v5t_le-gdb "))
 ;;(defvar gud-gdb-history (list "mn10300-linux-gdb --annotate=1 apl_dispsrv.out"))
 ; M-x gdb 
 
-;; ¸«¤¿ÌÜ¤ÎÀßÄê
+;; è¦‹ãŸç›®ã®è¨­å®š
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
@@ -295,7 +303,7 @@
  '(tool-bar-mode nil)
  '(transient-mark-mode nil))
 
-;; ¿§¤ÎÀßÄê
+;; è‰²ã®è¨­å®š
 (when (equal system-name-simple "NARUE10")
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
