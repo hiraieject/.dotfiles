@@ -14,7 +14,7 @@
 
 ;; -------------------------------------------- basic emacs setting
 
-(setq load-path (cons "~/lisp" load-path))
+(setq load-path (cons "~/.emacs.d/lisp" load-path))
 ;;(setq load-path (cons "/usr/local/share/gtags" load-path))
 
 (setq default-frame-alist
