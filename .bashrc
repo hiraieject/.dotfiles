@@ -9,11 +9,20 @@ fi
 export CVSROOT=":pserver:hirai@10.78.112.116:/usr/local/cvsroot"
 export SVNROOT="https://133.181.137.151/FP/repos/"
 
-export HTTP_PROXY="http://10.77.8.70:8080"
-export http_proxy="http://10.77.8.70:8080"
-export FTP_PROXY="http://10.77.8.70:8080"
-export ftp_proxy="http://10.77.8.70:8080"
-export proxy="http://10.77.8.70:8080"
+if [ `hostname` = 'ubuntu1804' ]; then
+	export PANASONIC_NETWORK 1
+fi
+if [ `hostname` = 'garnet-server' ]; then
+	export PANASONIC_NETWORK 1
+fi
+
+if [ aa$PANASONIC_NETWORK = 'aa1' ]; then
+	export HTTP_PROXY="http://10.77.8.70:8080"
+	export http_proxy="http://10.77.8.70:8080"
+	export FTP_PROXY="http://10.77.8.70:8080"
+	export ftp_proxy="http://10.77.8.70:8080"
+	export proxy="http://10.77.8.70:8080"
+fi
 
 export EDITOR="emacs"
 
@@ -28,10 +37,13 @@ alias       em='emacs &'
 alias       gt='gnome-terminal &'
 export XDISPLAY00=localhost:0.0
 alias       em00='export DISPLAY=$XDISPLAY00; emacs &'
-alias       gt00='export DISPLAY=$XDISPLAY00; gnome-terminal &'
+alias       gt00='export DISPLAY=$XDISPLAY00; export NO_AT_BRIDGE=1; terminator &'
 export XDISPLAY86=192.168.0.86:0.0
 alias       em86='export DISPLAY=$XDISPLAY86; emacs &'
-alias       gt86='export DISPLAY=$XDISPLAY86; gnome-terminal &'
+alias       gt86='export DISPLAY=$XDISPLAY86; export NO_AT_BRIDGE=1; terminator &'
+export XDISPLAY16=192.168.1.6:0.0
+alias       em16='export DISPLAY=$XDISPLAY16; emacs &'
+alias       gt16='export DISPLAY=$XDISPLAY16; export NO_AT_BRIDGE=1; terminator &'
 
 alias       eq1='cd ~/eq1'
 alias       eq1src='cd ~/eq1/current_startup/usr/src/'
