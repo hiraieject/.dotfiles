@@ -10,20 +10,20 @@ export CVSROOT=":pserver:hirai@10.78.112.116:/usr/local/cvsroot"
 export SVNROOT="https://133.181.137.151/FP/repos/"
 
 if [ `hostname` = 'ubuntu1804' ]; then
-	export PANASONIC_NETWORK 1
+	export PANASONIC_NETWORK=1
 fi
 if [ `hostname` = 'garnet-server' ]; then
-	export PANASONIC_NETWORK 1
+	export PANASONIC_NETWORK=1
 fi
 
 if [ aa$PANASONIC_NETWORK = 'aa1' ]; then
-	export HTTPS_PROXY="http://10.77.8.70:8080"
-	export https_proxy="http://10.77.8.70:8080"
-	export HTTP_PROXY="http://10.77.8.70:8080"
-	export http_proxy="http://10.77.8.70:8080"
-	export FTP_PROXY="http://10.77.8.70:8080"
-	export ftp_proxy="http://10.77.8.70:8080"
-	export proxy="http://10.77.8.70:8080"
+	export HTTPS_PROXY="http://192.168.0.86:8080"
+	export https_proxy="http://192.168.0.86:8080"
+	export HTTP_PROXY="http://192.168.0.86:8080"
+	export http_proxy="http://192.168.0.86:8080"
+	export FTP_PROXY="http://192.168.0.86:8080"
+	export ftp_proxy="http://192.168.0.86:8080"
+	export proxy="http://192.168.0.86:8080"
 fi
 
 export EDITOR="emacs"
