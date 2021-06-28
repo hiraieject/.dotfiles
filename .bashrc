@@ -17,6 +17,8 @@ if [ `hostname` = 'garnet-server' ]; then
 fi
 
 if [ aa$PANASONIC_NETWORK = 'aa1' ]; then
+	export HTTPS_PROXY="http://10.77.8.70:8080"
+	export https_proxy="http://10.77.8.70:8080"
 	export HTTP_PROXY="http://10.77.8.70:8080"
 	export http_proxy="http://10.77.8.70:8080"
 	export FTP_PROXY="http://10.77.8.70:8080"
