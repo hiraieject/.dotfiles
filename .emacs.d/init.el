@@ -326,6 +326,17 @@
 			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
   (setq initial-frame-alist '((width  . 120) (height .  40)))
   )
+(when (equal system-name-simple "ubuntu1804")
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(default ((t (:inherit nil :stipple nil :background "#202036" :foreground "#EEEEEE" :inverse-video nil :box nil
+			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
+			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
+  (setq initial-frame-alist '((width  . 200) (height .  60)))
+  )
 (when (equal system-name-simple "IS-DPC00190117")
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
