@@ -17,13 +17,13 @@ if [ `hostname` = 'garnet-server' ]; then
 fi
 
 if [ aa$PANASONIC_NETWORK = 'aa1' ]; then
-	export HTTPS_PROXY="http://192.168.0.86:8080"
-	export https_proxy="http://192.168.0.86:8080"
-	export HTTP_PROXY="http://192.168.0.86:8080"
-	export http_proxy="http://192.168.0.86:8080"
-	export FTP_PROXY="http://192.168.0.86:8080"
-	export ftp_proxy="http://192.168.0.86:8080"
 	export proxy="http://192.168.0.86:8080"
+	export HTTPS_PROXY=$proxy
+	export https_proxy=$proxy
+	export HTTP_PROXY=$proxy
+	export http_proxy=$proxy
+	export FTP_PROXY=$proxy
+	export ftp_proxy=$proxy
 fi
 
 export EDITOR="emacs"
