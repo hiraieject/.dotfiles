@@ -9,7 +9,7 @@ fi
 export CVSROOT=":pserver:hirai@10.78.112.116:/usr/local/cvsroot"
 export SVNROOT="https://133.181.137.151/FP/repos/"
 
-if [ -f /usr/binterminator ]; then
+if [ -f /usr/bin/terminator ]; then
 	export TERMAPP='terminator'
 else
 	export TERMAPP='gnome-terminal'
