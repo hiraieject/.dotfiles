@@ -72,6 +72,10 @@ alias       SDIFF='export LANG=C; touch DIFF; rm DIFF; ln -s ~/DIFF .; svn diff 
 ## 改行コードがCRLFのファイルでも正常に当てるために binary オプションが必要
 alias       PATCH='/usr/bin/patch -p0 --binary'
 
+alias	vpntm='sudo ~hirai/bin/vpntm'
+alias	check='sudo ~hirai/bin/vpntm check'
+
+
 case $TERM in
     kterm|xterm|xterm-256color|mlterm|cygwin|vt102)
 	_termtitle="\h:\w"
