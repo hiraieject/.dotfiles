@@ -44,6 +44,10 @@ alias langc="export LANG=C"
 alias langj="export LANG=ja_JP.utf8"
 export LANG=ja_JP.utf8
 
+if [ `hostname` = 'orange' ]; then
+    export LANG="C"
+fi
+
 alias       em='emacs &'
 alias       gt="$TERMAPP &"
 export XDISPLAY00=localhost:0.0
