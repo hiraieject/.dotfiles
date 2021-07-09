@@ -359,6 +359,17 @@
 			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
   (setq initial-frame-alist '((width  . 120) (height .  40)))
   )
+(when (equal system-name-simple "aquadev34")
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(default ((t (:inherit nil :stipple nil :background "#143A81" :foreground "#FFFFFF" :inverse-video nil :box nil
+			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
+			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
+  (setq initial-frame-alist '((width  . 120) (height .  40)))
+  )
 (when (equal system-name-simple "orange")
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
