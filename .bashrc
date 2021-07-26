@@ -12,10 +12,13 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/mybin/lib
 export CVSROOT=":pserver:hirai@10.78.112.116:/usr/local/cvsroot"
 export SVNROOT="https://133.181.137.151/FP/repos/"
 
+export TERMAPP='gnome-terminal'
 if [ -f /usr/bin/terminator ]; then
 	export TERMAPP='terminator'
 else
-	export TERMAPP='gnome-terminal'
+if [ -f /usr/bin/xterm ]; then
+	export TERMAPP='xterm'
+fi
 fi
 
 
@@ -23,9 +26,13 @@ fi
 if [ `hostname` = 'ubuntu1804' ]; then
 	export PANASONIC_NETWORK=1
 fi
-if [ `hostname` = 'garnet-server' ]; then
+if [ `hostname` = 'aqua-centos7' ]; then
 	export PANASONIC_NETWORK=1
 fi
+if [ `hostname` = 'garnet-server' ]; then
+        export PANASONIC_NETWORK=1
+fi
+
 
 if [ aa$PANASONIC_NETWORK = 'aa1' ]; then
 	export proxy="http://192.168.0.86:8080"
@@ -56,9 +63,11 @@ alias       gt="$TERMAPP &"
 export XDISPLAY00=localhost:0.0
 alias       em00="export DISPLAY=$XDISPLAY00; emacs &"
 alias       gt00="export DISPLAY=$XDISPLAY00; export NO_AT_BRIDGE=1; $TERMAPP --display=$DISPLAY &"
+
 export XDISPLAY86=192.168.0.86:0.0
 alias       em86="export DISPLAY=$XDISPLAY86; emacs &"
-alias       gt86="export DISPLAY=$XDISPLAY86; export NO_AT_BRIDGE=1; $TERMAPP --display=$DISPLAY &"
+alias       gt86="export DISPLAY=$XDISPLAY86; export NO_AT_BRIDGE=1; $TERMAPP &"
+
 export XDISPLAY16=192.168.1.6:0.0
 alias       em16="export DISPLAY=$XDISPLAY16; emacs &"
 alias       gt16="export DISPLAY=$XDISPLAY16; export NO_AT_BRIDGE=1; $TERMAPP --display=$DISPLAY &"
