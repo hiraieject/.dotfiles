@@ -4,9 +4,9 @@
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
-export PS1="[\u@\h \W]\$"
+export PS1="[\u@\h \W]\$ "
 
-export PATH=$HOME/mybin/bin:$HOME/bin:$PATH
+#export PATH=$HOME/mybin/bin:$HOME/bin:$PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/mybin/lib
 
 # User specific aliases and functions
