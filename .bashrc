@@ -67,7 +67,7 @@ alias       gt00="export DISPLAY=$XDISPLAY00; export NO_AT_BRIDGE=1; $TERMAPP --
 
 export XDISPLAY86=192.168.0.86:0.0
 alias       em86="export DISPLAY=$XDISPLAY86; emacs &"
-alias       gt86="export DISPLAY=$XDISPLAY86; export NO_AT_BRIDGE=1; $TERMAPP --display=$DISPLAY &"
+alias       gt86="export DISPLAY=$XDISPLAY86; export NO_AT_BRIDGE=1; $TERMAPP &"
 
 export XDISPLAY16=192.168.1.6:0.0
 alias       em16="export DISPLAY=$XDISPLAY16; emacs &"
