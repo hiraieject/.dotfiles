@@ -7,7 +7,7 @@ fi
 export PS1="[\u@\h \W]\$ "
 
 #export PATH=$HOME/mybin/bin:$HOME/bin:$PATH
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/mybin/lib
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/mybin/lib
 
 # User specific aliases and functions
 export CVSROOT=":pserver:hirai@10.78.112.116:/usr/local/cvsroot"
@@ -67,7 +67,7 @@ alias       gt00="export DISPLAY=$XDISPLAY00; export NO_AT_BRIDGE=1; $TERMAPP --
 
 export XDISPLAY86=192.168.0.86:0.0
 alias       em86="export DISPLAY=$XDISPLAY86; emacs &"
-alias       gt86="export DISPLAY=$XDISPLAY86; export NO_AT_BRIDGE=1; $TERMAPP &"
+alias       gt86="export DISPLAY=$XDISPLAY86; export NO_AT_BRIDGE=1; $TERMAPP --display=$DISPLAY &"
 
 export XDISPLAY16=192.168.1.6:0.0
 alias       em16="export DISPLAY=$XDISPLAY16; emacs &"
