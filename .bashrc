@@ -23,6 +23,8 @@ fi
 fi
 
 
+# -----------------------------------------------------
+export PANASONIC_NETWORK=0
 
 if [ `hostname` = 'ubuntu1804' ]; then
 	export PANASONIC_NETWORK=1
@@ -34,7 +36,6 @@ if [ `hostname` = 'garnet-server' ]; then
         export PANASONIC_NETWORK=1
 fi
 
-
 if [ aa$PANASONIC_NETWORK = 'aa1' ]; then
 #	export proxy="http://192.168.0.86:8080"
 	export proxy="http://10.77.8.70:8080"
@@ -44,6 +45,14 @@ if [ aa$PANASONIC_NETWORK = 'aa1' ]; then
 	export http_proxy=$proxy
 	export FTP_PROXY=$proxy
 	export ftp_proxy=$proxy
+else
+	unset proxy
+	unset HTTPS_PROXY
+	unset https_proxy
+	unset HTTP_PROXY
+	unset http_proxy
+	unset FTP_PROXY
+	unset ftp_proxy
 fi
 
 export EDITOR="emacs"
@@ -71,7 +80,7 @@ alias       gt86="export DISPLAY=$XDISPLAY86; export NO_AT_BRIDGE=1; $TERMAPP &"
 
 export XDISPLAY16=192.168.1.6:0.0
 alias       em16="export DISPLAY=$XDISPLAY16; emacs &"
-alias       gt16="export DISPLAY=$XDISPLAY16; export NO_AT_BRIDGE=1; $TERMAPP --display=$DISPLAY &"
+alias       gt16="export DISPLAY=$XDISPLAY16; export NO_AT_BRIDGE=1; $TERMAPP &"
 
 alias       eq1='cd ~/eq1'
 alias       eq1src='cd ~/eq1/current_startup/usr/src/'
