@@ -72,7 +72,7 @@ alias       em='emacs &'
 alias       gt="$TERMAPP &"
 export XDISPLAY00=localhost:0.0
 alias       em00="export DISPLAY=$XDISPLAY00; emacs &"
-alias       gt00="export DISPLAY=$XDISPLAY00; export NO_AT_BRIDGE=1; $TERMAPP --display=$DISPLAY &"
+alias       gt00="export DISPLAY=$XDISPLAY00; export NO_AT_BRIDGE=1; $TERMAPP &"
 
 export XDISPLAY86=192.168.0.86:0.0
 alias       em86="export DISPLAY=$XDISPLAY86; emacs &"
