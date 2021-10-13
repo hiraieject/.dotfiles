@@ -45,6 +45,8 @@ if [ aa$PANASONIC_NETWORK = 'aa1' ]; then
 	export http_proxy=$proxy
 	export FTP_PROXY=$proxy
 	export ftp_proxy=$proxy
+	git config --global http.proxy http://10.77.8.70:8080
+	git config --global https.proxy http://10.77.8.70:8080
 else
 	unset proxy
 	unset HTTPS_PROXY
@@ -53,6 +55,8 @@ else
 	unset http_proxy
 	unset FTP_PROXY
 	unset ftp_proxy
+	git config --global --unset http.proxy
+	git config --global --unset https.proxy
 fi
 
 export EDITOR="emacs"
