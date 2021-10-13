@@ -101,6 +101,8 @@ alias       PATCH='/usr/bin/patch -p0 --binary'
 alias	vpntm='sudo ~hirai/bin/vpntm'
 alias	check='sudo ~hirai/bin/vpntm check'
 
+alias	sethomeip='sudo hostname garnet-server-athome; source ~/.bashrc'
+
 
 case $TERM in
     kterm|xterm|xterm-256color|mlterm|cygwin|vt102)
