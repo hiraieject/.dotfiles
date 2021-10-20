@@ -105,7 +105,7 @@ alias       PATCH='/usr/bin/patch -p0 --binary'
 alias	vpntm='sudo ~hirai/bin/vpntm'
 alias	check='sudo ~hirai/bin/vpntm check'
 
-alias	sethomeip='sudo hostname garnet-server-athome; sudo ifconfig eth0 down; sudo ifconfig eth1 192.168.1.4; source ~/.bashrc'
+alias	sethomeip='sudo hostname garnet-server-athome; sudo ifconfig eth0 down; sudo ifconfig eth1 192.168.1.4; sudo route add default gw 192.168.1.1; source ~/.bashrc'
 
 
 case $TERM in
