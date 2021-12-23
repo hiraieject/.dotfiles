@@ -76,10 +76,6 @@
 ;;; バッファーリスト表示時に分割しない
 (global-set-key "\C-x\C-b" 'buffer-menu)
 
-;; -------------------------------------------- google input
-(setq default-input-method "japanese-mozc")
-(require 'mozc)
-
 ;; -------------------------------------------- 行番号
 ;;(require 'wb-line-number)
 ;;(wb-line-number-enable)
@@ -314,7 +310,10 @@
 			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
 			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
   (setq initial-frame-alist '((width  . 120) (height .  40)))
-  )
+  ;; -------------------------------------------- google input
+  (setq default-input-method "japanese-mozc")
+  (require 'mozc)
+)
 (when (equal system-name-simple "ubuntu1804home")
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
@@ -325,7 +324,10 @@
 			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
 			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
   (setq initial-frame-alist '((width  . 120) (height .  40)))
-  )
+  ;; -------------------------------------------- google input
+  (setq default-input-method "japanese-mozc")
+  (require 'mozc)
+)
 (when (equal system-name-simple "ubuntu1804")
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
@@ -336,7 +338,10 @@
 			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
 			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
   (setq initial-frame-alist '((width  . 200) (height .  60)))
-  )
+  ;; -------------------------------------------- google input
+  (setq default-input-method "japanese-mozc")
+  (require 'mozc)
+)
 (when (equal system-name-simple "IS-DPC00190117")
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
@@ -347,7 +352,10 @@
 			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
 			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
   (setq initial-frame-alist '((width  . 200) (height .  60)))
-  )
+  ;; -------------------------------------------- google input
+  (setq default-input-method "japanese-mozc")
+  (require 'mozc)
+)
 (when (equal system-name-simple "garnet-server")
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
@@ -358,7 +366,10 @@
 			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
 			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
   (setq initial-frame-alist '((width  . 120) (height .  40)))
-  )
+  ;; -------------------------------------------- anthy
+  (setq default-input-method "japanese-anthy")
+  (require 'anthy)
+)
 (when (equal system-name-simple "garnet-server-athome")
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
