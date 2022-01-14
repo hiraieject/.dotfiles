@@ -20,9 +20,9 @@ git_set_account:
 	@echo 'Please edit ~/.git-credentials'
 
 git_clone_memos:
-	git clone https://github.com/hiraieject/memos.git
+	(cd ~; git clone https://github.com/hiraieject/memos.git)
 git_clone_tgtdev:
-	git clone https://github.com/hiraieject/tgtdev.git
+	(cd ~; git clone https://github.com/hiraieject/tgtdev.git)
 git_clone_pcdev:
-	git clone https://github.com/hiraieject/pcdev.git
+	(cd ~; git clone https://github.com/hiraieject/pcdev.git)
 
