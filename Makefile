@@ -1,11 +1,11 @@
 
 help:
 	@echo "## git"
-	make git_install
-	make git_set_account
-	make git_clone_memos
-	make git_clone_tgtdev
-	make git_clone_pcdev
+	@echo "make git_install"
+	@echo "make git_set_account"
+	@echo "make git_clone_memos"
+	@echo "make git_clone_tgtdev"
+	@echo "make git_clone_pcdev"
 
 git_install:
 	sudo -E apt update
