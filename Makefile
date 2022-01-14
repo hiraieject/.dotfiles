@@ -6,6 +6,7 @@ help:
 	@echo "make git_clone_memos"
 	@echo "make git_clone_tgtdev"
 	@echo "make git_clone_pcdev"
+	@echo "make git_set_proxy"
 
 git_install:
 	sudo -E apt update
@@ -26,3 +27,6 @@ git_clone_tgtdev:
 git_clone_pcdev:
 	(cd ~; git clone https://github.com/hiraieject/pcdev.git)
 
+git_set_proxy:
+	git config --global http.proxy http://10.77.8.70:8080
+	git config --global https.proxy http://10.77.8.70:8080
