@@ -35,6 +35,10 @@ fi
 if [ `hostname` = 'garnet-server' ]; then
         export PANASONIC_NETWORK=1
 fi
+if [ `hostname` = 'raspberrykaisha' ]; then
+        export PANASONIC_NETWORK=1
+fi
+
 
 if [ aa$PANASONIC_NETWORK = 'aa1' ]; then
 #	export proxy="http://192.168.0.86:8080"
