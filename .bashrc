@@ -6,6 +6,12 @@ if [ -f /etc/bashrc ]; then
 fi
 export PS1="[\u@\h \W]\$ "
 
+# local custmize
+if [ ! -f $HOME/.dotfiles/.bashrc_local ]; then
+    cp $HOME/.dotfiles/.bashrc_local.template $HOME/.dotfiles/.bashrc_local
+fi
+source $HOME/.dotfiles/.bashrc_local
+
 #export PATH=$HOME/mybin/bin:$HOME/bin:$PATH
 #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/mybin/lib
 
@@ -23,34 +29,15 @@ fi
 fi
 
 
-# -----------------------------------------------------
-export PANASONIC_NETWORK=0
-
-if [ `hostname` = 'ubuntu1804' ]; then
-	export PANASONIC_NETWORK=1
-fi
-if [ `hostname` = 'aqua-centos7' ]; then
-	export PANASONIC_NETWORK=1
-fi
-if [ `hostname` = 'garnet-server' ]; then
-        export PANASONIC_NETWORK=1
-fi
-if [ `hostname` = 'raspberrykaisha' ]; then
-        export PANASONIC_NETWORK=1
-fi
-
-
-if [ aa$PANASONIC_NETWORK = 'aa1' ]; then
-#	export proxy="http://192.168.0.86:8080"
-	export proxy="http://10.77.8.70:8080"
-	export HTTPS_PROXY=$proxy
-	export https_proxy=$proxy
-	export HTTP_PROXY=$proxy
-	export http_proxy=$proxy
-	export FTP_PROXY=$proxy
-	export ftp_proxy=$proxy
-	git config --global http.proxy http://10.77.8.70:8080
-	git config --global https.proxy http://10.77.8.70:8080
+# ----------------------------------------------------- PROXY
+if [ ! aa$PROXY_SERVER = 'aaNONE' ]; then
+	export proxy="$PROXY_SERVER"
+	export HTTPS_PROXY="$PROXY_SERVER"
+	export https_proxy="$PROXY_SERVER"
+	export HTTP_PROXY="$PROXY_SERVER"
+	export http_proxy="$PROXY_SERVER"
+	export FTP_PROXY="$PROXY_SERVER"
+	export ftp_proxy="$PROXY_SERVER"
 else
 	unset proxy
 	unset HTTPS_PROXY
@@ -59,46 +46,24 @@ else
 	unset http_proxy
 	unset FTP_PROXY
 	unset ftp_proxy
-	git config --global --unset http.proxy
-	git config --global --unset https.proxy
 fi
 
+# ----------------------------------------------------- EDITOR
 export EDITOR="emacs"
 
+# ----------------------------------------------------- ALIAS
 
 alias       DIFF='touch DIFF; rm DIFF; ln -s ~/DIFF .; cvs diff -c > ~/DIFF/diff`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`".txt"'
 
 alias langc="export LANG=C"
 alias langj="export LANG=ja_JP.utf8"
-export LANG=ja_JP.utf8
+export LANG=$DEFAULT_LANG
 
-if [ `hostname` = 'orange' ]; then
-    export LANG="C"
-fi
-
-alias       em='emacs &'
-alias       gt="$TERMAPP &"
-export XDISPLAY00=localhost:0.0
-alias       em00="export DISPLAY=$XDISPLAY00; emacs &"
-alias       gt00="export DISPLAY=$XDISPLAY00; export NO_AT_BRIDGE=1; $TERMAPP &"
-
-export XDISPLAY86=192.168.0.86:0.0
-alias       em86="export DISPLAY=$XDISPLAY86; emacs &"
-alias       gt86="export DISPLAY=$XDISPLAY86; export NO_AT_BRIDGE=1; $TERMAPP &"
-
-export XDISPLAY16=192.168.1.6:0.0
-alias       em16="export DISPLAY=$XDISPLAY16; emacs &"
-alias       gt16="export DISPLAY=$XDISPLAY16; export NO_AT_BRIDGE=1; $TERMAPP &"
-
-alias       eq1='cd ~/eq1'
-alias       eq1src='cd ~/eq1/current_startup/usr/src/'
-alias       sq1='cd ~/sq1'
-alias       sq1src='cd ~/sq1/current_SQ1/usr/src/'
-alias       wm='cd ~/startup_panaapp'
-alias       wmsrc='cd ~/startup_panaapp/current_startupr6752_panaapp/usr/src/'
-alias       wb='cd ~/startup_whiteboard'
-alias       wbsrc='cd ~/startup_whiteboard/current_startupr6591_whiteboard/usr/src/'
-
+alias       em="export DISPLAY=$XDISPLAY; emacs &"
+alias       gt="export DISPLAY=$XDISPLAY; export NO_AT_BRIDGE=1; $TERMAPP &"
+alias       xt="export DISPLAY=$XDISPLAY; export NO_AT_BRIDGE=1; xterm &"
+alias       em86="$gt"
+alias       gt86="$em"
 
 alias       DIFF='touch DIFF; rm DIFF; ln -s ~/DIFF .; cvs diff -c > ~/DIFF/diff`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`".txt"'
 alias       SDIFF='export LANG=C; touch DIFF; rm DIFF; ln -s ~/DIFF .; svn diff > ~/DIFF/diff`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`".txt"'

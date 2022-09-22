@@ -299,155 +299,62 @@
  '(tool-bar-mode nil)
  '(transient-mark-mode nil))
 
-;; 色の設定
-(when (equal system-name-simple "NARUE10")
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(default ((t (:inherit nil :stipple nil :background "#002B36" :foreground "#EEEEEE" :inverse-video nil :box nil
-			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
-			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
-  (setq initial-frame-alist '((width  . 120) (height .  40)))
-  ;; -------------------------------------------- google input
-  (setq default-input-method "japanese-mozc")
-  (require 'mozc)
-)
-(when (equal system-name-simple "ubuntu1804home")
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(default ((t (:inherit nil :stipple nil :background "#002B36" :foreground "#EEEEEE" :inverse-video nil :box nil
-			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
-			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
-  (setq initial-frame-alist '((width  . 120) (height .  40)))
-  ;; -------------------------------------------- google input
-  (setq default-input-method "japanese-mozc")
-  (require 'mozc)
-)
-(when (equal system-name-simple "ubuntu1804")
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(default ((t (:inherit nil :stipple nil :background "#202036" :foreground "#EEEEEE" :inverse-video nil :box nil
-			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
-			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
-  (setq initial-frame-alist '((width  . 200) (height .  60)))
-  ;; -------------------------------------------- google input
-  (setq default-input-method "japanese-mozc")
-  (require 'mozc)
-)
-(when (equal system-name-simple "IS-DPC00190117")
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(default ((t (:inherit nil :stipple nil :background "#202036" :foreground "#EEEEEE" :inverse-video nil :box nil
-			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
-			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
-  (setq initial-frame-alist '((width  . 200) (height .  60)))
-  ;; -------------------------------------------- google input
-  (setq default-input-method "japanese-mozc")
-  (require 'mozc)
-)
-(when (equal system-name-simple "garnet-server")
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(default ((t (:inherit nil :stipple nil :background "#143A81" :foreground "#FFFFFF" :inverse-video nil :box nil
-			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
-			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
-  (setq initial-frame-alist '((width  . 120) (height .  40)))
-  ;; -------------------------------------------- anthy
-  (setq default-input-method "japanese-anthy")
-  (require 'anthy)
-)
-(when (equal system-name-simple "garnet-server-athome")
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(default ((t (:inherit nil :stipple nil :background "#143A81" :foreground "#FFFFFF" :inverse-video nil :box nil
-			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
-			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
-  (setq initial-frame-alist '((width  . 120) (height .  40)))
-  )
-(when (equal system-name-simple "garnet-home")
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(default ((t (:inherit nil :stipple nil :background "#143A81" :foreground "#FFFFFF" :inverse-video nil :box nil
-			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
-			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
-  (setq initial-frame-alist '((width  . 120) (height .  40)))
-  )
-(when (equal system-name-simple "aquadev34")
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(default ((t (:inherit nil :stipple nil :background "#143A81" :foreground "#FFFFFF" :inverse-video nil :box nil
-			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
-			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
-  (setq initial-frame-alist '((width  . 120) (height .  40)))
-  )
-(when (equal system-name-simple "aqua-centos7")
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(default ((t (:inherit nil :stipple nil :background "#143A81" :foreground "#FFFFFF" :inverse-video nil :box nil
-			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
-			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
-  (setq initial-frame-alist '((width  . 120) (height .  40)))
-  )
-(when (equal system-name-simple "orange")
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(default ((t (:inherit nil :stipple nil :background "#8b0000" :foreground "#FFFFFF" :inverse-video nil :box nil
-			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
-			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
-  (setq initial-frame-alist '((width  . 120) (height .  40)))
-  )
-(when (equal system-name-simple "raspberry")
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(default ((t (:inherit nil :stipple nil :background "#8b0000" :foreground "#FFFFFF" :inverse-video nil :box nil
-			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
-			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
-  (setq initial-frame-alist '((width  . 120) (height .  40)))
-  )
-(when (equal system-name-simple "raspberrykaisha")
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(default ((t (:inherit nil :stipple nil :background "#8b0000" :foreground "#FFFFFF" :inverse-video nil :box nil
-			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
-			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
-  (setq initial-frame-alist '((width  . 120) (height .  40)))
-  )
+;; -------------------------------------------- emacs size
+;;(setq initial-frame-alist '((width  . (getenv "EMACSSIZEX")) (height . (getenv "EMACSSIZEY"))))
+;;(setq initial-frame-alist '((width  . (getenv "EMACSSIZEX")) (height . (getenv "EMACSSIZEY"))))
+(setq initial-frame-alist '((width  . 120) (height .  40)))
 
+;; -------------------------------------------- emacs mozc
+(when (equal (getenv "EMACSMOZC") "YES")
+  (setq default-input-method "japanese-mozc")
+  (require 'mozc)
+)
+;; -------------------------------------------- emacs 色の設定
+(when (equal (getenv "EMACSCOLOR") "BLUE")
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(default ((t (:inherit nil :stipple nil :background "#143A81" :foreground "#FFFFFF" :inverse-video nil :box nil
+			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
+			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
+  ;;(setq initial-frame-alist '((width  . 120) (height .  40)))
+  ;;(setq initial-frame-alist '((width  . (getenv "EMACSSIZEX")) (height .  (getenv "EMACSSIZEY"))))
+)
+(when (equal (getenv "EMACSCOLOR") "GREEN")
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(default ((t (:inherit nil :stipple nil :background "#002B36" :foreground "#EEEEEE" :inverse-video nil :box nil
+			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
+			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
+)
+(when (equal (getenv "EMACSCOLOR") "RED")
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(default ((t (:inherit nil :stipple nil :background "#400000" :foreground "#EEEEEE" :inverse-video nil :box nil
+			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
+			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
+)
+(when (equal (getenv "EMACSCOLOR") "GRAY")
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(default ((t (:inherit nil :stipple nil :background "#303030" :foreground "#EEEEEE" :inverse-video nil :box nil
+			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
+			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
+  (setq initial-frame-alist '(width . 120) (height . 40))
+)
+
+ 
 ;; ===========================================================================
 ;;;; kbd macros
 ;;;;    Name the keyboard macro
