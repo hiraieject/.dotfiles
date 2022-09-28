@@ -8,8 +8,11 @@ export EMACSCOLOR=GREEN
 #export EMACSCOLOR=RED
 #export EMACSCOLOR=GRAY
 
-export EMACSMOZC=NO
-#export EMACSMOZC=YES
+if [ -f $HOME/lisp/mozc.el ] ; then
+   export EMACSMOZC=YES
+else
+   export EMACSMOZC=NO
+fi
 
 ##export EMACSSIZEX=120
 ##export EMACSSIZEY=40
