@@ -320,6 +320,12 @@
 			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
 			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
 )
+(when (equal (getenv "EMACSCOLOR") "DARKBLUE")
+  (custom-set-faces
+   '(default ((t (:inherit nil :stipple nil :background "#101540" :foreground "#FFFFFF" :inverse-video nil :box nil
+			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
+			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
+)
 (when (equal (getenv "EMACSCOLOR") "GREEN")
   (custom-set-faces
    '(default ((t (:inherit nil :stipple nil :background "#002B36" :foreground "#EEEEEE" :inverse-video nil :box nil
