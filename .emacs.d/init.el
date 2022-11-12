@@ -326,7 +326,9 @@
 (when (equal (getenv "EMACSMOZC") "YES")
   (setq default-input-method "japanese-mozc")
   (require 'mozc)
-)
+  )
+;; 半角スペースは Shift-Space で入力可
+
 ;; -------------------------------------------- emacs 色の設定
 (when (equal (getenv "EMACSCOLOR") "BLUE")
   (custom-set-faces
