@@ -71,6 +71,9 @@ alias       SDIFF='export LANG=C; touch DIFF; rm DIFF; ln -s ~/DIFF .; svn diff 
 ## 改行コードがCRLFのファイルでも正常に当てるために binary オプションが必要
 alias       PATCH='/usr/bin/patch -p0 --binary'
 
+alias       use_gitlab="(cd ~hirai; rm -f .gitconfig; ln -s .gitconfig.pavctgitlab .gitconfig; ls -l .gitconfig)"
+alias       use_github="(cd ~hirai; rm -f .gitconfig; ln -s .gitconfig.github .gitconfig; ls -l .gitconfig)"
+
 alias	vpntm='sudo ~hirai/bin/vpntm'
 alias	check='sudo ~hirai/bin/vpntm check'
 
@@ -83,3 +86,13 @@ case $TERM in
 	export PS1="\[\e]0;${_termtitle}\007\]${PS1}"
 	;;
 esac
+
+#if [ -f /usr/local/mcuxpressoide/MCUXpressoPath.sh ] ; then
+#    source /usr/local/mcuxpressoide/MCUXpressoPath.sh > /dev/null
+#    alias ide='/usr/local/mcuxpressoide/ide/mcuxpressoide &'
+#fi
+
+#if [ -d /usr/local/arm-none-eabi ] ; then
+#    export ARMGCC_DIR=/usr/local/arm-none-eabi
+#    export PATH=$PATH:/usr/local/arm-none-eabi/bin
+#fi
