@@ -1,8 +1,13 @@
 # .bashrc
 
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+	source /etc/bashrc
+fi
+if [ -f /etc/bash.bashrc ]; then
+	source /etc/bash.bashrc
 fi
 export PS1="[\u@\h \W]\$ "
 
@@ -87,12 +92,7 @@ case $TERM in
 	;;
 esac
 
-#if [ -f /usr/local/mcuxpressoide/MCUXpressoPath.sh ] ; then
-#    source /usr/local/mcuxpressoide/MCUXpressoPath.sh > /dev/null
-#    alias ide='/usr/local/mcuxpressoide/ide/mcuxpressoide &'
-#fi
-
-#if [ -d /usr/local/arm-none-eabi ] ; then
-#    export ARMGCC_DIR=/usr/local/arm-none-eabi
-#    export PATH=$PATH:/usr/local/arm-none-eabi/bin
-#fi
+if [ -d ${HOME}/local/gcc-arm-none-eabi ] ; then
+    export ARMGCC_DIR=${HOME}/local/gcc-arm-none-eabi
+    export PATH=$ARMGCC_DIR/bin:${PATH}
+fi
