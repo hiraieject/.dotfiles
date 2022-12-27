@@ -217,6 +217,24 @@
 (define-key global-map [home] 'other-window)		; HOME
 (define-key global-map [insert] 'ignore)		; disable INSERT
 
+;; -------------------------------------------- GDB key bind
+;; C-c C-w	gud-watch
+;; C-x C-a C-b	gud-break
+;; C-x C-a C-d	gud-remove
+;; C-x C-a C-f	gud-finish
+;; C-x C-a TAB	gud-stepi
+;; C-x C-a C-j	gud-jump
+;; C-x C-a C-l	gud-refresh
+;; C-x C-a C-n	gud-next
+;; C-x C-a C-p	gud-print
+;; C-x C-a C-r	gud-cont
+;; C-x C-a C-s	gud-step
+;; C-x C-a C-t	gud-tbreak
+;; C-x C-a C-u	gud-until
+;; C-x C-a C-w	gud-watch
+;; C-x C-a <	gud-up
+;; C-x C-a >	gud-down
+
 ;; -------------------------------------------- MISC macro
 
 (defun indent2 ()
@@ -308,7 +326,9 @@
 (when (equal (getenv "EMACSMOZC") "YES")
   (setq default-input-method "japanese-mozc")
   (require 'mozc)
-)
+  )
+;; 半角スペースは Shift-Space で入力可
+
 ;; -------------------------------------------- emacs 色の設定
 (when (equal (getenv "EMACSCOLOR") "BLUE")
   (custom-set-faces

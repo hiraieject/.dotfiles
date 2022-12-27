@@ -33,6 +33,10 @@ if [ -f /usr/bin/xterm ]; then
 fi
 fi
 
+if [ -d /mingw32/bin ]; then
+    export PATH=$PATH:/mingw32/bin:/mingw64/bin
+fi
+
 
 # ----------------------------------------------------- PROXY
 if [ ! aa$PROXY_SERVER = 'aaNONE' ]; then
