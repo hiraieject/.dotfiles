@@ -74,6 +74,8 @@ alias       gt="export DISPLAY=$XDISPLAY; export NO_AT_BRIDGE=1; $TERMAPP &"
 alias       gt86="export DISPLAY=$XDISPLAY; export NO_AT_BRIDGE=1; $TERMAPP &"
 alias       xt="export DISPLAY=$XDISPLAY; export NO_AT_BRIDGE=1; xterm &"
 
+alias       gt862="export DISPLAY=$XDISPLAY2; export NO_AT_BRIDGE=1; $TERMAPP &"
+
 alias       DIFF='touch DIFF; rm DIFF; ln -s ~/DIFF .; cvs diff -c > ~/DIFF/diff`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`".txt"'
 alias       SDIFF='export LANG=C; touch DIFF; rm DIFF; ln -s ~/DIFF .; svn diff > ~/DIFF/diff`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`".txt"'
 ##alias       PATCH='/usr/bin/patch -p0 --binary'

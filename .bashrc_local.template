@@ -21,5 +21,7 @@ fi
 export XDISPLAY=192.168.0.86:0.0
 #export XDISPLAY=192.168.1.6:0.0
 
+export XDISPLAY2=192.168.0.10:0.0
+
 export DEFAULT_LANG=ja_JP.utf8
 #export DEFAULT_LANG=C
