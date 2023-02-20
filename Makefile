@@ -1,6 +1,6 @@
 
+# ------------------------------------------------ git
 -include ~/.dotfiles/.makefile.inc
-
 gcommit:
 	@make _gcommit_noedit
 gpush:
@@ -11,4 +11,6 @@ gdiff:
 	@make _gdiff
 gdiff_commit:
 	@make _gdiff_commit
+gstatus:
+	@make _gstatus
 

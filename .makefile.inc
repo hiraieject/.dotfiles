@@ -1,4 +1,22 @@
 
+
+## # ------------------------------------------------ git
+## -include ~/.dotfiles/.makefile.inc
+## gcommit:
+## 	@make _gcommit_noedit
+## #	@make _gcommit
+## gpush:
+## 	@make _gpush
+## gpull:
+## 	@make _gpull
+## gdiff:
+## 	@make _gdiff
+## gdiff_commit:
+## 	@make _gdiff_commit
+## gstatus:
+## 	@make _gstatus
+
+
 _gcommit:
 	git pull
 	make _gdiff_commit
@@ -20,6 +38,8 @@ _gdiff:
 _gdiff_commit:
 	-git diff > ~/pcdev/diff/diff_commit_`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`.txt
 	-(cd ~/pcdev/diff; git pull; git add *.txt; git commit -m "commit diff" .; git push)
+_gstatus:
+	git status
 
 
 nuvodev_gcommit:
