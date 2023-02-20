@@ -3,41 +3,41 @@
 ## # ------------------------------------------------ git
 ## -include ~/.dotfiles/.makefile.inc
 ## gcommit:
-## 	@make _gcommit_noedit
-## #	@make _gcommit
+## 	@make __TGTFOLDER="." _gcommit_noedit
+## #	@make __TGTFOLDER="." _gcommit
 ## gpush:
-## 	@make _gpush
+## 	@make __TGTFOLDER="." _gpush
 ## gpull:
-## 	@make _gpull
+## 	@make __TGTFOLDER="." _gpull
 ## gdiff:
-## 	@make _gdiff
+## 	@make __TGTFOLDER="." _gdiff
 ## gdiff_commit:
-## 	@make _gdiff_commit
+## 	@make __TGTFOLDER="." _gdiff_commit
 ## gstatus:
-## 	@make _gstatus
+## 	@make __TGTFOLDER="." _gstatus
 
 
 _gcommit:
-	git pull
-	make _gdiff_commit
-	git commit .
-	git push
+	(cd $(__TGTFOLDER); git pull)
+	make __TGTFOLDER="$(__TGTFOLDER)" _gdiff_commit
+	(cd $(__TGTFOLDER); git commit .)
+	(cd $(__TGTFOLDER); git push)
 	
 _gcommit_noedit:
-	git pull
-	make _gdiff_commit
-	git commit . -m "commit diff"
-	git push
+	(cd $(__TGTFOLDER); git pull)
+	make __TGTFOLDER="$(__TGTFOLDER)" _gdiff_commit
+	(cd $(__TGTFOLDER); git commit . -m "commit diff")
+	(cd $(__TGTFOLDER); git push)
 	
 _gpull:
-	git pull
+	(cd $(__TGTFOLDER); git pull)
 _gpush:
-	git push
+	(cd $(__TGTFOLDER); git push)
 _gdiff:
-	-git diff
+	(cd $(__TGTFOLDER); git diff)
 _gdiff_commit:
-	-git diff > ~/pcdev/diff/diff_commit_`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`.txt
-	-(cd ~/pcdev/diff; git pull; git add *.txt; git commit -m "commit diff" .; git push)
+	(cd $(__TGTFOLDER); git diff > ~/pcdev/diff/diff_commit_`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`.txt)
+	(cd ~/pcdev/diff; git pull; git add *.txt; git commit -m "commit diff" .; git push)
 _gstatus:
 	git status
 

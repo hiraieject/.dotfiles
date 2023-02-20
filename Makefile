@@ -2,15 +2,14 @@
 # ------------------------------------------------ git
 -include ~/.dotfiles/.makefile.inc
 gcommit:
-	@make _gcommit_noedit
+	@make __TGTFOLDER="." _gcommit_noedit
 gpush:
-	@make _gpush
+	@make __TGTFOLDER="." _gpush
 gpull:
-	@make _gpull
+	@make __TGTFOLDER="." _gpull
 gdiff:
-	@make _gdiff
+	@make __TGTFOLDER="." _gdiff
 gdiff_commit:
-	@make _gdiff_commit
+	@make __TGTFOLDER="." _gdiff_commit
 gstatus:
-	@make _gstatus
-
+	@make __TGTFOLDER="." _gstatus
