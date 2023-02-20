@@ -1,10 +1,14 @@
 
+-include ~/.dotfiles/.makefile.inc
+
 gcommit:
-	git pull
-	git commit . -m "update"
-	git push
+	@make _gcommit_noedit
 gpush:
-	git push
+	@make _gpush
 gpull:
-	git pull
+	@make _gpull
+gdiff:
+	@make _gdiff
+gdiff_commit:
+	@make _gdiff_commit
 
