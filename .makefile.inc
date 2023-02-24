@@ -49,6 +49,13 @@ nuvodev_gpull:
 nuvodev_gpush:
 	(cd ~/nuvodev; make gpush)
 
+ad_gcommit:
+	(cd ~/nuvodev/anomaly_detection_pcdev; make gcommit)
+ad_gpull:
+	(cd ~/nuvodev/anomaly_detection_pcdev; make gpull)
+ad_gpush:
+	(cd ~/nuvodev/anomaly_detection_pcdev; make gpush)
+
 pcdev_gcommit:
 	(cd ~/pcdev; make gcommit)
 pcdev_gpull:
@@ -57,11 +64,11 @@ pcdev_gpush:
 	(cd ~/pcdev; make gpush)
 
 ccv_gcommit:
-	(cd ~/pcdev/ccv/cuurent_ccv; make gcommit)
+	(cd ~/pcdev/ccv/current_ccv; make gcommit)
 ccv_gpull:
-	(cd ~/pcdev/ccv/cuurent_ccv; make gpull)
+	(cd ~/pcdev/ccv/current_ccv; make gpull)
 ccv_gpush:
-	(cd ~/pcdev/ccv/cuurent_ccv; make gpush)
+	(cd ~/pcdev/ccv/current_ccv; make gpush)
 
 linuxenv_gcommit:
 	(cd ~/linuxenv; make gcommit)
