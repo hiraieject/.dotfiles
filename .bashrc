@@ -77,7 +77,8 @@ alias       xt="export DISPLAY=$XDISPLAY; export NO_AT_BRIDGE=1; xterm &"
 alias       gt862="export DISPLAY=$XDISPLAY2; export NO_AT_BRIDGE=1; $TERMAPP &"
 
 alias       DIFF='touch DIFF; rm DIFF; ln -s ~/DIFF .; cvs diff -c > ~/DIFF/diff`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`".txt"'
-alias       SDIFF='export LANG=C; touch DIFF; rm DIFF; ln -s ~/DIFF .; svn diff > ~/DIFF/diff`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`".txt"'
+alias       SDIFF='export LANG=C; rm -f DIFF; mkdir -p ~/DIFF; ln -s ~/DIFF .; svn diff | tee ~/DIFF/diff`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`".txt"'
+alias       GDIFF='export LANG=C; rm -f DIFF; mkdir -p ~/DIFF; ln -s ~/DIFF .; git diff | tee ~/DIFF/diff`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`".txt"'
 ##alias       PATCH='/usr/bin/patch -p0 --binary'
 ## 改行コードがCRLFのファイルでも正常に当てるために binary オプションが必要
 alias       PATCH='/usr/bin/patch -p0 --binary'
