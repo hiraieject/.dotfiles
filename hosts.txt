@@ -1,0 +1,19 @@
+
+
+192.168.0.8	FP_target_default_IP
+
+192.168.0.10	pavct_hirai_pc_HP_desktop
+192.168.0.11	ubuntu22pavct Ubuntu_ja_22.04(220921)
+192.168.0.12	ubuntu2004pavct Ubuntu_ja_20.04(221005)
+192.168.0.13	ubuntu2004pavct Ubuntu_ja_20.04(230123yct)
+192.168.0.14	ubuntu2004pavct_230301ny Ubuntu_ja_20.04(230301ny)
+192.168.0.15	pavct_guest_pc_230301_ochi
+
+192.168.0.20	Windows10_x64
+
+192.168.0.86	pana_hirai_DELL_desktop
+192.168.0.88	pana_aqua_Fedora16
+
+192.168.0.99	セットアップ中の一時設定用
+
+192.168.0.101	
