@@ -103,3 +103,7 @@ if [ -d ${HOME}/local/gcc-arm-none-eabi ] ; then
     export ARMGCC_DIR=${HOME}/local/gcc-arm-none-eabi
     export PATH=$ARMGCC_DIR/bin:${PATH}
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

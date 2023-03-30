@@ -1,4 +1,11 @@
 
+
+clone_copilot:
+	git clone https://github.com/zerolfx/copilot.el.git
+
+install_nodejs:
+	bash install_nodejs.sh
+
 # ------------------------------------------------ git
 -include ~/.dotfiles/.makefile.inc
 gcommit:
