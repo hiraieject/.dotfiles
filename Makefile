@@ -1,7 +1,9 @@
 
 
-clone_copilot:
+install_copilot.el:
+	rm -rf copilot.el
 	git clone https://github.com/zerolfx/copilot.el.git
+	cp copilot.el/copilot.el .emacs.d/lisp
 
 install_nodejs:
 	bash install_nodejs.sh
