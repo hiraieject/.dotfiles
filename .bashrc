@@ -89,7 +89,7 @@ alias       use_github="(cd ~hirai; rm -f .gitconfig; ln -s .gitconfig.github .g
 alias	vpntm='sudo ~hirai/bin/vpntm'
 alias	check='sudo ~hirai/bin/vpntm check'
 
-// nuvoton alias on target board
+# nuvoton alias on target board
 alias	unit='(cd ~/nuvodev/anomaly_detection_soc/nu6_lens_anomaly_detection; bash run_test.sh -unit)'
 alias	div='(cd ~/nuvodev/anomaly_detection_soc/nu6_lens_anomaly_detection; bash run_test.sh -div)'
 alias	div50='(cd ~/nuvodev/anomaly_detection_soc/nu6_lens_anomaly_detection; bash run_test.sh -div50)'
