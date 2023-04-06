@@ -403,42 +403,49 @@
 (fset 'aichisrc
    [?\C-x ?\C-f ?~ ?/ ?a ?i ?c ?h ?i ?/ return])
 
-;; ;; -------------------------------------------- straight
-;; ;; https://nukosuke.hatenablog.jp/entry/straight-el
-;; ;; 何も考えず公式のREADMEからコピペすればいいコード
-;; ;; straight.el自身のインストールと初期設定を行ってくれる
+;; -------------------------------------------- straight
+;; https://nukosuke.hatenablog.jp/entry/straight-el
+;; 何も考えず公式のREADMEからコピペすればいいコード
+;; straight.el自身のインストールと初期設定を行ってくれる
+(when (equal (getenv "EMACSSTRAIGHT") "YES")
 
- (let ((bootstrap-file (concat user-emacs-directory "straight/repos/straight.el/bootstrap.el"))
-       (bootstrap-version 3))
-   (unless (file-exists-p bootstrap-file)
-     (with-current-buffer
-         (url-retrieve-synchronously
-          "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-          'silent 'inhibit-cookies)
-       (goto-char (point-max))
-       (eval-print-last-sexp)))
-   (load bootstrap-file nil 'nomessage))
+  (let ((bootstrap-file (concat user-emacs-directory "straight/repos/straight.el/bootstrap.el"))
+	(bootstrap-version 3))
+    (unless (file-exists-p bootstrap-file)
+      (with-current-buffer
+	  (url-retrieve-synchronously
+	   "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+	   'silent 'inhibit-cookies)
+	(goto-char (point-max))
+	(eval-print-last-sexp)))
+    (load bootstrap-file nil 'nomessage))
 
-;; use-package
-(straight-use-package 'use-package)
+  ;; use-package
+  (straight-use-package 'use-package)
 
-;; オプションなしで自動的にuse-packageをstraight.elにフォールバックする
-;; 本来は (use-package hoge :straight t) のように書く必要がある
-(setq straight-use-package-by-default t)
+  ;; オプションなしで自動的にuse-packageをstraight.elにフォールバックする
+  ;; 本来は (use-package hoge :straight t) のように書く必要がある
+  (setq straight-use-package-by-default t)
 
-;; init-loaderをインストール&読み込み
-(use-package init-loader)
+  ;; init-loaderをインストール&読み込み
+  (use-package init-loader)
 
-;; ~/.emacs.d/init/ 以下のファイルを全部読み込む
-(init-loader-load "~/.emacs.d/init")
+  ;; ログはエラーが出た時のみ
+  (custom-set-variables
+   '(init-loader-show-log-after-init 'error-only))
 
+  ;; ~/.emacs.d/init/ 以下のファイルを全部読み込む
+  (init-loader-load "~/.emacs.d/init")
 
-;; -------------------------------------------- emacs mozc
-(when (equal (getenv "EMACSMOZC") "YES")
-  (setq default-input-method "japanese-mozc")
-  (use-package mozc)
-;;   (require 'mozc)
+  ;; -------------------------------------------- emacs mozc
+  (when (equal (getenv "EMACSMOZC") "YES")
+    (setq default-input-method "japanese-mozc")
+    (use-package mozc)
+    ;;   (require 'mozc)
   )
-;; 半角スペースは Shift-Space で入力可
+  ;; 半角スペースは Shift-Space で入力可
+
+
+)
 
 
