@@ -309,11 +309,15 @@
 
 ;; 見た目の設定
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(column-number-mode t)
+ '(package-archives
+   (quote
+    (("gnu" . "https://elpa.gnu.org/packages/")
+     ("melpa" . "http://melpa.org/packages/"))))
  '(tool-bar-mode nil)
  '(transient-mark-mode nil))
 
@@ -321,13 +325,6 @@
 ;;(setq initial-frame-alist '((width  . (getenv "EMACSSIZEX")) (height . (getenv "EMACSSIZEY"))))
 ;;(setq initial-frame-alist '((width  . (getenv "EMACSSIZEX")) (height . (getenv "EMACSSIZEY"))))
 (setq initial-frame-alist '((width  . 120) (height .  40)))
-
-;; -------------------------------------------- emacs mozc
-(when (equal (getenv "EMACSMOZC") "YES")
-  (setq default-input-method "japanese-mozc")
-  (require 'mozc)
-  )
-;; 半角スペースは Shift-Space で入力可
 
 ;; -------------------------------------------- emacs 色の設定
 (when (equal (getenv "EMACSCOLOR") "BLUE")
@@ -359,7 +356,7 @@
 			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
 )
 (when (equal (getenv "EMACSCOLOR") "GRAY")
-  (custom-set-faces
+  (custom-set-facesg
    '(default ((t (:inherit nil :stipple nil :background "#303030" :foreground "#EEEEEE" :inverse-video nil :box nil
 			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
 			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
@@ -410,18 +407,19 @@
 ;; https://nukosuke.hatenablog.jp/entry/straight-el
 ;; 何も考えず公式のREADMEからコピペすればいいコード
 ;; straight.el自身のインストールと初期設定を行ってくれる
-(let ((bootstrap-file (concat user-emacs-directory "straight/repos/straight.el/bootstrap.el"))
-      (bootstrap-version 3))
-  (unless (file-exists-p bootstrap-file)
-    (with-current-buffer
-        (url-retrieve-synchronously
-         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-         'silent 'inhibit-cookies)
-      (goto-char (point-max))
-      (eval-print-last-sexp)))
-  (load bootstrap-file nil 'nomessage))
 
-;; use-packageをインストールする
+;; (let ((bootstrap-file (concat user-emacs-directory "straight/repos/straight.el/bootstrap.el"))
+;;       (bootstrap-version 3))
+;;   (unless (file-exists-p bootstrap-file)
+;;     (with-current-buffer
+;;         (url-retrieve-synchronously
+;;          "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+;;          'silent 'inhibit-cookies)
+;;       (goto-char (point-max))
+;;       (eval-print-last-sexp)))
+;;   (load bootstrap-file nil 'nomessage))
+
+;; use-package
 (straight-use-package 'use-package)
 
 ;; オプションなしで自動的にuse-packageをstraight.elにフォールバックする
@@ -433,4 +431,14 @@
 
 ;; ~/.emacs.d/init/ 以下のファイルを全部読み込む
 (init-loader-load "~/.emacs.d/init")
+
+
+;; -------------------------------------------- emacs mozc
+(when (equal (getenv "EMACSMOZC") "YES")
+  (setq default-input-method "japanese-mozc")
+  (use-package mozc)
+;;   (require 'mozc)
+  )
+;; 半角スペースは Shift-Space で入力可
+
 
