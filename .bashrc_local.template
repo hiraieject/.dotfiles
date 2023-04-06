@@ -9,6 +9,9 @@ export EMACSCOLOR=GREEN
 #export EMACSCOLOR=RED
 #export EMACSCOLOR=GRAY
 
+#export EMACSSTRAIGHT=YES
+export EMACSSTRAIGHT=NO
+
 if [ -f /usr/bin/mozc_emacs_helper ] ; then
    export EMACSMOZC=YES
 else
