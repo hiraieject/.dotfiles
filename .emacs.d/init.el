@@ -403,10 +403,10 @@
 (fset 'aichisrc
    [?\C-x ?\C-f ?~ ?/ ?a ?i ?c ?h ?i ?/ return])
 
-;; -------------------------------------------- straight
-;; https://nukosuke.hatenablog.jp/entry/straight-el
-;; 何も考えず公式のREADMEからコピペすればいいコード
-;; straight.el自身のインストールと初期設定を行ってくれる
+;; ;; -------------------------------------------- straight
+;; ;; https://nukosuke.hatenablog.jp/entry/straight-el
+;; ;; 何も考えず公式のREADMEからコピペすればいいコード
+;; ;; straight.el自身のインストールと初期設定を行ってくれる
 
 ;; (let ((bootstrap-file (concat user-emacs-directory "straight/repos/straight.el/bootstrap.el"))
 ;;       (bootstrap-version 3))
