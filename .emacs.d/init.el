@@ -129,7 +129,7 @@
 
 
 ;cc-mode のカスタマイズ
-(autoload 'gtags-mode "gtags" "" t)
+;;(autoload 'gtags-mode "gtags" "" t)
 (add-hook 'c-mode-common-hook
 	'(lambda ()
 	  (turn-on-font-lock)			; 
@@ -409,17 +409,19 @@
 ;; straight.el自身のインストールと初期設定を行ってくれる
 (when (equal (getenv "EMACSSTRAIGHT") "YES")
 
-  (let ((bootstrap-file (concat user-emacs-directory "straight/repos/straight.el/bootstrap.el"))
-	(bootstrap-version 3))
+  (defvar bootstrap-version)
+  (let ((bootstrap-file
+	 (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+	(bootstrap-version 6))
     (unless (file-exists-p bootstrap-file)
       (with-current-buffer
 	  (url-retrieve-synchronously
-	   "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+	   "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
 	   'silent 'inhibit-cookies)
 	(goto-char (point-max))
 	(eval-print-last-sexp)))
     (load bootstrap-file nil 'nomessage))
-
+  
   ;; use-package
   (straight-use-package 'use-package)
 
@@ -428,14 +430,17 @@
   (setq straight-use-package-by-default t)
 
   ;; init-loaderをインストール&読み込み
-  (use-package init-loader)
+  ;;(use-package init-loader)
 
   ;; ログはエラーが出た時のみ
-  (custom-set-variables
-   '(init-loader-show-log-after-init 'error-only))
+  ;;(custom-set-variables
+  ;; '(init-loader-show-log-after-init 'error-only))
 
   ;; ~/.emacs.d/init/ 以下のファイルを全部読み込む
-  (init-loader-load "~/.emacs.d/init")
+  ;; xxx (init-loader-load "~/.emacs.d/init")
+  (load-file "~/.emacs.d/init/company.el")
+  (load-file "~/.emacs.d/init/copilot.el")
+  (load-file "~/.emacs.d/init/boiled_mozc.el")
 
   ;; -------------------------------------------- emacs mozc
   (when (equal (getenv "EMACSMOZC") "YES")
@@ -444,6 +449,15 @@
     ;;   (require 'mozc)
   )
   ;; 半角スペースは Shift-Space で入力可
+
+  ;; -------------------------------------------- charGPT
+  (use-package openai :straight (:host github :repo "emacs-openai/openai"))
+  (use-package chatgpt :straight (:host github :repo "emacs-openai/chatgpt"))
+  (use-package codegpt :straight (:host github :repo "emacs-openai/codegpt"))
+  (use-package dall-e :straight (:host github :repo "emacs-openai/dall-e"))
+  ;; エラーが出て使えない -> display-buffer: Symbol’s function definition is void: display-buffer-in-direction
+  (if (file-exists-p "~/.emacs.d/.secret.el")
+      (load "~/.emacs.d/.secret.el"))
 
 
 )
