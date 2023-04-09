@@ -76,6 +76,13 @@
 ;;; バッファーリスト表示時に分割しない
 (global-set-key "\C-x\C-b" 'buffer-menu)
 
+;; -------------------------------------------- proxy
+(defvar proxy-server (getenv "PROXY_SERVER"))
+(when (and proxy-server (not (equal proxy-server "NONE")))
+  (setq url-proxy-services
+	`(("http" . ,proxy-server)
+	  ("https" . ,proxy-server))))
+
 ;; -------------------------------------------- 行番号
 ;;(require 'wb-line-number)
 ;;(wb-line-number-enable)
