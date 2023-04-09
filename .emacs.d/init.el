@@ -438,9 +438,9 @@
 
   ;; ~/.emacs.d/init/ 以下のファイルを全部読み込む
   ;; xxx (init-loader-load "~/.emacs.d/init")
-  (load-file "~/.emacs.d/init/company.el")
-  (load-file "~/.emacs.d/init/copilot.el")
-  (load-file "~/.emacs.d/init/boiled_mozc.el")
+  (load "~/.emacs.d/init/company.el")
+  (load "~/.emacs.d/init/copilot.el")
+  (load "~/.emacs.d/init/boiled_mozc.el")
 
   ;; -------------------------------------------- emacs mozc
   (when (equal (getenv "EMACSMOZC") "YES")
