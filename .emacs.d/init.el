@@ -438,28 +438,10 @@
 
   ;; ~/.emacs.d/init/ 以下のファイルを全部読み込む
   ;; xxx (init-loader-load "~/.emacs.d/init")
+  (load "~/.emacs.d/init/mozc.el")
+  (load "~/.emacs.d/init/chatgpt.el")
   (load "~/.emacs.d/init/company.el")
   (load "~/.emacs.d/init/copilot.el")
-  (load "~/.emacs.d/init/boiled_mozc.el")
-
-  ;; -------------------------------------------- emacs mozc
-  (when (equal (getenv "EMACSMOZC") "YES")
-    (setq default-input-method "japanese-mozc")
-    (use-package mozc)
-    ;;   (require 'mozc)
-  )
-  ;; 半角スペースは Shift-Space で入力可
-
-  ;; -------------------------------------------- charGPT
-  (use-package openai :straight (:host github :repo "emacs-openai/openai"))
-  (use-package chatgpt :straight (:host github :repo "emacs-openai/chatgpt"))
-  (use-package codegpt :straight (:host github :repo "emacs-openai/codegpt"))
-  (use-package dall-e :straight (:host github :repo "emacs-openai/dall-e"))
-  ;; エラーが出て使えない -> display-buffer: Symbol’s function definition is void: display-buffer-in-direction
-  (if (file-exists-p "~/.emacs.d/.secret.el")
-      (load "~/.emacs.d/.secret.el"))
-
-
 )
 
 
