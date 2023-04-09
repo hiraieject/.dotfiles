@@ -411,9 +411,7 @@
    [?\C-x ?\C-f ?~ ?/ ?a ?i ?c ?h ?i ?/ return])
 
 ;; -------------------------------------------- straight
-;; https://nukosuke.hatenablog.jp/entry/straight-el
-;; 何も考えず公式のREADMEからコピペすればいいコード
-;; straight.el自身のインストールと初期設定を行ってくれる
+;; 参考URL: https://nukosuke.hatenablog.jp/entry/straight-el
 (when (equal (getenv "EMACSSTRAIGHT") "YES")
 
   (defvar bootstrap-version)
