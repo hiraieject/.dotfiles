@@ -48,21 +48,29 @@
   )
 
 (defun bsd ()
-	(interactive)
-	 (set-c-style "BSD")
-	 )
+  (interactive)
+  (set-c-style "BSD")
+  )
+
 (defun gnu ()
-	(interactive)
-	 (set-c-style "GNU")
-	 )
+  (interactive)
+  (set-c-style "GNU")
+  )
+
 (defun c++ ()
-	(interactive)
-	 (set-c-style "C++")
-	 )
+  (interactive)
+  (set-c-style "C++")
+  )
+
 (defun k&r ()
-	(interactive)
-	 (set-c-style "C++")
-	 )
+  (interactive)
+  (set-c-style "C++")
+  )
+
+(defun notab-mode ()
+  (interactive)
+  (setq indent-tabs-mode nil)
+  )
 
 ; GTAGS の生成コマンド
 (defun gtags ()

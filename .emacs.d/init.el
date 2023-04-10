@@ -352,7 +352,7 @@
 
   (load "~/.emacs.d/init/mozc.el")
   (load "~/.emacs.d/init/chatgpt.el")
-  ;;(load "~/.emacs.d/init/company.el")
+  (load "~/.emacs.d/init/company.el")
   (load "~/.emacs.d/init/copilot.el")
   (load "~/.emacs.d/init/ccmode.el")
 

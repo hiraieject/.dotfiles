@@ -1,15 +1,5 @@
 
-(use-package company-c-headers
-  :after company
-  :config
-  (add-to-list 'company-backends 'company-c-headers)
-  (add-to-list 'company-c-headers-path-system "/usr/include/")
-  (add-to-list 'company-c-headers-path-system "/usr/include/linux/")
-  (add-to-list 'company-c-headers-path-system "/usr/include/c++/")
-  )
-
 ;; https://tam5917.hatenablog.com/entry/2021/03/29/154958
-
 (use-package company
   :bind
   (:map company-active-map
@@ -30,6 +20,14 @@
   (setq company-selection-wrap-around t)
   ;; 番号を表示する。
   (setq company-show-numbers t)
+  )
+
+(use-package company-c-headers
+  :after company
+  :config
+  (add-to-list 'company-backends 'company-c-headers)
+  (add-to-list 'company-c-headers-path-system "/usr/include/")
+  (add-to-list 'company-c-headers-path-system "/usr/include/c++/9/")
   )
 
 
