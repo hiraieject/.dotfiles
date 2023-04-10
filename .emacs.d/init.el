@@ -19,8 +19,8 @@
 
 (setq default-frame-alist
 	(cons '(vertical-scroll-bars . nil)
- 	 (cons '(menu-bar-lines . 0)
-	  (cons '(tool-bar-lines . 0)
+ 	 (cons '(menu-bar-lines . 1)
+	  (cons '(tool-bar-lines . 1)
 	    default-frame-alist))))
 
 (setq inhibit-startup-message t)        ; スタート時のメッセージの抑制
@@ -118,90 +118,6 @@
 (setq kept-new-versions   5)  ;; 最新の保持数
 (setq kept-old-versions   1)  ;; 最古の保持数
 (setq delete-old-versions t)  ;; 範囲外を削除
-
-;; -------------------------------------------- CC-mode / GTAGS
-;;;(setq load-path (cons "/usr/local/share/gtags" load-path))
-
-(autoload 'c++-mode "cc-mode" "C++ Editing Mode" t)
-(autoload 'c-mode   "cc-mode" "C Editing Mode" t)
-(setq auto-mode-alist
-      (append '(("\\.C$"  . c++-mode)
-                ("\\.cc$" . c++-mode)
-                ("\\.cpp$" . c++-mode)
-                ("\\.hpp$" . c++-mode)
-                ("\\.c$"  . c++-mode)
-                ("\\.h$"  . c++-mode)
-                ("\\.hh$"  . c++-mode)
-                ) auto-mode-alist))
-
-
-;cc-mode のカスタマイズ
-;;(autoload 'gtags-mode "gtags" "" t)
-(add-hook 'c-mode-common-hook
-	'(lambda ()
-	  (turn-on-font-lock)			; 
-	  (c-set-style "gnu")
-;	  (c-set-style "bsd")
-;          (c-set-style "k&r")
-;          (c-set-style "linux")
-;	  (setq c-basic-offset 2)
-;	  (setq tab-width 8)
-	  (setq c-basic-offset 4)
-	  (setq tab-width 4)
-	  (setq c-auto-newline nil)	; 自動改行
-	  (gtags-mode 1)		; GTAGS
-	  (gtags-make-complete-list)
-	  (local-set-key "\M-t" 'gtags-find-tag)
-          (local-set-key "\M-r" 'gtags-find-rtag)
-	  (local-set-key "\M-s" 'gtags-find-symbol)
-	  (local-set-key "\M-p" 'gtags-find-pattern)
-	  ;;(local-set-key "\M-f" 'gtags-find-file)    ;ファイルにジャンプ
-          (local-set-key "\C-t" 'gtags-pop-stack)
-	  (setq comment-start "// ") ; //形式のコメント
-	  (setq comment-end "")
-	  ))
-
-(defun bsd ()
-	(interactive)
-	 (set-c-style "BSD")
-	 )
-(defun gnu ()
-	(interactive)
-	 (set-c-style "GNU")
-	 )
-(defun c++ ()
-	(interactive)
-	 (set-c-style "C++")
-	 )
-(defun k&r ()
-	(interactive)
-	 (set-c-style "C++")
-	 )
-
-; GTAGS の生成コマンド
-(defun gtags ()
-	"create gtags file."
-	(interactive)
-	(load "gtags")
-	(shell-command "gtags >/dev/null")
-	(gtags-make-complete-list)
-	)
-
-;;gtags mode の使い方
-;; M-t:関数の定義元へ移動
-;; M-r:関数を参照元の一覧を表示．RET で参照元へジャンプできる
-;; M-s:変数の定義元と参照元の一覧を表示．RET で該当箇所へジャンプできる．
-;; C-t:前のバッファへ戻る 
-;; gtags-find-pattern:関連ファイルからの検索．
-;; gtags-find-tag-from-here:カーソル位置の関数定義へ移動． 
-
-;; GDB setting
-;;(defvar gud-gdb-history (list "mn10300-linux-gdb --annotate=1 apl_dispsrv.out"))
-;;(defvar gud-gdb-history (list "/opt/montavista/pro/devkit/arm/v5t_le/bin/arm_v5t_le-gdb --annotate=1 drawtool"))
-;;;(defvar gud-gdb-history (list "/usr/local/mips-4.3/bin/mips-linux-gnu-gdb --annotate=1 drawtool"))
-;;;(defvar gud-gdb-history (list "/opt/redhat/arm-2010q1/bin/arm-none-linux-gnueabi-gdb --annotate=1 "))
-;;(defvar gud-gdb-history (list "/home/hirai/sigma/131002_lfbc70/sdk4.2.1rc4/cs_rootfs_1.3.0/host/bin/mipsel-linux-gdb --annotate=1 drawtool"))
-					; M-x gdb のデフォルトコマンドライン
 
 ;; -------------------------------------------- key bind
 
@@ -434,19 +350,19 @@
   ;; 本来は (use-package hoge :straight t) のように書く必要がある
   (setq straight-use-package-by-default t)
 
-  ;; init-loaderをインストール&読み込み
-  ;;(use-package init-loader)
-
-  ;; ログはエラーが出た時のみ
-  ;;(custom-set-variables
-  ;; '(init-loader-show-log-after-init 'error-only))
-
-  ;; ~/.emacs.d/init/ 以下のファイルを全部読み込む
-  ;; xxx (init-loader-load "~/.emacs.d/init")
   (load "~/.emacs.d/init/mozc.el")
   (load "~/.emacs.d/init/chatgpt.el")
-  (load "~/.emacs.d/init/company.el")
+  ;;(load "~/.emacs.d/init/company.el")
   (load "~/.emacs.d/init/copilot.el")
+  (load "~/.emacs.d/init/ccmode.el")
+
 )
 
+;; GDB setting
+;;(defvar gud-gdb-history (list "mn10300-linux-gdb --annotate=1 apl_dispsrv.out"))
+;;(defvar gud-gdb-history (list "/opt/montavista/pro/devkit/arm/v5t_le/bin/arm_v5t_le-gdb --annotate=1 drawtool"))
+;;;(defvar gud-gdb-history (list "/usr/local/mips-4.3/bin/mips-linux-gnu-gdb --annotate=1 drawtool"))
+;;;(defvar gud-gdb-history (list "/opt/redhat/arm-2010q1/bin/arm-none-linux-gnueabi-gdb --annotate=1 "))
+;;(defvar gud-gdb-history (list "/home/hirai/sigma/131002_lfbc70/sdk4.2.1rc4/cs_rootfs_1.3.0/host/bin/mipsel-linux-gdb --annotate=1 drawtool"))
+					; M-x gdb のデフォルトコマンドライン
 
