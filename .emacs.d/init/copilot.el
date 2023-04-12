@@ -27,6 +27,14 @@
     (define-key company-mode-map (kbd "C-<tab>") #'my-tab)))
 
 
+;; install node.js
+(let ((my-directory "~/.nvm/versions/node/v17.9.1"))
+  (unless (file-exists-p my-directory)
+    (message "Directory does not exist: %s" my-directory)
+    (message "Running install_nodejs.sh to install node.js...")
+    (shell-command "bash ~/.dotfiles/install_nodejs.sh")
+    (message "Files have been installed.")))
+
 ;; (straight-use-package
 ;;  '(copilot :type git :host github :repo "zerolfx/copilot.el" :files ("dist" "*.el")))
 ;; 
