@@ -24,7 +24,11 @@
     (define-key company-active-map (kbd "C-TAB") #'my-tab)
     (define-key company-active-map (kbd "C-<tab>") #'my-tab)
     (define-key company-mode-map (kbd "C-TAB") #'my-tab)
-    (define-key company-mode-map (kbd "C-<tab>") #'my-tab)))
+    (define-key company-mode-map (kbd "C-<tab>") #'my-tab))
+  (with-eval-after-load 'company
+    ;; disable inline previews
+    (delq 'company-preview-if-just-one-frontend company-frontends)))
+
 
 
 ;; (straight-use-package

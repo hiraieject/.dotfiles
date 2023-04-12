@@ -30,13 +30,19 @@
   (add-to-list 'company-c-headers-path-system "/usr/include/c++/9/")
   )
 
+(use-package company-tabnine 
+  :ensure t
+  :config
+  (add-to-list 'company-backends 'company-tabnine))
+
+;; M-x company-tabnine-install-binary
 
 
 
 ;; (use-package irony
 ;;   :config
 ;;   (add-hook 'c++-mode-hook 'irony-mode)
-;;   (add-hook 'c-mode-hook 'irony-mode)
+;;   (add-hook 'c-mode-hook 'irony-mode)g
 ;;   (add-hook 'objc-mode-hook 'irony-mode)
 ;;   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
 
