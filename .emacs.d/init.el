@@ -19,8 +19,8 @@
 
 (setq default-frame-alist
 	(cons '(vertical-scroll-bars . nil)
- 	 (cons '(menu-bar-lines . 0)
-	  (cons '(tool-bar-lines . 0)
+ 	 (cons '(menu-bar-lines . 1)
+	  (cons '(tool-bar-lines . 1)
 	    default-frame-alist))))
 
 (setq inhibit-startup-message t)        ; スタート時のメッセージの抑制
@@ -76,6 +76,13 @@
 ;;; バッファーリスト表示時に分割しない
 (global-set-key "\C-x\C-b" 'buffer-menu)
 
+;; -------------------------------------------- proxy
+(defvar proxy-server (getenv "PROXY_SERVER"))
+(when (and proxy-server (not (equal proxy-server "NONE")))
+  (setq url-proxy-services
+	`(("http" . ,proxy-server)
+	  ("https" . ,proxy-server))))
+
 ;; -------------------------------------------- 行番号
 ;;(require 'wb-line-number)
 ;;(wb-line-number-enable)
@@ -111,90 +118,6 @@
 (setq kept-new-versions   5)  ;; 最新の保持数
 (setq kept-old-versions   1)  ;; 最古の保持数
 (setq delete-old-versions t)  ;; 範囲外を削除
-
-;; -------------------------------------------- CC-mode / GTAGS
-;;;(setq load-path (cons "/usr/local/share/gtags" load-path))
-
-(autoload 'c++-mode "cc-mode" "C++ Editing Mode" t)
-(autoload 'c-mode   "cc-mode" "C Editing Mode" t)
-(setq auto-mode-alist
-      (append '(("\\.C$"  . c++-mode)
-                ("\\.cc$" . c++-mode)
-                ("\\.cpp$" . c++-mode)
-                ("\\.hpp$" . c++-mode)
-                ("\\.c$"  . c++-mode)
-                ("\\.h$"  . c++-mode)
-                ("\\.hh$"  . c++-mode)
-                ) auto-mode-alist))
-
-
-;cc-mode のカスタマイズ
-(autoload 'gtags-mode "gtags" "" t)
-(add-hook 'c-mode-common-hook
-	'(lambda ()
-	  (turn-on-font-lock)			; 
-	  (c-set-style "gnu")
-;	  (c-set-style "bsd")
-;          (c-set-style "k&r")
-;          (c-set-style "linux")
-;	  (setq c-basic-offset 2)
-;	  (setq tab-width 8)
-	  (setq c-basic-offset 4)
-	  (setq tab-width 4)
-	  (setq c-auto-newline nil)	; 自動改行
-	  (gtags-mode 1)		; GTAGS
-	  (gtags-make-complete-list)
-	  (local-set-key "\M-t" 'gtags-find-tag)
-          (local-set-key "\M-r" 'gtags-find-rtag)
-	  (local-set-key "\M-s" 'gtags-find-symbol)
-	  (local-set-key "\M-p" 'gtags-find-pattern)
-	  ;;(local-set-key "\M-f" 'gtags-find-file)    ;ファイルにジャンプ
-          (local-set-key "\C-t" 'gtags-pop-stack)
-	  (setq comment-start "// ") ; //形式のコメント
-	  (setq comment-end "")
-	  ))
-
-(defun bsd ()
-	(interactive)
-	 (set-c-style "BSD")
-	 )
-(defun gnu ()
-	(interactive)
-	 (set-c-style "GNU")
-	 )
-(defun c++ ()
-	(interactive)
-	 (set-c-style "C++")
-	 )
-(defun k&r ()
-	(interactive)
-	 (set-c-style "C++")
-	 )
-
-; GTAGS の生成コマンド
-(defun gtags ()
-	"create gtags file."
-	(interactive)
-	(load "gtags")
-	(shell-command "gtags >/dev/null")
-	(gtags-make-complete-list)
-	)
-
-;;gtags mode の使い方
-;; M-t:関数の定義元へ移動
-;; M-r:関数を参照元の一覧を表示．RET で参照元へジャンプできる
-;; M-s:変数の定義元と参照元の一覧を表示．RET で該当箇所へジャンプできる．
-;; C-t:前のバッファへ戻る 
-;; gtags-find-pattern:関連ファイルからの検索．
-;; gtags-find-tag-from-here:カーソル位置の関数定義へ移動． 
-
-;; GDB setting
-;;(defvar gud-gdb-history (list "mn10300-linux-gdb --annotate=1 apl_dispsrv.out"))
-;;(defvar gud-gdb-history (list "/opt/montavista/pro/devkit/arm/v5t_le/bin/arm_v5t_le-gdb --annotate=1 drawtool"))
-;;;(defvar gud-gdb-history (list "/usr/local/mips-4.3/bin/mips-linux-gnu-gdb --annotate=1 drawtool"))
-;;;(defvar gud-gdb-history (list "/opt/redhat/arm-2010q1/bin/arm-none-linux-gnueabi-gdb --annotate=1 "))
-;;(defvar gud-gdb-history (list "/home/hirai/sigma/131002_lfbc70/sdk4.2.1rc4/cs_rootfs_1.3.0/host/bin/mipsel-linux-gdb --annotate=1 drawtool"))
-					; M-x gdb のデフォルトコマンドライン
 
 ;; -------------------------------------------- key bind
 
@@ -309,11 +232,15 @@
 
 ;; 見た目の設定
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(column-number-mode t)
+ '(package-archives
+   (quote
+    (("gnu" . "https://elpa.gnu.org/packages/")
+     ("melpa" . "http://melpa.org/packages/"))))
  '(tool-bar-mode nil)
  '(transient-mark-mode nil))
 
@@ -321,13 +248,6 @@
 ;;(setq initial-frame-alist '((width  . (getenv "EMACSSIZEX")) (height . (getenv "EMACSSIZEY"))))
 ;;(setq initial-frame-alist '((width  . (getenv "EMACSSIZEX")) (height . (getenv "EMACSSIZEY"))))
 (setq initial-frame-alist '((width  . 120) (height .  40)))
-
-;; -------------------------------------------- emacs mozc
-(when (equal (getenv "EMACSMOZC") "YES")
-  (setq default-input-method "japanese-mozc")
-  (require 'mozc)
-  )
-;; 半角スペースは Shift-Space で入力可
 
 ;; -------------------------------------------- emacs 色の設定
 (when (equal (getenv "EMACSCOLOR") "BLUE")
@@ -359,7 +279,7 @@
 			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
 )
 (when (equal (getenv "EMACSCOLOR") "GRAY")
-  (custom-set-faces
+  (custom-set-facesg
    '(default ((t (:inherit nil :stipple nil :background "#303030" :foreground "#EEEEEE" :inverse-video nil :box nil
 			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79
 			   :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
@@ -405,3 +325,44 @@
    [?\C-x ?\C-f ?~ ?/ ?a ?i ?c ?h ?i ?/ return])
 (fset 'aichisrc
    [?\C-x ?\C-f ?~ ?/ ?a ?i ?c ?h ?i ?/ return])
+
+;; -------------------------------------------- straight
+;; 参考URL: https://nukosuke.hatenablog.jp/entry/straight-el
+(when (equal (getenv "EMACSSTRAIGHT") "YES")
+
+  (defvar bootstrap-version)
+  (let ((bootstrap-file
+	 (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+	(bootstrap-version 6))
+    (unless (file-exists-p bootstrap-file)
+      (with-current-buffer
+	  (url-retrieve-synchronously
+	   "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+	   'silent 'inhibit-cookies)
+	(goto-char (point-max))
+	(eval-print-last-sexp)))
+    (load bootstrap-file nil 'nomessage))
+  
+  ;; use-package
+  (straight-use-package 'use-package)
+
+  ;; オプションなしで自動的にuse-packageをstraight.elにフォールバックする
+  ;; 本来は (use-package hoge :straight t) のように書く必要がある
+  (setq straight-use-package-by-default t)
+
+  (load "~/.emacs.d/init/mozc.el")
+  (load "~/.emacs.d/init/chatgpt.el")
+  (load "~/.emacs.d/init/company.el")
+  (load "~/.emacs.d/init/copilot.el")
+  (load "~/.emacs.d/init/ccmode.el")
+
+)
+
+;; GDB setting
+;;(defvar gud-gdb-history (list "mn10300-linux-gdb --annotate=1 apl_dispsrv.out"))
+;;(defvar gud-gdb-history (list "/opt/montavista/pro/devkit/arm/v5t_le/bin/arm_v5t_le-gdb --annotate=1 drawtool"))
+;;;(defvar gud-gdb-history (list "/usr/local/mips-4.3/bin/mips-linux-gnu-gdb --annotate=1 drawtool"))
+;;;(defvar gud-gdb-history (list "/opt/redhat/arm-2010q1/bin/arm-none-linux-gnueabi-gdb --annotate=1 "))
+;;(defvar gud-gdb-history (list "/home/hirai/sigma/131002_lfbc70/sdk4.2.1rc4/cs_rootfs_1.3.0/host/bin/mipsel-linux-gdb --annotate=1 drawtool"))
+					; M-x gdb のデフォルトコマンドライン
+
