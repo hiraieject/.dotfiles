@@ -35,8 +35,14 @@
   :config
   (add-to-list 'company-backends 'company-tabnine))
 
+;; install tabnine bin
 ;; M-x company-tabnine-install-binary
-
+(let ((my-directory "~/.TabNine"))
+  (unless (file-exists-p my-directory)
+    (message "Directory does not exist: %s" my-directory)
+    (message "Running install_tabnine bin install...")
+    (company-tabnine-install-binary)
+    (message "Files have been installed.")))
 
 
 ;; (use-package irony
