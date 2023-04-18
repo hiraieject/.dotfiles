@@ -350,13 +350,14 @@
   ;; 本来は (use-package hoge :straight t) のように書く必要がある
   (setq straight-use-package-by-default t)
 
-  (load "~/.emacs.d/init/mozc.el")
-  (load "~/.emacs.d/init/chatgpt.el")
-  (load "~/.emacs.d/init/company.el")
-  (load "~/.emacs.d/init/copilot.el")
-  (load "~/.emacs.d/init/ccmode.el")
-
 )
+
+(load "~/.emacs.d/init/mozc.el")
+(load "~/.emacs.d/init/chatgpt.el")
+(load "~/.emacs.d/init/company.el")
+(load "~/.emacs.d/init/copilot.el")
+(load "~/.emacs.d/init/ccmode.el")
+
 
 ;; GDB setting
 ;;(defvar gud-gdb-history (list "mn10300-linux-gdb --annotate=1 apl_dispsrv.out"))

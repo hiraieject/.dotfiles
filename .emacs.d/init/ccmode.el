@@ -1,50 +1,65 @@
 
-;; -------------------------------------------- CC-mode / GTAGS
-(use-package gtags
-  :commands gtags-mode
-  :config
-  (add-hook 'c-mode-common-hook 'gtags-mode)
+(when (equal (getenv "EMACSSTRAIGHT") "YES")
+  (use-package gtags
+    :commands gtags-mode
+    :config
+    (add-hook 'c-mode-common-hook 'gtags-mode)
+    )
+  
+  (use-package cc-mode
+    :hook ((c-mode . my-c-mode-hook)
+           (c++-mode . my-c-mode-hook))
+    )
   )
 
-(use-package cc-mode
-  :hook ((c-mode . my-c-mode-hook)
-         (c++-mode . my-c-mode-hook))
-  :config
-  (setq-default c-basic-offset 4) ; set default indentation to 4 spaces
-  (setq auto-mode-alist
-	(append '(("\\.C$"  . c++-mode)
-                  ("\\.c$"  . c++-mode)
-                  ("\\.h$"  . c++-mode)
-                  ("\\.cc$" . c++-mode)
-                  ("\\.hh$"  . c++-mode)
-                  ("\\.cpp$" . c++-mode)
-                  ("\\.hpp$" . c++-mode)
-                  ) auto-mode-alist))
-  (defun my-c-mode-hook ()
-    "My hook for C mode."
-    (setq c-auto-newline nil)
+(unless (equal (getenv "EMACSSTRAIGHT") "YES")
+  (require 'gtags)
+  (add-hook 'c-mode-common-hook 'gtags-mode)
+
+  (add-hook 'c-mode-hook 'my-c-mode-hook)
+  (add-hook 'c++-mode-hook 'my-c-mode-hook)
+
+  )
+
+
+(setq auto-mode-alist
+      (append '(("\\.C$"  . c++-mode)
+                ("\\.c$"  . c++-mode)
+                ("\\.h$"  . c++-mode)
+                ("\\.cc$" . c++-mode)
+                ("\\.hh$"  . c++-mode)
+                ("\\.cpp$" . c++-mode)
+                ("\\.hpp$" . c++-mode)
+                ) auto-mode-alist))
+
+
+(defun my-c-mode-hook ()
+  "My hook for C mode."
+  (setq-default c-basic-offset 4)
+  ;;(setq-default indent-tabs-mode t)
+  (setq-default indent-tabs-mode nil)
+  (setq c-auto-newline nil)
 					;  (c-set-style "bsd")
 					;  (c-set-style "k&r")
 					;  (c-set-style "linux")
 					;  (setq c-basic-offset 2)
 					;  (setq tab-width 8)
-    (setq c-set-style "gnu")
-    (setq c-basic-offset 4)
-    (setq tab-width 4)
-    (setq c-auto-newline nil)	; 自動改行
-    (setq comment-start "// ") ; //形式のコメント
-    (setq comment-end "")
-    ;; (define-key c-mode-map  [(tab)] 'company-complete)
-    ;; (define-key c++-mode-map  [(tab)] 'company-complete)
-    (gtags-mode 1)		; GTAGS
-    (gtags-make-complete-list)
-    (local-set-key "\M-t" 'gtags-find-tag)
-    (local-set-key "\M-r" 'gtags-find-rtag)
-    (local-set-key "\M-s" 'gtags-find-symbol)
-    (local-set-key "\M-p" 'gtags-find-pattern)
-    ;;(local-set-key "\M-f" 'gtags-find-file)    ;ファイルにジャンプ
-    (local-set-key "\C-t" 'gtags-pop-stack)
-    )
+  (setq c-set-style "gnu")
+  (setq c-basic-offset 4)
+  (setq tab-width 4)
+  (setq c-auto-newline nil)	; 自動改行
+  (setq comment-start "// ") ; //形式のコメント
+  (setq comment-end "")
+  ;; (define-key c-mode-map  [(tab)] 'company-complete)
+  ;; (define-key c++-mode-map  [(tab)] 'company-complete)
+  (gtags-mode 1)		; GTAGS
+  (gtags-make-complete-list)
+  (local-set-key "\M-t" 'gtags-find-tag)
+  (local-set-key "\M-r" 'gtags-find-rtag)
+  (local-set-key "\M-s" 'gtags-find-symbol)
+  (local-set-key "\M-p" 'gtags-find-pattern)
+  ;;(local-set-key "\M-f" 'gtags-find-file)    ;ファイルにジャンプ
+  (local-set-key "\C-t" 'gtags-pop-stack)
   )
 
 (defun bsd ()

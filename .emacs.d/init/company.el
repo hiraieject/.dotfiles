@@ -1,49 +1,52 @@
 
-;; https://tam5917.hatenablog.com/entry/2021/03/29/154958
-(use-package company
-  :bind
-  (:map company-active-map
-        ("M-n" . nil)
-        ("M-p" . nil)
-        ("C-n" . company-select-next)
-        ("C-p" . company-select-previous)
-        ("C-h" . nil)
-	("C-m" . company-complete-selection)
-	)
-  :config
-  (global-company-mode)
-  ;; 遅延なしにする。
-  (setq company-idle-delay 0.2)
-  ;; デフォルトは4。より少ない文字数から補完が始まる様にする。
-  (setq company-minimum-prefix-length 2)
-  ;; 候補の一番下でさらに下に行こうとすると一番上に戻る。
-  (setq company-selection-wrap-around t)
-  ;; 番号を表示する。
-  (setq company-show-numbers t)
-  )
+(when (equal (getenv "EMACSSTRAIGHT") "YES")
 
-(use-package company-c-headers
-  :after company
-  :config
-  (add-to-list 'company-backends 'company-c-headers)
-  (add-to-list 'company-c-headers-path-system "/usr/include/")
-  (add-to-list 'company-c-headers-path-system "/usr/include/c++/9/")
-  )
+  ;; https://tam5917.hatenablog.com/entry/2021/03/29/154958
+  (use-package company
+    :bind
+    (:map company-active-map
+          ("M-n" . nil)
+          ("M-p" . nil)
+          ("C-n" . company-select-next)
+          ("C-p" . company-select-previous)
+          ("C-h" . nil)
+	  ("C-m" . company-complete-selection)
+	  )
+    :config
+    (global-company-mode)
+    ;; 遅延なしにする。
+    (setq company-idle-delay 0.2)
+    ;; デフォルトは4。より少ない文字数から補完が始まる様にする。
+    (setq company-minimum-prefix-length 2)
+    ;; 候補の一番下でさらに下に行こうとすると一番上に戻る。
+    (setq company-selection-wrap-around t)
+    ;; 番号を表示する。
+    (setq company-show-numbers t)
+    )
 
-(use-package company-tabnine 
-  :ensure t
-  :config
-  (add-to-list 'company-backends 'company-tabnine))
+  (use-package company-c-headers
+    :after company
+    :config
+    (add-to-list 'company-backends 'company-c-headers)
+    (add-to-list 'company-c-headers-path-system "/usr/include/")
+    (add-to-list 'company-c-headers-path-system "/usr/include/c++/9/")
+    )
 
-;; install tabnine bin
-;; M-x company-tabnine-install-binary
-(let ((my-directory "~/.TabNine"))
-  (unless (file-exists-p my-directory)
-    (message "Directory does not exist: %s" my-directory)
-    (message "Running install_tabnine bin install...")
-    (company-tabnine-install-binary)
-    (message "Files have been installed.")))
+  (use-package company-tabnine 
+    :ensure t
+    :config
+    (add-to-list 'company-backends 'company-tabnine))
 
+  ;; install tabnine bin
+  ;; M-x company-tabnine-install-binary
+  (let ((my-directory "~/.TabNine"))
+    (unless (file-exists-p my-directory)
+      (message "Directory does not exist: %s" my-directory)
+      (message "Running install_tabnine bin install...")
+      (company-tabnine-install-binary)
+      (message "Files have been installed.")))
+
+)
 
 ;; (use-package irony
 ;;   :config
