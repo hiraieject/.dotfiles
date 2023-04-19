@@ -14,8 +14,17 @@
   (setq codegpt-tunnel 'chat            ; The default is 'completion
 	codegpt-model "gpt-3.5-turbo")  ; You can pick any model you want!
 
+					; - `chatgpt-model` - ID of the model to use. (Default: `"gpt-3.5-turbo"`)
+					; - `chatgpt-max-tokens` - The maximum number of tokens to generate in the completion. (Default: `2000`)
+					; - `chatgpt-temperature` - What sampling temperature to use. (Default: `1.0`)
+					; - `chatgpt-input-method` - Method to receive input. (Default: `'window`)
+					; - `chatgpt-spinner-type` - Type of the spinner. (Default: `'moon`)
+					; - `chatgpt-display-tokens-info` - Non-nil we display tokens information for each request. (Default: `t`)
+					; - `chatgpt-animate-text` - Display text gradually instead of output it all at once. (Default: `t`)
+					; - `chatgpt-animate-fps` - Frame per seconds to display text animation. (Default: `5`)
 
-  ;;;###autoload コードのドキュメントを自動的に作成する
+
+  ;;;### コードのドキュメントを自動的に作成する
   (defun codegpt-docj (start end)
     "Automatically write documentation for your code.
 
@@ -26,7 +35,7 @@
      "以下に続くコードで定義される関数のドキュメントを書いて"
      start end))
 
-  ;;;###autoload 問題を見つける
+  ;;;### 問題を見つける
   (defun codegpt-fixjj (start end)
     "Fix your code.
 
@@ -37,7 +46,7 @@
      "以下に続くコードにはバグがあります。バグを修正したコードを表示して。修正の解説も付けて。"
      start end))
 
-  ;;;###autoload 選択したコードを説明する
+  ;;;### 選択したコードを説明する
   (defun codegpt-explainj (start end)
     "Explain the selected code.
 
@@ -49,7 +58,7 @@
      start end))
 
 
-  ;;;###autoload 選択したコードを説明する
+  ;;;### 選択したコードのテストを書く
   (defun codegpt-testj (start end)
     "Generate test the selected code.
 
