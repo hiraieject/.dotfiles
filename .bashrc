@@ -91,6 +91,19 @@ alias	check='sudo ~hirai/bin/vpntm check'
 
 # nuvoton alias on target board
 alias	unit='(cd ~/nuvodev/anomaly_detection_soc/nu6_lens_anomaly_detection; bash run_test.sh -unit)'
+alias	unit1='(cd ~/nuvodev/anomaly_detection_soc/nu6_lens_anomaly_detection; bash run_test.sh -unit1)'
+alias	unit2='(cd ~/nuvodev/anomaly_detection_soc/nu6_lens_anomaly_detection; bash run_test.sh -unit2)'
+alias	unit3='(cd ~/nuvodev/anomaly_detection_soc/nu6_lens_anomaly_detection; bash run_test.sh -unit3)'
+
+alias	unitccv='(cd ~/nuvodev/anomaly_detection_soc/nu6_lens_anomaly_detection; bash run_test.sh -unitccv)'
+alias	unitc1='(cd ~/nuvodev/anomaly_detection_soc/nu6_lens_anomaly_detection; bash run_test.sh -unitc1)'
+alias	unitc2='(cd ~/nuvodev/anomaly_detection_soc/nu6_lens_anomaly_detection; bash run_test.sh -unitc2)'
+alias	unitc3='(cd ~/nuvodev/anomaly_detection_soc/nu6_lens_anomaly_detection; bash run_test.sh -unitc3)'
+alias	unitc4='(cd ~/nuvodev/anomaly_detection_soc/nu6_lens_anomaly_detection; bash run_test.sh -unitc4)'
+alias	unitc5='(cd ~/nuvodev/anomaly_detection_soc/nu6_lens_anomaly_detection; bash run_test.sh -unitc5)'
+alias	unitc6='(cd ~/nuvodev/anomaly_detection_soc/nu6_lens_anomaly_detection; bash run_test.sh -unitc6)'
+alias	unitc7='(cd ~/nuvodev/anomaly_detection_soc/nu6_lens_anomaly_detection; bash run_test.sh -unitc7)'
+
 alias	div='(cd ~/nuvodev/anomaly_detection_soc/nu6_lens_anomaly_detection; bash run_test.sh -div)'
 alias	div50='(cd ~/nuvodev/anomaly_detection_soc/nu6_lens_anomaly_detection; bash run_test.sh -div50)'
 alias	all='(cd ~/nuvodev/anomaly_detection_soc/nu6_lens_anomaly_detection; bash run_test.sh -all)'

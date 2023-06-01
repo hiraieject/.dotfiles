@@ -15,7 +15,7 @@
     :config
     (global-company-mode)
     ;; 遅延なしにする。
-    (setq company-idle-delay 0.2)
+    (setq company-idle-delay 0.4)
     ;; デフォルトは4。より少ない文字数から補完が始まる様にする。
     (setq company-minimum-prefix-length 2)
     ;; 候補の一番下でさらに下に行こうとすると一番上に戻る。
