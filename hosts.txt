@@ -8,7 +8,8 @@
 192.168.0.14	ubuntu2004pavct_230301ny Ubuntu_ja_20.04(230301ny)
 192.168.0.15	pavct_guest_pc_230301_ochi
 192.168.0.16	Ubuntu_ja_20.04(230404_IP16)
-192.168.0.16	Ubuntu_ja_20.04(221005-2_IP17)
+192.168.0.17	Ubuntu_ja_20.04(221005-2_IP17)
+192.168.0.18	Ubuntu_ja_20.04(230601_IP18)
 
 192.168.0.86	pana_hirai_DELL_desktop
 192.168.0.88	pana_aqua_Fedora16
