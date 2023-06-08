@@ -82,6 +82,7 @@ alias       GDIFF='export LANG=C; rm -f DIFF; mkdir -p ~/DIFF; ln -s ~/DIFF .; g
 ##alias       PATCH='/usr/bin/patch -p0 --binary'
 ## 改行コードがCRLFのファイルでも正常に当てるために binary オプションが必要
 alias       PATCH='/usr/bin/patch -p0 --binary'
+alias       PATCH1='/usr/bin/patch -p1 --binary'
 
 alias       use_gitlab="(cd ~hirai; rm -f .gitconfig; ln -s .gitconfig.pavctgitlab .gitconfig; ls -l .gitconfig)"
 alias       use_github="(cd ~hirai; rm -f .gitconfig; ln -s .gitconfig.github .gitconfig; ls -l .gitconfig)"
