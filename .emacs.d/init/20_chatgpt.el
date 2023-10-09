@@ -12,7 +12,8 @@
 
 
   (setq codegpt-tunnel 'chat            ; The default is 'completion
-	codegpt-model "gpt-3.5-turbo")  ; You can pick any model you want!
+	codegpt-model "gpt-4")		; You can pick any model you want!
+	;; codegpt-model "gpt-3.5-turbo")  ; You can pick any model you want!
 
 					; - `chatgpt-model` - ID of the model to use. (Default: `"gpt-3.5-turbo"`)
 					; - `chatgpt-max-tokens` - The maximum number of tokens to generate in the completion. (Default: `2000`)

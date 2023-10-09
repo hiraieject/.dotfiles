@@ -301,7 +301,7 @@
 (load "~/.emacs.d/init/03_ccmode.el")
 (load "~/.emacs.d/init/10_company.el")
 (load "~/.emacs.d/init/20_chatgpt.el")
-(load "~/.emacs.d/init/21_copilot.el")
+;;(load "~/.emacs.d/init/21_copilot.el")
 
 
 ;; ===========================================================================
