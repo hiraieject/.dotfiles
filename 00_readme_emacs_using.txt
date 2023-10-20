@@ -24,6 +24,13 @@ C++モード
    codegpt-testj
      "以下に続くコードのテストを実装して"
 
+| `codegpt`         | The master command                              |
+| `codegpt-custom`  | Write your own instruction                      |
+| `codegpt-doc`     | Automatically write documentation for your code |
+| `codegpt-fix`     | Find problems with it                           |
+| `codegpt-explain` | Explain the selected code                       |
+| `codegpt-improve` | Improve, refactor or optimize it                |
+
 
 -- 21_copilot.el --	github　copilot
 契約切ったので、無効化中

@@ -36,8 +36,8 @@ _gpush:
 _gdiff:
 	(cd $(__TGTFOLDER); git diff)
 _gdiff_commit:
-	(cd $(__TGTFOLDER); git diff > ~/pcdev/diff/diff_commit_`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`.txt)
-	(cd ~/pcdev/diff; git pull; git add *.txt; git commit -m "commit diff" .; git push)
+	(cd $(__TGTFOLDER); git diff > ~/diff-folder/diff_commit_`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`.txt)
+	(cd ~/diff-folder; git pull; git add *.txt; git commit -m "commit diff" .; git push)
 _gstatus:
 	git status
 
