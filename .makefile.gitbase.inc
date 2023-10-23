@@ -31,13 +31,17 @@ remove_all:
 gcommitm:
 #	@make __TGTFOLDER="." _gcommit_noedit
 	@make __TGTFOLDER="." _gcommit
+	git status
 gcommit:
 	@make __TGTFOLDER="." _gcommit_noedit
 #	@make __TGTFOLDER="." _gcommit
+	git status
 gpush:
 	@make __TGTFOLDER="." _gpush
+	git status
 gpull:
 	@make __TGTFOLDER="." _gpull
+	git status
 gdiff:
 	@make __TGTFOLDER="." _gdiff
 gdiff_commit:
