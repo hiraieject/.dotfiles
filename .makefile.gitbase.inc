@@ -1,3 +1,6 @@
+GITURL        ?= https://github.com/hiraieject/
+DIFFFOLDER    ?= ~/diff-folder
+
 
 CURRENTFILE = .current_folder
 
@@ -9,22 +12,22 @@ helper:
 	@echo 'make remove_all		## remove all tree'
 
 newtree:
-	echo `date "+%y%m%d_%H%M%S"`_$(GITREPOSITORY) > $(CURRENTFILE)
+	echo `date "+%y%m%d_%H%M%S"`_$(PROJ_REPOSITORYNAME) > $(CURRENTFILE)
 
-	git clone $(GITURL)/$(GITREPOSITORY) `cat $(CURRENTFILE)`
+	git clone $(GITURL)/$(PROJ_REPOSITORYNAME) `cat $(CURRENTFILE)`
 	(cd  `cat $(CURRENTFILE)`; find . -name \*.sh -print -exec chmod +x \{} \;)
 	make link_current
 
 link_current:
-	rm -rf $(GITREPOSITORY)
-	-ln -s `cat $(CURRENTFILE)` $(GITREPOSITORY)
+	rm -rf $(PROJ_REPOSITORYNAME)
+	-ln -s `cat $(CURRENTFILE)` $(PROJ_REPOSITORYNAME)
 
 remove_current:
-	rm -rf `cat $(CURRENTFILE)` $(GITREPOSITORY)
+	rm -rf `cat $(CURRENTFILE)` $(PROJ_REPOSITORYNAME)
 	rm -f $(CURRENTFILE)
 
 remove_all:
-	rm -rf *_$(GITREPOSITORY) $(GITREPOSITORY)
+	rm -rf *_$(PROJ_REPOSITORYNAME) $(PROJ_REPOSITORYNAME)
 	rm -f $(CURRENTFILE)
 
 ## # ------------------------------------------------ git
@@ -67,7 +70,8 @@ _gpull:
 _gpush:
 	(cd $(__TGTFOLDER); git push)
 _gdiff:
-	(cd $(__TGTFOLDER); git diff)
+##	(cd $(__TGTFOLDER); git diff)
+	(cd $(__TGTFOLDER); git diff > $(DIFFFOLDER)/diff_`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`.txt)
 _gdiff_commit:
 	(cd $(__TGTFOLDER); git diff > $(DIFFFOLDER)/diff_commit_`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`.txt)
 	(cd $(DIFFFOLDER); git pull; git add *.txt; git commit -m "commit diff" .; git push)
