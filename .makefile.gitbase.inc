@@ -1,3 +1,13 @@
+
+HOSTNAME := $(shell hostname)
+
+ifeq ($(HOSTNAME), ubuntu2204-202211-ip23)
+     PROJ_GITURL ?= https://github.com/hiraieject
+else
+     PROJ_GITURL ?= git@172.16.171.224:hirai.yoshikazu
+endif
+##else ifeq ($(HOSTNAME), host2)
+
 GITURL        ?= https://github.com/hiraieject/
 DIFFFOLDER    ?= ~/diff-folder
 
@@ -14,7 +24,7 @@ helper:
 newtree:
 	echo `date "+%y%m%d_%H%M%S"`_$(PROJ_REPOSITORYNAME) > $(CURRENTFILE)
 
-	git clone $(GITURL)/$(PROJ_REPOSITORYNAME) `cat $(CURRENTFILE)`
+	git clone $(PROJ_GITURL)/$(PROJ_REPOSITORYNAME) `cat $(CURRENTFILE)`
 	(cd  `cat $(CURRENTFILE)`; find . -name \*.sh -print -exec chmod +x \{} \;)
 	make link_current
 
