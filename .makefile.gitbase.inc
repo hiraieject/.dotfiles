@@ -1,4 +1,4 @@
-GITURL        ?= https://github.com/hiraieject/
+PROJ_GITURL   ?= https://github.com/hiraieject/
 DIFFFOLDER    ?= ~/diff-folder
 
 
@@ -14,7 +14,7 @@ helper:
 newtree:
 	echo `date "+%y%m%d_%H%M%S"`_$(PROJ_REPOSITORYNAME) > $(CURRENTFILE)
 
-	git clone $(GITURL)/$(PROJ_REPOSITORYNAME) `cat $(CURRENTFILE)`
+	git clone $(PROJ_GITURL)/$(PROJ_REPOSITORYNAME) `cat $(CURRENTFILE)`
 	(cd  `cat $(CURRENTFILE)`; find . -name \*.sh -print -exec chmod +x \{} \;)
 	make link_current
 
