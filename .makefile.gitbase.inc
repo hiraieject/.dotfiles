@@ -1,4 +1,12 @@
-PROJ_GITURL   ?= https://github.com/hiraieject/
+
+HOSTNAME := $(shell hostname)
+
+ifeq ($(HOSTNAME), ubuntu2204pavct)
+     PROJ_GITURL ?= git@172.16.171.224:hirai.yoshikazu
+else
+     PROJ_GITURL ?= https://github.com/hiraieject
+endif
+
 DIFFFOLDER    ?= ~/diff-folder
 
 
