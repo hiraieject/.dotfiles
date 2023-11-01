@@ -1,11 +1,15 @@
 
 HOSTNAME := $(shell hostname)
 
-ifeq ($(HOSTNAME), ubuntu2204pavct)
-     PROJ_GITURL ?= git@172.16.171.224:hirai.yoshikazu
-else
-     PROJ_GITURL ?= https://github.com/hiraieject
+PAVCT_GIT = git@172.16.171.224:hirai.yoshikazu
+
+ifeq ($(USE_PAVCT_GIT), yes)
+     ifeq ($(HOSTNAME), ubuntu2204pavct)
+          PROJ_GITURL ?= $(PAVCT_GIT)
+     endif
 endif
+
+PROJ_GITURL ?= https://github.com/hiraieject
 
 DIFFFOLDER    ?= ~/diff-folder
 
