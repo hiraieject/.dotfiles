@@ -12,7 +12,7 @@ endif
 PROJ_GITURL ?= https://github.com/hiraieject
 
 DIFFFOLDER    ?= ~/diff-folder
-DATE_STRING := $(shell date +%Y%m%d_%H%M%S)
+DATE_STRING   ?= $(shell date +%Y%m%d_%H%M%S)
 
 
 CURRENTFILE = .current_folder
