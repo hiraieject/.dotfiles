@@ -10,6 +10,15 @@
 192.168.0.16	Ubuntu_ja_20.04(230404_IP16)
 192.168.0.17	Ubuntu_ja_20.04(221005-2_IP17)
 192.168.0.18	Ubuntu_ja_20.04(230601_IP18)
+192.168.1.20	Ubuntu_ja_22.04(202210)
+192.168.1.21	RaspberryPI-OS 1st
+192.168.1.22	RaspberryPI-OS 2nd
+192.168.1.23	Ubuntu_ja_22.04(202211)
+xx192.168.1.24	Ubuntu_ja_20.04(202301_IP24)
+192.168.1.25	Ubuntu_ja_20.04(202303_IP25)
+192.168.0.26	Ubuntu_22.04_PJ_Effi(202401)
+192.168.0.27	PJ_develop_hirai
+192.168.0.28	Ubuntu_16_04_Effi(202401)
 
 192.168.0.86	pana_hirai_DELL_desktop
 192.168.0.88	pana_aqua_Fedora16
@@ -20,10 +29,5 @@
 
 
 
-192.168.1.20	Ubuntu_ja_22.04(202210)
-192.168.1.21	RaspberryPI-OS 1st
-192.168.1.22	RaspberryPI-OS 2nd
-192.168.1.23	Ubuntu_ja_22.04(202211)
-xx192.168.1.24	Ubuntu_ja_20.04(202301_IP24)
-192.168.1.25	Ubuntu_ja_20.04(202303_IP25)
+
 

@@ -131,3 +131,11 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+## for PJ develop
+if [ -d /home/mebdsoft/work/toolchain ] ; then
+    # User PATH
+    USER_PATH=/home/mebdsoft/work/toolchain
+    PATH_SCX4=$USER_PATH/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/bin
+    PATH=$PATH_SCX4:${PATH}
+fi
