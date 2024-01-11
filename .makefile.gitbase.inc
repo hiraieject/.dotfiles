@@ -12,6 +12,7 @@ endif
 PROJ_GITURL ?= https://github.com/hiraieject
 
 DIFFFOLDER    ?= ~/diff-folder
+DATE_STRING := $(shell date +%Y%m%d_%H%M%S)
 
 
 CURRENTFILE = .current_folder
@@ -24,7 +25,7 @@ helper:
 	@echo 'make remove_all		## remove all tree'
 
 newtree:
-	echo `date "+%y%m%d_%H%M%S"`_$(PROJ_REPOSITORYNAME) > $(CURRENTFILE)
+	echo $(DATE_STRING)_$(PROJ_REPOSITORYNAME) > $(CURRENTFILE)
 
 	git clone $(PROJ_GITURL)/$(PROJ_REPOSITORYNAME) `cat $(CURRENTFILE)`
 	(cd  `cat $(CURRENTFILE)`; find . -name \*.sh -print -exec chmod +x \{} \;)
@@ -83,9 +84,9 @@ _gpush:
 	(cd $(__TGTFOLDER); git push)
 _gdiff:
 ##	(cd $(__TGTFOLDER); git diff)
-	(cd $(__TGTFOLDER); git diff > $(DIFFFOLDER)/diff_`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`.txt)
+	(cd $(__TGTFOLDER); git diff > $(DIFFFOLDER)/diff_$(DATE_STRING)-`(pwd | sed "s/.*\///g")`.txt)
 _gdiff_commit:
-	(cd $(__TGTFOLDER); git diff > $(DIFFFOLDER)/diff_commit_`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`.txt)
+	(cd $(__TGTFOLDER); git diff > $(DIFFFOLDER)/diff_commit_$(DATE_STRING)-`(pwd | sed "s/.*\///g")`.txt)
 	(cd $(DIFFFOLDER); git pull; git add *.txt; git commit -m "commit diff" .; git push)
 _gstatus:
 	git status
