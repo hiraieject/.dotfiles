@@ -138,4 +138,5 @@ if [ -d /home/mebdsoft/work/toolchain ] ; then
     USER_PATH=/home/mebdsoft/work/toolchain
     PATH_SCX4=$USER_PATH/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/bin
     PATH=$PATH_SCX4:${PATH}
+    export DEVNAME=scx4
 fi
