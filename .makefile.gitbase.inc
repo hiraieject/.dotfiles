@@ -4,9 +4,7 @@ HOSTNAME := $(shell hostname)
 PAVCT_GIT = git@172.16.171.224:hirai.yoshikazu
 
 ifeq ($(USE_PAVCT_GIT), yes)
-     ifeq ($(HOSTNAME), ubuntu2204pavct)
-          PROJ_GITURL ?= $(PAVCT_GIT)
-     endif
+     PROJ_GITURL ?= $(PAVCT_GIT)
 endif
 
 PROJ_GITURL ?= https://github.com/hiraieject
@@ -16,6 +14,7 @@ DATE_STRING   ?= $(shell date +%Y%m%d_%H%M%S)
 
 
 CURRENTFILE = .current_folder
+ACURRENTFILE = .archive_current_folder
 
 .PHONY: helper
 
@@ -31,17 +30,34 @@ newtree:
 	(cd  `cat $(CURRENTFILE)`; find . -name \*.sh -print -exec chmod +x \{} \;)
 	make link_current
 
+newarchive:
+	echo $(DATE_STRING)_$(ARCHIVE_REPOSITORYNAME) > $(ACURRENTFILE)
+
+	git clone $(PROJ_GITURL)/$(ARCHIVE_REPOSITORYNAME) `cat $(ACURRENTFILE)`
+	(cd  `cat $(ACURRENTFILE)`; find . -name \*.sh -print -exec chmod +x \{} \;)
+	make link_acurrent
+
 link_current:
 	rm -rf $(PROJ_REPOSITORYNAME)
 	-ln -s `cat $(CURRENTFILE)` $(PROJ_REPOSITORYNAME)
+
+link_acurrent:
+	rm -rf $(ARCHIVE_REPOSITORYNAME)
+	-ln -s `cat $(ACURRENTFILE)` $(ARCHIVE_REPOSITORYNAME)
 
 remove_current:
 	rm -rf `cat $(CURRENTFILE)` $(PROJ_REPOSITORYNAME)
 	rm -f $(CURRENTFILE)
 
+remove_acurrent:
+	rm -rf `cat $(ACURRENTFILE)` $(ARCHIVE_REPOSITORYNAME)
+	rm -f $(ACURRENTFILE)
+
 remove_all:
 	rm -rf *_$(PROJ_REPOSITORYNAME) $(PROJ_REPOSITORYNAME)
 	rm -f $(CURRENTFILE)
+	rm -rf *_$(ARCHIVE_REPOSITORYNAME) $(ARCHIVE_REPOSITORYNAME)
+	rm -f $(ACURRENTFILE)
 
 ## # ------------------------------------------------ git
 gcommitm:
