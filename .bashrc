@@ -133,10 +133,17 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 ## for PJ develop
-if [ -d /home/mebdsoft/work/toolchain ] ; then
+if [ -d $HOME/work/toolchain ] ; then
     # User PATH
-    USER_PATH=/home/mebdsoft/work/toolchain
+    USER_PATH=$HOME/work/toolchain
     PATH_SCX4=$USER_PATH/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/bin
     PATH=$PATH_SCX4:${PATH}
     export DEVNAME=scx4
 fi
+
+if [ -d $HOME/.node ] ; then
+    export NODE_HOME=$HOME/.node
+    export NODE_PATH=$NODE_HOME/lib/node_modules
+    export PATH=$NODE_HOME/bin:${PATH}
+fi
+
