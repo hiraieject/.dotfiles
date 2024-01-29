@@ -6,6 +6,7 @@ sudo apt -y install git
 sudo apt -y install --reinstall ca-certificates
 sudo apt -y install emacs net-tools global
 sudo apt -y install xterm
+sudo apt -y install emacs-mozc-bin
 
 if [ ! -f ~/.gitconfig ] ; then
     git config --global user.email "hiraieject@gmail.com"
