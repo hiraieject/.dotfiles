@@ -23,3 +23,8 @@ if [ ! -f ~/.git-credentials ] ; then
     chmod og-rwx ~/.git-credentials
     echo Please edit ~/.git-credentials
 fi
+
+if [ ! -f ~/.node/bin/node ] ; then
+    ./install_nodejs.sh
+fi
+
