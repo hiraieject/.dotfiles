@@ -28,3 +28,9 @@ if [ ! -f ~/.node/bin/node ] ; then
     ./install_nodejs.sh
 fi
 
+sudo apt install python3-pip
+
+pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host=files.pythonhosted.org openpyxl
+
+
+
