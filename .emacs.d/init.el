@@ -58,14 +58,14 @@
 
 ;;; pcl-cvs設定
 ;;  pserver は各自の環境に合わせて設定して下さい。
-(setq cvs-cvsroot ":pserver:USER@10.69.95.194:/usr/local/cvsroot");; ← 要編集
+;(setq cvs-cvsroot ":pserver:USER@10.69.95.194:/usr/local/cvsroot");; ← 要編集
 ;; 文字化け対策パッチ … ログを一度ファイルに落して cvs ci -F する
 ;;;(eval-after-load "pcvs"
 ;;;  '(progn (load "my-pcl-cvs-patch")
 ;;;		  (setq my-cvs-do-commit-logfile-coding-system 'euc-japan-unix)))
-(modify-coding-system-alist 'process "cvs" '(undecided . euc-jp-unix))
+;(modify-coding-system-alist 'process "cvs" '(undecided . euc-jp-unix))
 ;; log はどのコードで書くか決めて → 特定文字が化けるため別途対策必要
-(modify-coding-system-alist 'process "cvs" '(undecided . euc-jp-unix))
+;(modify-coding-system-alist 'process "cvs" '(undecided . euc-jp-unix))
 
 (autoload 'diff-mode "diff-mode" "Diff major mode" t)
 (add-to-list 'auto-mode-alist '("\\.\\(diffs?\\|patch\\|rej\\)\\'" . diff-mode))
