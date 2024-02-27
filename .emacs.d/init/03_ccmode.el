@@ -37,7 +37,7 @@
   "My hook for C mode."
   (setq-default c-basic-offset 4)
   ;;(setq-default indent-tabs-mode t)
-  (setq-default indent-tabs-mode nil)
+  (setq-default indent-tabs-mode nil)	; TABコードを使わずにスペースで間隔を調整する設定
   (setq c-auto-newline nil)
 					;  (c-set-style "bsd")
 					;  (c-set-style "k&r")

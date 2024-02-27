@@ -147,7 +147,6 @@ if [ -d $HOME/.node ] ; then
     export PATH=$NODE_HOME/bin:${PATH}
 fi
 
-
 #ADDED_BY_PSTEST_INSTALLER
 alias pstestuty="/opt/pstest/bin/pstestuty"
 

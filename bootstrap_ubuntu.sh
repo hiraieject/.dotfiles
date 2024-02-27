@@ -6,6 +6,7 @@ sudo apt -y install git
 sudo apt -y install --reinstall ca-certificates
 sudo apt -y install emacs net-tools global
 sudo apt -y install xterm
+sudo apt -y install emacs-mozc-bin
 
 if [ ! -f ~/.gitconfig ] ; then
     git config --global user.email "hiraieject@gmail.com"
@@ -22,3 +23,14 @@ if [ ! -f ~/.git-credentials ] ; then
     chmod og-rwx ~/.git-credentials
     echo Please edit ~/.git-credentials
 fi
+
+if [ ! -f ~/.node/bin/node ] ; then
+    ./install_nodejs.sh
+fi
+
+sudo apt install python3-pip
+
+pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host=files.pythonhosted.org openpyxl
+
+
+

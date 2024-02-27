@@ -16,9 +16,9 @@
 192.168.1.23	Ubuntu_ja_22.04(202211)
 xx192.168.1.24	Ubuntu_ja_20.04(202301_IP24)
 192.168.1.25	Ubuntu_ja_20.04(202303_IP25)
-192.168.0.26	Ubuntu_22.04_PJ_Effi(202401)
+192.168.0.26	Ubuntu_22.04_Effi(202401_IP26)
 192.168.0.27	PanaPjWindowsPC_hirai
-192.168.0.28	Ubuntu_16_04_Effi(202401)
+192.168.0.28	Ubuntu_16_04_Effi(202401_IP28)
 192.168.0.29	Ubuntu_2204_pavct_note
 192.168.0.30	PavctNoteWindowsPC_hirai
 

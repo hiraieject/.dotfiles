@@ -4,7 +4,7 @@ sudo apt install -y curl
 #export FOLDER=v21.6.1
 #export FNAME=node-v21.6.1-linux-x64
 export FOLDER=v20.11.0
-export FNAME=node-v20.11.0-linux-x64
+export FNAME=node-$FOLDER-linux-x64
 
 curl --insecure https://nodejs.org/dist/$FOLDER/$FNAME.tar.xz --output $FNAME.tar.xz
 (cd $HOME; tar xvf .dotfiles/$FNAME.tar.xz; mv $FNAME .$FNAME; rm -f .node; ln -s .$FNAME .node)

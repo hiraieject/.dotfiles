@@ -1,4 +1,13 @@
 
+## # ------------------------------------------------ template
+#USE_PAVCT_GIT = yes
+#PROJ_REPOSITORYNAME = emmcimguty
+#ARCHIVE_REPOSITORYNAME = emmcimguty_archives
+#DIFFFOLDER    = ~/diff-folder
+#-include ~/.dotfiles/.makefile.gitbase.inc
+
+## # ------------------------------------------------ 
+
 HOSTNAME := $(shell hostname)
 
 PAVCT_GIT = git@172.16.171.224:hirai.yoshikazu
