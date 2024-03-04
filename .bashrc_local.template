@@ -28,3 +28,7 @@ export XDISPLAY2=192.168.0.10:0.0
 
 export DEFAULT_LANG=ja_JP.utf8
 #export DEFAULT_LANG=C
+
+export OPENAI_ORGANIZATION=org-
+export OPENAI_API_KEY=sk-
+

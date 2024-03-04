@@ -2,6 +2,7 @@
 ## # ------------------------------------------------ template
 #USE_PAVCT_GIT = yes
 #PROJ_REPOSITORYNAME = emmcimguty
+#CLONE_OPTION = -b BRANCH_NAME
 #ARCHIVE_REPOSITORYNAME = emmcimguty_archives
 #DIFFFOLDER    = ~/diff-folder
 #-include ~/.dotfiles/.makefile.gitbase.inc
@@ -35,14 +36,14 @@ helper:
 newtree:
 	echo $(DATE_STRING)_$(PROJ_REPOSITORYNAME) > $(CURRENTFILE)
 
-	git clone $(PROJ_GITURL)/$(PROJ_REPOSITORYNAME) `cat $(CURRENTFILE)`
+	git clone $(CLONE_OPTION) $(PROJ_GITURL)/$(PROJ_REPOSITORYNAME) `cat $(CURRENTFILE)`
 	(cd  `cat $(CURRENTFILE)`; find . -name \*.sh -print -exec chmod +x \{} \;)
 	make link_current
 
 newarchive:
 	echo $(DATE_STRING)_$(ARCHIVE_REPOSITORYNAME) > $(ACURRENTFILE)
 
-	git clone $(PROJ_GITURL)/$(ARCHIVE_REPOSITORYNAME) `cat $(ACURRENTFILE)`
+	git clone $(CLONE_OPTION) $(PROJ_GITURL)/$(ARCHIVE_REPOSITORYNAME) `cat $(ACURRENTFILE)`
 	(cd  `cat $(ACURRENTFILE)`; find . -name \*.sh -print -exec chmod +x \{} \;)
 	make link_acurrent
 
