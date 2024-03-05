@@ -15,11 +15,8 @@ clone_develops:
 	@set -e; if [ ! -d ~/develop-fp ] ; then \
 		(cd ~; git clone https://github.com/hiraieject/develop-fp); \
 	fi
-	@set -e; if [ ! -d ~/develop-private ] ; then \
-		(cd ~; git clone https://github.com/hiraieject/develop-private); \
-	fi
-	@set -e; if [ ! -d ~/develop-linux ] ; then \
-		(cd ~; git clone https://github.com/hiraieject/develop-linux); \
+	@set -e; if [ ! -d ~/develop-home ] ; then \
+		(cd ~; git clone https://github.com/hiraieject/develop-home); \
 	fi
 
 
