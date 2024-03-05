@@ -32,3 +32,4 @@ export DEFAULT_LANG=ja_JP.utf8
 export OPENAI_ORGANIZATION=org-
 export OPENAI_API_KEY=sk-
 
+#export PYTHONHTTPSVERIFY=0
