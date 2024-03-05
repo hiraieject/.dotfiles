@@ -3,18 +3,25 @@
 
 # ------------------------------------------------
 clone_develops:
-	@set -e; if [ ! -d ~/en-develop ] ; then \
-		(cd ~; git clone https://github.com/hiraieject/en-develop); \
+	@set -e; if [ ! -d ~/develop-nuvo ] ; then \
+		(cd ~; git clone https://github.com/hiraieject/develop-nuvo); \
 	fi
-	@set -e; if [ ! -d ~/pj-develop ] ; then \
-		(cd ~; git clone https://github.com/hiraieject/pj-develop); \
+	@set -e; if [ ! -d ~/develop-en ] ; then \
+		(cd ~; git clone https://github.com/hiraieject/develop-en); \
 	fi
-	@set -e; if [ ! -d ~/fp-develop ] ; then \
-		(cd ~; git clone https://github.com/hiraieject/fp-develop); \
+	@set -e; if [ ! -d ~/develop-pj ] ; then \
+		(cd ~; git clone https://github.com/hiraieject/develop-pj); \
 	fi
-	@set -e; if [ ! -d ~/private-develop ] ; then \
-		(cd ~; git clone https://github.com/hiraieject/private-develop); \
+	@set -e; if [ ! -d ~/develop-fp ] ; then \
+		(cd ~; git clone https://github.com/hiraieject/develop-fp); \
 	fi
+	@set -e; if [ ! -d ~/develop-private ] ; then \
+		(cd ~; git clone https://github.com/hiraieject/develop-private); \
+	fi
+	@set -e; if [ ! -d ~/develop-linux ] ; then \
+		(cd ~; git clone https://github.com/hiraieject/develop-linux); \
+	fi
+
 
 	@set -e; if [ ! -d ~/diff-folder ] ; then \
 		(cd ~; git clone https://github.com/hiraieject/diff-folder); \
@@ -27,11 +34,11 @@ clone_develops:
 	fi
 
 clone_setups:
-	@set -e; if [ ! -d ~/windows-setup ] ; then \
-		(cd ~; git clone https://github.com/hiraieject/windows-setup); \
+	@set -e; if [ ! -d ~/setup-windows ] ; then \
+		(cd ~; git clone https://github.com/hiraieject/setup-windows); \
 	fi
-	@set -e; if [ ! -d ~/linux-setup ] ; then \
-		(cd ~; git clone https://github.com/hiraieject/linux-setup); \
+	@set -e; if [ ! -d ~/setup-linux ] ; then \
+		(cd ~; git clone https://github.com/hiraieject/setup-linux); \
 	fi
 
 # ------------------------------------------------ 
