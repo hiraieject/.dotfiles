@@ -1,6 +1,3 @@
-sudo apt update
-sudo apt install -y curl
-
 #export FOLDER=v21.6.1
 #export FNAME=node-v21.6.1-linux-x64
 export FOLDER=v20.11.0
