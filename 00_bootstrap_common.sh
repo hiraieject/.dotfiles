@@ -23,7 +23,3 @@ ln -s ~/.dotfiles/.emacs.d ~/.emacs.d
 if [ ! -f $HOME/.dotfiles/.bashrc_local ]; then
     cp $HOME/.dotfiles/.bashrc_local.template $HOME/.dotfiles/.bashrc_local
 fi
-
-if [ ! -f ~/.openai-credential ] ; then
-    cp .openai-credential-template ~/.openai-credential
-fi
