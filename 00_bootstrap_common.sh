@@ -1,27 +1,25 @@
 #!/bin/sh
 
-export BAKDATE=`date +%y%m%d%H%M`
+export BAKDATE=`date +%y%m%d%H%M$S`
+mkdir -p ~/.dotfiles.bak
 
 if [ -f ~/.bashrc ] ; then
-    /bin/rm -f ~/.bashrc.$BAKDATE
-    mv ~/.bashrc ~/.bashrc.$BAKDATE
+    mv ~/.bashrc ~/.dotfiles.bak/.bashrc.$BAKDATE
 fi
 ln -s ~/.dotfiles/.bashrc ~/.bashrc
 
 if [ -f ~/.gdbinit ] ; then
-    /bin/rm -f ~/.gdbinit.$BAKDATE
-    mv ~/.gdbinit ~/.gdbinit.$BAKDATE
+    mv ~/.gdbinit ~/.dotfiles.bak/.gdbinit.$BAKDATE
 fi
 ln -s ~/.dotfiles/.gdbinit ~/.gdbinit
 
 if [ -d ~/.emacs.d ] ; then
-    /bin/rm -f ~/.emacs.d.$BAKDATE
-    mv ~/.emacs.d ~/.emacs.d.$BAKDATE
+    mv ~/.emacs.d ~/.dotfiles.bak/.emacs.d.$BAKDATE
 fi
 ln -s ~/.dotfiles/.emacs.d ~/.emacs.d
 
-if [ ! -f $HOME/.dotfiles/.bashrc_local ]; then
-    cp $HOME/.dotfiles/.bashrc_local.template $HOME/.dotfiles/.bashrc_local
+if [ ! -f ~/.dotfiles/.bashrc_local ]; then
+    cp ~/.dotfiles/.bashrc_local.template $HOME/.dotfiles/.bashrc_local
 fi
 
 mkdir -p ~/DIFF/
