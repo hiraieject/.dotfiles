@@ -3,14 +3,19 @@
 
 # ------------------------------------------------
 
-make clone_all:
+clone_all:
 	make clone_develops
 	make clone_setups
 
-make pull_all:
+pull_all:
 	make pull_develops
 	make pull_setups
-	(cd ~/.dotfiles; git pull); \
+	(cd ~/.dotfiles; git pull)
+
+gcommit_all:
+	make gcommit_develops
+	make gcommit_setups
+	(cd ~/.dotfiles; make gcommit)
 
 
 clone_develops:
@@ -69,6 +74,34 @@ pull_develops:
 		(cd ~/diff-en-develop; git pull); \
 	fi
 
+gcommit_develops:
+	@set -e; if [ -d ~/develop-nuvo ] ; then \
+		(cd ~/develop-nuvo; make gcommit); \
+	fi
+	@set -e; if [ -d ~/develop-en ] ; then \
+		(cd ~/develop-en; make gcommit); \
+	fi
+	@set -e; if [ -d ~/develop-pj ] ; then \
+		(cd ~/develop-pj; make gcommit); \
+	fi
+	@set -e; if [ -d ~/develop-fp ] ; then \
+		(cd ~/develop-fp; make gcommit); \
+	fi
+	@set -e; if [ -d ~/develop-home ] ; then \
+		(cd ~/develop-home; make gcommit); \
+	fi
+
+
+	@set -e; if [ -d ~/diff-folder ] ; then \
+		(cd ~/diff-folder; make gcommit); \
+	fi
+	@set -e; if [ -d ~/diff-pj-develop ] ; then \
+		(cd ~/diff-pj-develop; make gcommit); \
+	fi
+	@set -e; if [ -d ~/diff-en-develop ] ; then \
+		(cd ~/diff-en-develop; make gcommit); \
+	fi
+
 clone_setups:
 	@set -e; if [ ! -d ~/setup-windows ] ; then \
 		(cd ~; git clone https://github.com/hiraieject/setup-windows); \
@@ -83,6 +116,14 @@ pull_setups:
 	fi
 	@set -e; if [ -d ~/setup-linux ] ; then \
 		(cd ~/setup-linux; git pull); \
+	fi
+
+gcommit_setups:
+	@set -e; if [ -d ~/setup-windows ] ; then \
+		(cd ~/setup-windows; make gcommit); \
+	fi
+	@set -e; if [ -d ~/setup-linux ] ; then \
+		(cd ~/setup-linux; make gcommit); \
 	fi
 
 
