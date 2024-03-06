@@ -2,6 +2,17 @@
 -include ~/.dotfiles/.makefile.gitbase.inc
 
 # ------------------------------------------------
+
+make clone_all:
+	make clone_develops
+	make clone_setups
+
+make pull_all:
+	make pull_develops
+	make pull_setups
+	(cd ~/.dotfiles; git pull); \
+
+
 clone_develops:
 	@set -e; if [ ! -d ~/develop-nuvo ] ; then \
 		(cd ~; git clone https://github.com/hiraieject/develop-nuvo); \
@@ -31,30 +42,30 @@ clone_develops:
 	fi
 
 pull_develops:
-	@set -e; if [ ! -d ~/develop-nuvo ] ; then \
+	@set -e; if [ -d ~/develop-nuvo ] ; then \
 		(cd ~/develop-nuvo; git pull); \
 	fi
-	@set -e; if [ ! -d ~/develop-en ] ; then \
+	@set -e; if [ -d ~/develop-en ] ; then \
 		(cd ~/develop-en; git pull); \
 	fi
-	@set -e; if [ ! -d ~/develop-pj ] ; then \
+	@set -e; if [ -d ~/develop-pj ] ; then \
 		(cd ~/develop-pj; git pull); \
 	fi
-	@set -e; if [ ! -d ~/develop-fp ] ; then \
+	@set -e; if [ -d ~/develop-fp ] ; then \
 		(cd ~/develop-fp; git pull); \
 	fi
-	@set -e; if [ ! -d ~/develop-home ] ; then \
+	@set -e; if [ -d ~/develop-home ] ; then \
 		(cd ~/develop-home; git pull); \
 	fi
 
 
-	@set -e; if [ ! -d ~/diff-folder ] ; then \
-		(cd ~; git pull); \
+	@set -e; if [ -d ~/diff-folder ] ; then \
+		(cd ~/diff-folder; git pull); \
 	fi
-	@set -e; if [ ! -d ~/diff-pj-develop ] ; then \
+	@set -e; if [ -d ~/diff-pj-develop ] ; then \
 		(cd ~/diff-pj-develop; git pull); \
 	fi
-	@set -e; if [ ! -d ~/diff-en-develop ] ; then \
+	@set -e; if [ -d ~/diff-en-develop ] ; then \
 		(cd ~/diff-en-develop; git pull); \
 	fi
 
@@ -67,12 +78,13 @@ clone_setups:
 	fi
 
 pull_setups:
-	@set -e; if [ ! -d ~/setup-windows ] ; then \
+	@set -e; if [ -d ~/setup-windows ] ; then \
 		(cd ~/setup-windows; git pull); \
 	fi
-	@set -e; if [ ! -d ~/setup-linux ] ; then \
+	@set -e; if [ -d ~/setup-linux ] ; then \
 		(cd ~/setup-linux; git pull); \
 	fi
+
 
 # ------------------------------------------------ 
 update_certfile:
