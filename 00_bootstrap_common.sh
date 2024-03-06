@@ -2,6 +2,7 @@
 
 export BAKDATE=`date +%y%m%d%H%M$S`
 mkdir -p ~/.dotfiles.bak
+mkdir -p ~/DIFF
 
 if [ -f ~/.bashrc ] ; then
     mv ~/.bashrc ~/.dotfiles.bak/.bashrc.$BAKDATE
@@ -21,5 +22,3 @@ ln -s ~/.dotfiles/.emacs.d ~/.emacs.d
 if [ ! -f ~/.dotfiles/.bashrc_local ]; then
     cp ~/.dotfiles/.bashrc_local.template $HOME/.dotfiles/.bashrc_local
 fi
-
-mkdir -p ~/DIFF/
