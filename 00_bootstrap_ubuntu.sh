@@ -7,7 +7,8 @@ sudo apt -y install --reinstall ca-certificates
 sudo apt -y install emacs net-tools global
 sudo apt -y install xterm
 sudo apt -y install emacs-mozc-bin
-sudo apt install -y curl
+sudo apt -y install curl
+sudo apt -y install cifs-utils
 
 ## SSH KEY(no pass)
 if [ ! -d ~/.ssh ] ; then
@@ -45,4 +46,11 @@ pip3 install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-ho
 ## OpenAI
 if [ ! -f ~/.openai-credential ] ; then
     cp .openai-credential-template ~/.openai-credential
+    chmod og-rwx ~/.openai-credential
+fi
+
+## CIFS
+if [ ! -f ~/.cifs-credential ] ; then
+    cp .cifs-credential-template ~/.cifs-credential
+    chmod og-rwx ~/.cifs-credential
 fi

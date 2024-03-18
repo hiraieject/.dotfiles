@@ -34,6 +34,9 @@ clone_develops:
 	@set -e; if [ ! -d ~/develop-home ] ; then \
 		(cd ~; git clone https://github.com/hiraieject/develop-home); \
 	fi
+	@set -e; if [ ! -d ~/Desktop/develop-win ] ; then \
+		(cd ~/Desktop; git clone https://github.com/hiraieject/develop-win); \
+	fi
 
 
 	@set -e; if [ ! -d ~/diff-folder ] ; then \
@@ -41,9 +44,6 @@ clone_develops:
 	fi
 	@set -e; if [ ! -d ~/diff-pj-develop ] ; then \
 		(cd ~; git clone https://github.com/hiraieject/diff-pj-develop); \
-	fi
-	@set -e; if [ ! -d ~/diff-en-develop ] ; then \
-		(cd ~; git clone https://github.com/hiraieject/diff-en-develop); \
 	fi
 
 pull_develops:
@@ -89,6 +89,9 @@ gcommit_develops:
 	fi
 	@set -e; if [ -d ~/develop-home ] ; then \
 		(cd ~/develop-home; make gcommit); \
+	fi
+	@set -e; if [ -d ~/Desktop/develop-win ] ; then \
+		(cd ~/develop-win; make gcommit); \
 	fi
 
 
