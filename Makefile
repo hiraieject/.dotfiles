@@ -34,8 +34,8 @@ clone_develops:
 	@set -e; if [ ! -d ~/develop-home ] ; then \
 		(cd ~; git clone https://github.com/hiraieject/develop-home); \
 	fi
-	@set -e; if [ ! -d ~/Desktop/develop-win ] ; then \
-		(cd ~/Desktop; git clone https://github.com/hiraieject/develop-win); \
+	@set -e; if [ ! -d ~/develop-win ] ; then \
+		(cd ~; git clone https://github.com/hiraieject/develop-win); \
 	fi
 
 
@@ -90,7 +90,7 @@ gcommit_develops:
 	@set -e; if [ -d ~/develop-home ] ; then \
 		(cd ~/develop-home; make gcommit); \
 	fi
-	@set -e; if [ -d ~/Desktop/develop-win ] ; then \
+	@set -e; if [ -d ~/develop-win ] ; then \
 		(cd ~/develop-win; make gcommit); \
 	fi
 
