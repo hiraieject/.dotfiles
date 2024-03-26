@@ -21,6 +21,9 @@ fi
 ##export EMACSSIZEX=120
 ##export EMACSSIZEY=40
 
+##export EMACSTAB=TAB
+export EMACSTAB=SPACE
+
 export XDISPLAY=192.168.0.86:0.0
 #export XDISPLAY=192.168.1.6:0.0
 
@@ -28,8 +31,5 @@ export XDISPLAY2=192.168.0.10:0.0
 
 export DEFAULT_LANG=ja_JP.utf8
 #export DEFAULT_LANG=C
-
-export OPENAI_ORGANIZATION=org-
-export OPENAI_API_KEY=sk-
 
 #export PYTHONHTTPSVERIFY=0

@@ -36,8 +36,9 @@
 (defun my-c-mode-hook ()
   "My hook for C mode."
   (setq-default c-basic-offset 4)
-  ;;(setq-default indent-tabs-mode t)
-  (setq-default indent-tabs-mode nil)	; TABコードを使わずにスペースで間隔を調整する設定
+  (if (string-equal (getenv "EMACSTAB") "TAB")
+      (setq indent-tabs-mode t)    ; インデントにTABを使う
+    (setq indent-tabs-mode nil))  ; インデントにスペースを使う
   (setq c-auto-newline nil)
 					;  (c-set-style "bsd")
 					;  (c-set-style "k&r")

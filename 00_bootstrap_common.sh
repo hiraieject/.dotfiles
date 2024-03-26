@@ -19,6 +19,11 @@ if [ -d ~/.emacs.d ] ; then
 fi
 ln -s ~/.dotfiles/.emacs.d ~/.emacs.d
 
+if [ -d ~/Makefile ] ; then
+    mv ~/Makefile ~/.dotfiles.bak/Makefile.$BAKDATE
+fi
+ln -s ~/.dotfiles/Makefile ~/Makefile
+
 if [ ! -f ~/.dotfiles/.bashrc_local ]; then
     cp ~/.dotfiles/.bashrc_local.template $HOME/.dotfiles/.bashrc_local
 fi
