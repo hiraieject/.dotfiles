@@ -1,23 +1,30 @@
 
 ## # ------------------------------------------------ template
-#USE_PAVCT_GIT = yes
 #PROJ_REPOSITORYNAME = emmcimguty
-#CLONE_OPTION = -b BRANCH_NAME
-#ARCHIVE_REPOSITORYNAME = emmcimguty_archives
 #DIFFFOLDER    = ~/diff-folder
+
+#CLONE_OPTION = -b BRANCH_NAME          option, enable if add git commandline option
+#ARCHIVE_REPOSITORYNAME = emmcimguty_archives
+#                                       option, enable if use archive repository
+#USE_PAVCT_GIT = yes                    option, enable if use pavct git
+#PAVCT_GITUSER = hirai.yoshikazu        option, enable if use other git username
+
 #-include ~/.dotfiles/.makefile.gitbase.inc
+
 
 ## # ------------------------------------------------ 
 
 HOSTNAME := $(shell hostname)
 
-PAVCT_GIT = git@172.16.171.224:hirai.yoshikazu
-
 ifeq ($(USE_PAVCT_GIT), yes)
+     GITUSER     ?= hirai.yoshikazu
+     PAVCT_GIT   ?= git@172.16.179.142:$(GITUSER)
      PROJ_GITURL ?= $(PAVCT_GIT)
+else
+     GITUSER     ?= hiraieject
+     PROJ_GITURL ?= https://github.com/$(GITUSER)
 endif
 
-PROJ_GITURL ?= https://github.com/hiraieject
 
 DIFFFOLDER    ?= ~/diff-folder
 DATE_STRING   ?= $(shell date +%Y%m%d_%H%M%S)

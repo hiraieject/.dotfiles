@@ -31,31 +31,31 @@ clone_develops:
 	fi
 
 pull_develops:
-	@set -e; if [ ! -d ~/develop-nuvo ] ; then \
-		(cd ~/develop-nuvo; git pull); \
+	@set -e; if [ -d ~/develop-nuvo ] ; then \
+		(cd ~/develop-nuvo; pwd; git pull); \
 	fi
-	@set -e; if [ ! -d ~/develop-en ] ; then \
-		(cd ~/develop-en; git pull); \
+	@set -e; if [ -d ~/develop-en ] ; then \
+		(cd ~/develop-en; pwd; git pull); \
 	fi
-	@set -e; if [ ! -d ~/develop-pj ] ; then \
-		(cd ~/develop-pj; git pull); \
+	@set -e; if [ -d ~/develop-pj ] ; then \
+		(cd ~/develop-pj; pwd; git pull); \
 	fi
-	@set -e; if [ ! -d ~/develop-fp ] ; then \
-		(cd ~/develop-fp; git pull); \
+	@set -e; if [ -d ~/develop-fp ] ; then \
+		(cd ~/develop-fp; pwd; git pull); \
 	fi
-	@set -e; if [ ! -d ~/develop-home ] ; then \
-		(cd ~/develop-home; git pull); \
+	@set -e; if [ -d ~/develop-home ] ; then \
+		(cd ~/develop-home; pwd; git pull); \
 	fi
 
 
-	@set -e; if [ ! -d ~/diff-folder ] ; then \
-		(cd ~; git pull); \
+	@set -e; if [ -d ~/diff-folder ] ; then \
+		(cd ~/diff-folder; pwd; git pull); \
 	fi
-	@set -e; if [ ! -d ~/diff-pj-develop ] ; then \
-		(cd ~/diff-pj-develop; git pull); \
+	@set -e; if [ -d ~/diff-pj-develop ] ; then \
+		(cd ~/diff-pj-develop; pwd; git pull); \
 	fi
-	@set -e; if [ ! -d ~/diff-en-develop ] ; then \
-		(cd ~/diff-en-develop; git pull); \
+	@set -e; if [ -d ~/diff-en-develop ] ; then \
+		(cd ~/diff-en-develop; pwd; git pull); \
 	fi
 
 clone_setups:
@@ -67,11 +67,11 @@ clone_setups:
 	fi
 
 pull_setups:
-	@set -e; if [ ! -d ~/setup-windows ] ; then \
-		(cd ~/setup-windows; git pull); \
+	@set -e; if [ -d ~/setup-windows ] ; then \
+		(cd ~/setup-windows; pwd; git pull); \
 	fi
-	@set -e; if [ ! -d ~/setup-linux ] ; then \
-		(cd ~/setup-linux; git pull); \
+	@set -e; if [ -d ~/setup-linux ] ; then \
+		(cd ~/setup-linux; pwd; git pull); \
 	fi
 
 # ------------------------------------------------ 
