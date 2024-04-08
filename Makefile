@@ -48,7 +48,6 @@ clone_develops:
 
 pull_develops:
 	@set -e; if [ -d ~/develop-nuvo ] ; then \
-<<<<<<< HEAD
 		(cd ~/develop-nuvo; pwd; git pull); \
 	fi
 	@set -e; if [ -d ~/develop-en ] ; then \
@@ -62,26 +61,10 @@ pull_develops:
 	fi
 	@set -e; if [ -d ~/develop-home ] ; then \
 		(cd ~/develop-home; pwd; git pull); \
-=======
-		(cd ~/develop-nuvo; git pull); \
-	fi
-	@set -e; if [ -d ~/develop-en ] ; then \
-		(cd ~/develop-en; git pull); \
-	fi
-	@set -e; if [ -d ~/develop-pj ] ; then \
-		(cd ~/develop-pj; git pull); \
-	fi
-	@set -e; if [ -d ~/develop-fp ] ; then \
-		(cd ~/develop-fp; git pull); \
-	fi
-	@set -e; if [ -d ~/develop-home ] ; then \
-		(cd ~/develop-home; git pull); \
->>>>>>> refs/remotes/origin/master
 	fi
 
 
 	@set -e; if [ -d ~/diff-folder ] ; then \
-<<<<<<< HEAD
 		(cd ~/diff-folder; pwd; git pull); \
 	fi
 	@set -e; if [ -d ~/diff-pj-develop ] ; then \
@@ -89,15 +72,6 @@ pull_develops:
 	fi
 	@set -e; if [ -d ~/diff-en-develop ] ; then \
 		(cd ~/diff-en-develop; pwd; git pull); \
-=======
-		(cd ~/diff-folder; git pull); \
-	fi
-	@set -e; if [ -d ~/diff-pj-develop ] ; then \
-		(cd ~/diff-pj-develop; git pull); \
-	fi
-	@set -e; if [ -d ~/diff-en-develop ] ; then \
-		(cd ~/diff-en-develop; git pull); \
->>>>>>> refs/remotes/origin/master
 	fi
 
 gcommit_develops:
@@ -141,17 +115,10 @@ clone_setups:
 
 pull_setups:
 	@set -e; if [ -d ~/setup-windows ] ; then \
-<<<<<<< HEAD
 		(cd ~/setup-windows; pwd; git pull); \
 	fi
 	@set -e; if [ -d ~/setup-linux ] ; then \
 		(cd ~/setup-linux; pwd; git pull); \
-=======
-		(cd ~/setup-windows; git pull); \
-	fi
-	@set -e; if [ -d ~/setup-linux ] ; then \
-		(cd ~/setup-linux; git pull); \
->>>>>>> refs/remotes/origin/master
 	fi
 
 gcommit_setups:
