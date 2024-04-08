@@ -3,16 +3,16 @@
 
 # ------------------------------------------------
 
-clone_all:
+cloneall clone_all:
 	make clone_develops
 	make clone_setups
 
-pull_all:
+pullall pull_all:
 	make pull_develops
 	make pull_setups
 	(cd ~/.dotfiles; git pull)
 
-gcommit_all:
+gcommitall gcommit_all:
 	make gcommit_develops
 	make gcommit_setups
 	(cd ~/.dotfiles; make gcommit)
