@@ -19,7 +19,7 @@ if [ -d ~/.emacs.d ] ; then
 fi
 ln -s ~/.dotfiles/.emacs.d ~/.emacs.d
 
-if [ -d ~/Makefile ] ; then
+if [ -f ~/Makefile ] ; then
     mv ~/Makefile ~/.dotfiles.bak/Makefile.$BAKDATE
 fi
 ln -s ~/.dotfiles/Makefile ~/Makefile
