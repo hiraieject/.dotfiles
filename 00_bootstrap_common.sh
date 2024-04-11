@@ -28,6 +28,12 @@ if [ ! -f ~/.dotfiles/.bashrc_local ]; then
     cp ~/.dotfiles/.bashrc_local.template $HOME/.dotfiles/.bashrc_local
 fi
 
+## SSH KEY(no pass)
+if [ ! -f ~/.ssh/id_rsa ] ; then
+    ssh-keygen -t rsa -b 4096 -N ""
+    ls -l ~/.ssh/id_rsa*
+fi
+
 ## GIT
 if [ ! -f ~/.gitconfig ] ; then
     git config --global user.email "hiraieject@gmail.com"
