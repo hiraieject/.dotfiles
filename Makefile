@@ -45,6 +45,9 @@ clone_develops:
 	@set -e; if [ ! -d ~/diff-pj-develop ] ; then \
 		(cd ~; git clone https://github.com/hiraieject/diff-pj-develop); \
 	fi
+	@set -e; if [ ! -d ~/diff-en-develop ] ; then \
+		(cd ~; git clone https://github.com/hiraieject/diff-en-develop); \
+	fi
 
 pull_develops:
 	@set -e; if [ -d ~/develop-nuvo ] ; then \
