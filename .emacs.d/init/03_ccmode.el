@@ -36,9 +36,11 @@
 (defun my-c-mode-hook ()
   "My hook for C mode."
   (setq-default c-basic-offset 4)
+
   (if (string-equal (getenv "EMACSTAB") "TAB")
-      (setq indent-tabs-mode t)    ; インデントにTABを使う
-    (setq indent-tabs-mode nil))  ; インデントにスペースを使う
+      (setq indent-tabs-mode t)  ; EMACSTABがTABならTABを使う
+    (setq indent-tabs-mode nil))  ; それ以外の場合はスペースを使う
+
   (setq c-auto-newline nil)
 					;  (c-set-style "bsd")
 					;  (c-set-style "k&r")
