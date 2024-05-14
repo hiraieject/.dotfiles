@@ -1,27 +1,39 @@
 @echo off
-rem set SETUPFILE=setup-x86_64.exe
-rem set URL=https://www.cygwin.com/setup-x86_64.exe
-set SETUPFILE=setup-x86_32.exe
-set URL=https://www.cygwin.com/setup-x86_32.exe
+
+:: 管理者権限での実行をチェック
+net session >nul 2>&1
+if %errorLevel% == 0 (
+    echo admin
+) else (
+    echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"
+    echo UAC.ShellExecute "%~s0", "", "", "runas", 1 >> "%temp%\getadmin.vbs"
+    "%temp%\getadmin.vbs"
+    del "%temp%\getadmin.vbs"
+    exit
+)
+
+if not exist c:\cygwin64_files (
+  md c:\cygwin64_files
+)
+c:
+cd \cygwin64_files
+set SETUPFILE=setup-x86_64.exe
+set URL=https://www.cygwin.com/setup-x86_64.exe
 
 if not exist "%SETUPFILE%" (
     echo %SETUPFILE% not found, downloading...
     curl -k -O %URL%
-) else (
-    echo %SETUPFILE% already exists.
 )
 
-%SETUPFILE% --root c:\cygwin64 --local-package-dir c:\cygwin64_files --site http://ftp.iij.ad.jp/pub/cygwin/ --quiet-mode --packages gcc,git,make,patch,libncurses-devel,openssl-devel,readline,libsqlite3-devel,libxml2-devel,libxslt-devel,wget,apache,emacs-X11,xterm
+%SETUPFILE% --root c:\cygwin64 --local-package-dir c:\cygwin64_files --site http://ftp.iij.ad.jp/pub/cygwin/ --quiet-mode --packages gcc-core,gcc-g++,git,make,cmake,patch,python3,python3-pip,python3-venv,python3-tk,libexpat1,python3-devel,libncurses-devel,openssl-devel,libboost-devel,readline-devel,libsqlite3-devel,libxml2-devel,libxslt-devel,wget,emacs-gtk,emacs-anthy,xterm,gdb
 
+rem install sygserver as service
+set CYGWIN_HOME=C:\cygwin64
+set BASH=%CYGWIN_HOME%\bin\bash.exe
+%BASH% --login -c "/usr/bin/cygserver-config -y"
 
-rem set SETUPFILE=GCMW-1.20.0.exe
-rem set URL=https://github.com/microsoft/Git-Credential-Manager-for-Windows/releases/download/1.20.0/GCMW-1.20.0.exe
-rem if not exist "%SETUPFILE%" (
-rem     echo %SETUPFILE% not found, downloading...
-rem     curl -k -O %URL%
-rem ) else (
-rem     echo %SETUPFILE% already exists.
-rem )
-rem %SETUPFILE%
+rem start sygserver service
+net start "CYGWIN cygserver"
 
 pause
+
