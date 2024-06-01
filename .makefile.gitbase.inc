@@ -136,13 +136,17 @@ checkout_remote_branch:
 	git checkout $(BRANCH)
 
 ## # ------------------------------------------------ git
+gcommitam:
+	@make __TGTFOLDER="." __COMMITTARGET="" _gcommit
+	git status
 gcommitm:
-#	@make __TGTFOLDER="." _gcommit_noedit
-	@make __TGTFOLDER="." _gcommit
+	@make __TGTFOLDER="." __COMMITTARGET="" _gcommit
+	git status
+gcommita:
+	@make __TGTFOLDER="." __COMMITTARGET="" _gcommit_noedit
 	git status
 gcommit:
-	@make __TGTFOLDER="." _gcommit_noedit
-#	@make __TGTFOLDER="." _gcommit
+	@make __TGTFOLDER="." __COMMITTARGET="" _gcommit_noedit
 	git status
 gpush:
 	@make __TGTFOLDER="." _gpush
@@ -161,13 +165,13 @@ gstatus:
 _gcommit:
 	(cd $(__TGTFOLDER); git pull)
 	make __TGTFOLDER="$(__TGTFOLDER)" _gdiff_commit
-	-(cd $(__TGTFOLDER); git commit)
+	-(cd $(__TGTFOLDER); git commit $(__COMMITTARGET))
 	(cd $(__TGTFOLDER); git push)
 	
 _gcommit_noedit:
 	(cd $(__TGTFOLDER); git pull)
 	make __TGTFOLDER="$(__TGTFOLDER)" _gdiff_commit
-	-(cd $(__TGTFOLDER); git commit -m "today's snapshot")
+	-(cd $(__TGTFOLDER); git commit $(__COMMITTARGET) -m "today's snapshot")
 	(cd $(__TGTFOLDER); git push)
 	
 _gpull:
