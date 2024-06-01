@@ -161,13 +161,13 @@ gstatus:
 _gcommit:
 	(cd $(__TGTFOLDER); git pull)
 	make __TGTFOLDER="$(__TGTFOLDER)" _gdiff_commit
-	-(cd $(__TGTFOLDER); git commit .)
+	-(cd $(__TGTFOLDER); git commit)
 	(cd $(__TGTFOLDER); git push)
 	
 _gcommit_noedit:
 	(cd $(__TGTFOLDER); git pull)
 	make __TGTFOLDER="$(__TGTFOLDER)" _gdiff_commit
-	-(cd $(__TGTFOLDER); git commit . -m "today's snapshot")
+	-(cd $(__TGTFOLDER); git commit -m "today's snapshot")
 	(cd $(__TGTFOLDER); git push)
 	
 _gpull:
