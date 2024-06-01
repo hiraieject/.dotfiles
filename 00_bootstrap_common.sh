@@ -41,9 +41,10 @@ if [ ! -f ~/.gitconfig ] ; then
 fi
 git config --global credential.helper store
 git config --global http.sslverify false
+git config --global https.sslverify false
 git config --global push.default simple
 git config --global pull.rebase false
-git config --global --add pull.ff only
+git config --global pull.ff only
 git config --global merge.ff false
 
 if [ ! -f ~/.git-credentials ] ; then
