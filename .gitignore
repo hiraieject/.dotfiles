@@ -1,0 +1,6 @@
+.bashrc_local
+.emacs.d/.secret.el
+.emacs.d/network-security.data
+.emacs.d/request/
+.emacs.d/straight/
+*.bak

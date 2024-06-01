@@ -76,6 +76,65 @@ remove_all:
 	rm -rf *_$(ARCHIVE_REPOSITORYNAME) $(ARCHIVE_REPOSITORYNAME)
 	rm -f $(ACURRENTFILE)
 
+## # ------------------------------------------------ git merge
+git githelp:
+	@cat ~/.dotfiles/.githelp.md
+
+# ブランチ一覧
+lb list_branch:
+	git fetch
+	git branch -a | cat
+
+	@echo "  =============================="
+	@echo "   please set BRANCH_NAME to ENV"
+	@echo "     $ export BRANCH_NAME=feature/XXXX"
+	@echo "   or add following line to Makefile"
+	@echo "     BRANCH_NAME=feature/XXXX"
+	@echo "  =============================="
+
+.PHONY: _chk_branchname_env
+_chk_branchname_env:
+ifeq ($(strip $(BRANCH_NAME)),)
+	@echo "  =============================="
+	@echo "   ERROR!!!: env BRANCH_NAME is empty"
+	@echo "  =============================="
+	@exit 1
+else
+	@echo "BRANCH = $(BRANCH_NAME)"
+endif
+
+# 最初に１回やる操作。ローカルに対象ブランチが無い状態のとき、リモートの対象ブランチをローカルに作成して同期、チェックアウトはしない
+gb1 get_branch_1st:
+	@make _chk_branchname_env
+	git fetch
+	git branch $(BRANCH_NAME) origin/$(BRANCH_NAME)
+	git status
+
+# 最初に１回やる操作。ローカルに対象ブランチが無い状態のとき、リモートの対象ブランチをローカルに作成して同期、チェックアウトする
+cb1 checkout_branch_1st:
+	@make _chk_branchname_env
+	git checkout -b $(BRANCH_NAME) origin/$(BRANCH_NAME)
+	git status
+
+# ２回目以降。リモートの対象ブランチをローカルに同期して、チェックアウトする
+cb checkout_branch:
+	@make _chk_branchname_env
+	git fetch
+	git checkout $(BRANCH_NAME)
+	git status
+
+
+# リモートの対象ブランチからローカルに同期
+pull_from_remote:
+	git pull origin $(BRANCH_NAME)
+
+# ローカルの対象ブランチをリモートに同期
+push_to_remote:
+	git push origin $(BRANCH_NAME)
+
+checkout_remote_branch:
+	git checkout $(BRANCH)
+
 ## # ------------------------------------------------ git
 gcommitm:
 #	@make __TGTFOLDER="." _gcommit_noedit
