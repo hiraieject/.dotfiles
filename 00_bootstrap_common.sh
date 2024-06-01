@@ -35,10 +35,8 @@ if [ ! -f ~/.ssh/id_rsa ] ; then
 fi
 
 ## GIT
-if [ ! -f ~/.gitconfig ] ; then
-    git config --global user.email "hiraieject@gmail.com"
-    git config --global user.name  "hiraieject"
-fi
+git config --global user.email "hiraieject@gmail.com"
+git config --global user.name  "hiraieject"
 git config --global credential.helper store
 git config --global http.sslverify false
 git config --global https.sslverify false
