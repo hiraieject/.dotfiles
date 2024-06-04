@@ -1,0 +1,21 @@
+
+- REQ15_NT_COVERITY​ の　revision 5040 からの差分を取得し、修正対象が NO_OSS/NetPF/AppSrc 以下のみであることを確認
+  機種フォルダはないので、単純マージでOK
+
+- https://effi-linux.svn.vserv.jp.panasonic.com/repos/SCX4_Ubuntu2204/trunk を取得
+
+- 以下でマージ実行
+ (cd trunk/NO_OSS/NetPF/AppSrc; svn merge -r 5040:5212 https://effi-linux.svn.vserv.jp.panasonic.com/repos/SCX4/branches/REQ15_NT_COVERITY/NO_OSS/NetPF/AppSrc)
+
+ コンフリクトが発生したが、ファイル末尾の改行のがコンフリクトしただけだったので、svnの対話インターフェースで、(m) Merge, (2) use your version, (r) Mark as resolved を入力し、rq7の修正を適用
+
+ 以上でマージ完了
+
+- マージの確認
+REQ15_NT_COVERITY と、trunk のDIFFを取得、変更ファイルの数があっていることを確認
+コンフリクトした userApps/webapi/src/osd/webapi_osd.c のみ変更に差異がないか目視確認、その他のsvnが自動マージした部分の目視確認は省略
+REQ15_NT_COVERITY と、trunk のファイル一覧を取得して比較、RQ7で追加されたと思われるファイルのみの差分であることを確認
+
+- コンパイルの確認
+
+フルコンパイルを行い、問題ないことを確認
