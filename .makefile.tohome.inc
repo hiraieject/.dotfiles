@@ -8,7 +8,7 @@ tohome_download:
 
 tohome_extract:
 	@make tohome_download
-	@make tohome_extract_local:
+	@make tohome_extract_local
 
 tohome_archive_local:
 	mkdir -p ~/tohome
