@@ -160,8 +160,8 @@ alias visauty="/opt/pstest/bin/visauty"
 
 #ADDED_BY_PJ_NODE_INSTALL
 if [ -d ~/.node ] ; then
-    export NODE_HOME=/home/mebdsoft/.node
-    export NODE_PATH=/home/mebdsoft/.node/lib/node_modules
-    export PATH=/home/mebdsoft/.node/bin:/home/mebdsoft/.node/bin:/home/mebdsoft/work/toolchain/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/bin:/home/mebdsoft/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+    export NODE_HOME=$HOME/.node
+    export NODE_PATH=$NODE_HOME/lib/node_modules
+    export PATH=$NODE_HOME/bin:$PATH
 fi
 
