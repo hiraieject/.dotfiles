@@ -3,4 +3,5 @@
 .emacs.d/network-security.data
 .emacs.d/request/
 .emacs.d/straight/
+.emacs.d/.emacs.d
 *.bak

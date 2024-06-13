@@ -71,6 +71,9 @@ export EDITOR="emacs"
 
 alias       DIFF='touch DIFF; rm DIFF; ln -s ~/DIFF .; cvs diff -c > ~/DIFF/diff`date +%y%m%d%H%M-``(pwd | sed "s/.*\///g")`".txt"'
 
+alias	    PJCOMMIT='make -C ~/develop-pj/ __TGTFOLDER=`pwd` scommit'
+alias	    PJCOMMITM='make -C ~/develop-pj/ __TGTFOLDER=`pwd` scommitm'
+
 alias langc="export LANG=C"
 alias langj="export LANG=ja_JP.utf8"
 export LANG=$DEFAULT_LANG
@@ -148,16 +151,17 @@ if [ -d $HOME/work/toolchain ] ; then
     export DEVNAME=scx4
 fi
 
-if [ -d $HOME/.node ] ; then
-    export NODE_HOME=$HOME/.node
-    export NODE_PATH=$NODE_HOME/lib/node_modules
-    export PATH=$NODE_HOME/bin:${PATH}
-fi
-
 #ADDED_BY_PSTEST_INSTALLER
 alias pstestuty="/opt/pstest/bin/pstestuty"
 
 
 #ADDED_BY_PSTEST_TE_INSTALLER
 alias visauty="/opt/pstest/bin/visauty"
+
+#ADDED_BY_PJ_NODE_INSTALL
+if [ -d ~/.node ] ; then
+    export NODE_HOME=/home/mebdsoft/.node
+    export NODE_PATH=/home/mebdsoft/.node/lib/node_modules
+    export PATH=/home/mebdsoft/.node/bin:/home/mebdsoft/.node/bin:/home/mebdsoft/work/toolchain/gcc-linaro-7.4.1-2019.02-x86_64_arm-linux-gnueabihf/bin:/home/mebdsoft/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+fi
 
