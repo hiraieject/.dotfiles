@@ -1,6 +1,6 @@
 #export FOLDER=v21.6.1
 #export FNAME=node-v21.6.1-linux-x64
-export FOLDER=v20.11.0
+export FOLDER=v20.14.0
 export FNAME=node-$FOLDER-linux-x64
 
 curl --insecure https://nodejs.org/dist/$FOLDER/$FNAME.tar.xz --output $FNAME.tar.xz

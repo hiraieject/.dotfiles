@@ -154,7 +154,8 @@ fi
 #ADDED_BY_PSTEST_INSTALLER
 alias pstestuty="/opt/pstest/bin/pstestuty"
 
-
+#ADDED_BY_PSTEST_TE_INSTALLER
+alias visauty="/opt/pstest/bin/visauty"
 
 #ADDED_BY_PJ_NODE_INSTALL
 if [ -d ~/.node ] ; then
