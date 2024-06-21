@@ -1,5 +1,10 @@
 ;; .emacs
 
+;; -------------------------------------------- emacs size
+;;(setq initial-frame-alist '((width  . (getenv "EMACSSIZEX")) (height . (getenv "EMACSSIZEY"))))
+;;(setq initial-frame-alist '((width  . (getenv "EMACSSIZEX")) (height . (getenv "EMACSSIZEY"))))
+(setq initial-frame-alist '((width  . 120) (height .  40)))
+
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -243,11 +248,6 @@
      ("melpa" . "http://melpa.org/packages/"))))
  '(tool-bar-mode nil)
  '(transient-mark-mode nil))
-
-;; -------------------------------------------- emacs size
-;;(setq initial-frame-alist '((width  . (getenv "EMACSSIZEX")) (height . (getenv "EMACSSIZEY"))))
-;;(setq initial-frame-alist '((width  . (getenv "EMACSSIZEX")) (height . (getenv "EMACSSIZEY"))))
-(setq initial-frame-alist '((width  . 120) (height .  40)))
 
 ;; -------------------------------------------- emacs 色の設定
 (when (equal (getenv "EMACSCOLOR") "BLUE")
