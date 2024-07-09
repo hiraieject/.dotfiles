@@ -31,3 +31,9 @@ _sstatus:
 	svn status
 
 
+get_reference_tree:
+	svn co -r $(REV) `cat .svnbase`/`cat .svnfolder` `cat .targetmodel`_$(REV)
+
+get_refrence_headtree:
+	svn co `cat .svnbase`/`cat .svnfolder` `cat .targetmodel`_HEAD
+	

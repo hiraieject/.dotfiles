@@ -41,6 +41,8 @@ helper:
 	@echo 'make remove_all		## remove all tree'
 
 newtree:
+	make _$@
+_newtree:
 	echo $(DATE_STRING)_$(PROJ_REPOSITORYNAME) > $(CURRENTFILE)
 
 	git clone $(CLONE_OPTION) $(PROJ_GITURL)/$(PROJ_REPOSITORYNAME) `cat $(CURRENTFILE)`
@@ -48,6 +50,8 @@ newtree:
 	make link_current
 
 newarchive:
+	make _$@
+_newarchive:
 	echo $(DATE_STRING)_$(ARCHIVE_REPOSITORYNAME) > $(ACURRENTFILE)
 
 	git clone $(CLONE_OPTION) $(PROJ_GITURL)/$(ARCHIVE_REPOSITORYNAME) `cat $(ACURRENTFILE)`
@@ -55,22 +59,32 @@ newarchive:
 	make link_acurrent
 
 link_current:
+	make _$@
+_link_current:
 	rm -rf $(PROJ_REPOSITORYNAME)
 	-ln -s `cat $(CURRENTFILE)` $(PROJ_REPOSITORYNAME)
 
 link_acurrent:
+	make _$@
+_link_acurrent:
 	rm -rf $(ARCHIVE_REPOSITORYNAME)
 	-ln -s `cat $(ACURRENTFILE)` $(ARCHIVE_REPOSITORYNAME)
 
 remove_current:
+	make _$@
+_remove_current:
 	rm -rf `cat $(CURRENTFILE)` $(PROJ_REPOSITORYNAME)
 	rm -f $(CURRENTFILE)
 
 remove_acurrent:
+	make _$@
+_remove_acurrent:
 	rm -rf `cat $(ACURRENTFILE)` $(ARCHIVE_REPOSITORYNAME)
 	rm -f $(ACURRENTFILE)
 
 remove_all:
+	make _$@
+_remove_all:
 	rm -rf *_$(PROJ_REPOSITORYNAME) $(PROJ_REPOSITORYNAME)
 	rm -f $(CURRENTFILE)
 	rm -rf *_$(ARCHIVE_REPOSITORYNAME) $(ARCHIVE_REPOSITORYNAME)
