@@ -218,6 +218,14 @@
 	(interactive)
 	(set-buffer-file-coding-system (quote utf-16) nil))
 
+(defun dos ()
+	(interactive)
+	(set-buffer-file-coding-system (quote dos) nil))
+
+(defun unix ()
+	(interactive)
+	(set-buffer-file-coding-system (quote unix) nil))
+
 
 ;; ===========================================================================
 
