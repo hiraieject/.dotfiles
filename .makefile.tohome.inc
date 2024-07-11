@@ -17,7 +17,7 @@ _tohome_archive_local:
 	mkdir -p ~/tohome
 	(cd $(PROJ_REPOSITORYNAME); make clean)
 	(cd $(PROJ_REPOSITORYNAME); \
-	tar -cvhz $(TOHOME_EXCLUDE) -f ~/tohome/$(PROJ_REPOSITORYNAME).tar.gz * .??*)
+	 tar -cvhz $(TOHOME_EXCLUDE) -f ~/tohome/$(PROJ_REPOSITORYNAME).tar.gz * .??*)
 
 _tohome_extract_local:
 	make newtree
