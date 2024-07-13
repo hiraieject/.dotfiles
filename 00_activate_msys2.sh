@@ -17,7 +17,7 @@ cp ~/.dotfiles/.gdbinit ~/.gdbinit
 if [ -d ~/.emacs.d ] ; then
     cp -r ~/.emacs.d ~/.dotfiles.bak/.emacs.d.$BAKDATE
 fi
-cp -r ~/.dotfiles/.emacs.d ~/.emacs.d
+cp -r ~/.dotfiles/.emacs.d/* ~/.emacs.d/
 
 if [ -f ~/Makefile ] ; then
     cp ~/Makefile ~/.dotfiles.bak/Makefile.$BAKDATE

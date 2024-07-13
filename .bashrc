@@ -1,6 +1,18 @@
 # .bashrc
 
-export PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+export PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:
+
+# msys:windows
+if [ -d /c/Windows/System32 ]; then
+    export PATH=$PATH:/c/Windows/System32:/c/Windows:/c/Windows/System32/Wbem:/c/Windows/System32/WindowsPowerShell/v1.0/
+fi
+# msys:mingw64/32
+if [ "$MSYSTEM" = "MINGW64" ]; then
+    export PATH=/mingw64/bin:$PATH
+fi
+if [ "$MSYSTEM" = "MINGW32" ]; then
+    export PATH=/mingw32/bin:$PATH
+fi
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
