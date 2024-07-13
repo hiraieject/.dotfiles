@@ -10,6 +10,9 @@ if [ -f /etc/bash.bashrc ]; then
 	source /etc/bash.bashrc
 fi
 export PS1="[\u@\h \W]\$ "
+if [ -n "$MSYSTEM" ]; then
+    export PS1="$MSYSTEM $PS1"
+fi
 
 # local custmize
 if [ ! -f $HOME/.dotfiles/.bashrc_local ]; then
