@@ -1,5 +1,5 @@
 
-tohome_archive tohome_download tohome_extract tohome_archive_local tohome_extract_local:
+tohome_archive tohome_download tohome_extract tohome_archive_local tohome_extract_local tohome_extract_local_nonewtree:
 	make _$@
 
 _tohome_archive:
@@ -21,7 +21,7 @@ _tohome_archive_local:
 
 _tohome_extract_local:
 	make newtree
-	make _tohome_extract_local_nonewtree:
+	make _tohome_extract_local_nonewtree
 
 _tohome_extract_local_nonewtree:
 	(cd $(PROJ_REPOSITORYNAME); rm -rf src)

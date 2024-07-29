@@ -21,6 +21,8 @@ xx192.168.1.24	Ubuntu_ja_20.04(202301_IP24)
 192.168.0.28	Ubuntu_16_04_Effi(202401_IP28)
 192.168.0.29	Ubuntu_2204_pavct_note
 192.168.0.30	PavctNoteWindowsPC_hirai
+192.168.0.31	Ubuntu_22.04_sub(202401_IP31) (pana desktop)
+192.168.0.32	Pana-imx-develop (pana desktop)
 
 192.168.0.86	pana_hirai_DELL_desktop
 192.168.0.88	pana_aqua_Fedora16
