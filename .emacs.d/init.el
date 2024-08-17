@@ -258,12 +258,6 @@
  '(transient-mark-mode nil))
 
 ;; -------------------------------------------- emacs 色の設定
-(let ((env-var (getenv "MSYSTEM")))
-  (if env-var
-      ;; 環境変数が設定されている
-      (setenv "EMACSCOLOR" "NONE")
-    ))
-
 (when (equal (getenv "EMACSCOLOR") "BLUE")
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
