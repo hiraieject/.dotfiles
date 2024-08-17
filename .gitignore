@@ -5,4 +5,5 @@
 .emacs.d/straight
 .emacs.d/.emacs.d
 .emacs.d/eln-cache
+.emacs.d/anaconda-mode
 *.bak

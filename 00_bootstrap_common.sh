@@ -62,3 +62,4 @@ if [ ! -f ~/.cifs-credential ] ; then
     cp .cifs-credential-template ~/.cifs-credential
     chmod og-rwx ~/.cifs-credential
 fi
+

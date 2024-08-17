@@ -1,7 +1,7 @@
 # .bashrc
 
-export PATH=$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:
-
+export PATH=$HOME/bin:$HOME/.local/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:
+~/.local/bin/
 # msys:windows
 if [ -d /c/Windows/System32 ]; then
     export PATH=$PATH:/c/Windows/System32:/c/Windows:/c/Windows/System32/Wbem:/c/Windows/System32/WindowsPowerShell/v1.0/

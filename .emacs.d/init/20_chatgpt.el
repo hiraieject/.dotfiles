@@ -1,19 +1,19 @@
 
-(when (equal (getenv "EMACSSTRAIGHT") "YES")
+(when (not (equal (getenv "EMACS_IGNORE_CHATGPT") "YES"))
 
   ;; -------------------------------------------- charGPT
-  (use-package openai :straight (:host github :repo "emacs-openai/openai"))
+  (use-package openai  :straight (:host github :repo "emacs-openai/openai"))
   (use-package chatgpt :straight (:host github :repo "emacs-openai/chatgpt"))
   (use-package codegpt :straight (:host github :repo "emacs-openai/codegpt"))
-  (use-package dall-e :straight (:host github :repo "emacs-openai/dall-e"))
-  
+  (use-package dall-e  :straight (:host github :repo "emacs-openai/dall-e"))
+
   (if (file-exists-p "~/.emacs.d/.secret.el")
       (load "~/.emacs.d/.secret.el"))
 
 
   (setq codegpt-tunnel 'chat            ; The default is 'completion
 	codegpt-model "gpt-4")		; You can pick any model you want!
-	;; codegpt-model "gpt-3.5-turbo")  ; You can pick any model you want!
+  ;; codegpt-model "gpt-3.5-turbo")  ; You can pick any model you want!
 
 					; - `chatgpt-model` - ID of the model to use. (Default: `"gpt-3.5-turbo"`)
 					; - `chatgpt-max-tokens` - The maximum number of tokens to generate in the completion. (Default: `2000`)
@@ -70,5 +70,4 @@
      ;; "Implement tests for the following code"
      "以下に続くコードのテストを実装して"
      start end))
-
 )

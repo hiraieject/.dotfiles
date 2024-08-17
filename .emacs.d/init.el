@@ -250,10 +250,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
+ '(flycheck-checker-error-threshold 800)
  '(package-archives
-   (quote
-    (("gnu" . "https://elpa.gnu.org/packages/")
-     ("melpa" . "http://melpa.org/packages/"))))
+   '(("gnu" . "https://elpa.gnu.org/packages/")
+     ("melpa" . "http://melpa.org/packages/")))
  '(tool-bar-mode nil)
  '(transient-mark-mode nil))
 
@@ -311,15 +311,48 @@
 
 
 ;; ===========================================================================
-(load "~/.emacs.d/init/01_straight.el")
-(load "~/.emacs.d/init/02_mozc.el")
-(load "~/.emacs.d/init/03_ccmode.el")
-(load "~/.emacs.d/init/10_company.el")
-;;(load "~/.emacs.d/init/20_chatgpt.el")
-;;(load "~/.emacs.d/init/21_copilot.el")
-(load "~/.emacs.d/init/30_yasnippet.el")
-(load "~/.emacs.d/init/50_misc.el")
+(let ((msystem (getenv "MSYSTEM")))
+  (when msystem
+    ;; MSYSTEMが設定されていた場合の処理
+    (setenv "EMACS_IGNORE_COMPAMYTABNINE" "YES")
+    ))
 
+(when (equal (getenv "EMACSSTRAIGHT") "YES")
+  (load "~/.emacs.d/init/01_straight.el")
+  (load "~/.emacs.d/init/02_mozc.el")
+  (load "~/.emacs.d/init/03_ccmode.el")
+  (load "~/.emacs.d/init/10_company.el")
+  (load "~/.emacs.d/init/20_chatgpt.el")
+  ;;(load "~/.emacs.d/init/21_copilot.el")
+  (load "~/.emacs.d/init/30_yasnippet.el")
+  (load "~/.emacs.d/init/50_misc.el")
+  )
+
+(when (not (equal (getenv "EMACSSTRAIGHT") "YES"))
+  ;; Straight 無効時の処理
+  
+  ;; -------------------------------------------- gtags
+  (require 'gtags)
+  (add-hook 'c-mode-common-hook 'gtags-mode)
+  (add-hook 'c-mode-hook 'my-c-mode-hook)
+  (add-hook 'c++-mode-hook 'my-c-mode-hook)
+
+  (when (equal (getenv "EMACSMOZC") "YES")
+    ;; -------------------------------------------- emacs mozc
+    (use-package mozc
+      :demand t
+      :config
+      (setq default-input-method "japanese-mozc"))
+    ;; -------------------------------------------- boiled-mozc
+    ;; https://github.com/tadanagao/boiled-mozc
+    (use-package boiled-mozc
+      :straight (boiled-mozc :type git :host github :repo
+			     "tadanagao/boiled-mozc" :files ("dist" "*.el"))
+      :defer t
+      :bind (("C-o" . boiled-mozc-rK-conv)
+             ("M-o" . boiled-mozc-rhkR-conv)))
+    )
+  )
 
 ;; ===========================================================================
 ;; GDB setting
@@ -330,3 +363,9 @@
 ;;(defvar gud-gdb-history (list "/home/hirai/sigma/131002_lfbc70/sdk4.2.1rc4/cs_rootfs_1.3.0/host/bin/mipsel-linux-gdb --annotate=1 drawtool"))
 					; M-x gdb のデフォルトコマンドライン
 
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#303030" :foreground "#EEEEEE" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 79 :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))

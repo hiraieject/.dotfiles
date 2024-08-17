@@ -18,4 +18,5 @@ fi
 ## Python
 sudo apt install python3-pip
 pip3 install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host=files.pythonhosted.org openpyxl
+pip3 install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host=files.pythonhosted.org pylint
 

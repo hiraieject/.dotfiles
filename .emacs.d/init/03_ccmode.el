@@ -1,26 +1,14 @@
 
-(when (equal (getenv "EMACSSTRAIGHT") "YES")
-  (use-package gtags
-    :commands gtags-mode
-    :config
-    (add-hook 'c-mode-common-hook 'gtags-mode)
-    )
-  
-  (use-package cc-mode
-    :hook ((c-mode . my-c-mode-hook)
-           (c++-mode . my-c-mode-hook))
-    )
-  )
-
-(unless (equal (getenv "EMACSSTRAIGHT") "YES")
-  (require 'gtags)
+(use-package gtags
+  :commands gtags-mode
+  :config
   (add-hook 'c-mode-common-hook 'gtags-mode)
-
-  (add-hook 'c-mode-hook 'my-c-mode-hook)
-  (add-hook 'c++-mode-hook 'my-c-mode-hook)
-
   )
-
+  
+(use-package cc-mode
+  :hook ((c-mode . my-c-mode-hook)
+         (c++-mode . my-c-mode-hook))
+  )
 
 (setq auto-mode-alist
       (append '(("\\.C$"  . c++-mode)
@@ -31,7 +19,6 @@
                 ("\\.cpp$" . c++-mode)
                 ("\\.hpp$" . c++-mode)
                 ) auto-mode-alist))
-
 
 (defun my-c-mode-hook ()
   "My hook for C mode."
