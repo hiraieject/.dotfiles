@@ -166,6 +166,11 @@ if [ -d $HOME/work/toolchain ] ; then
     export DEVNAME=scx4
 fi
 
+## pstest
+if [ -d /opt/pstest/bin ] ; then
+    export PATH=$PATH:/opt/pstest/bin
+fi
+
 #ADDED_BY_PSTEST_INSTALLER
 alias pstestuty="/opt/pstest/bin/pstestuty"
 
