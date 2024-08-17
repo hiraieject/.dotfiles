@@ -295,7 +295,7 @@
 
 (when (equal (getenv "EMACSCOLOR") "MINGW64")
   (custom-set-faces
-   '(default ((t (:inherit nil :stipple nil :background "#303030" :foreground "#EEEEEE" :inverse-video nil :box nil
+   '(default ((t (:inherit nil :stipple nil :background "#202040" :foreground "#EEEEEE" :inverse-video nil :box nil
 			   :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100
 			   :width normal :foundry "unknown" :family "Courier New")))))
 )
