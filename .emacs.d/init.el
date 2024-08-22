@@ -324,7 +324,7 @@
   (load "~/.emacs.d/init/10_company.el")
   (load "~/.emacs.d/init/20_chatgpt.el")
   ;;(load "~/.emacs.d/init/21_copilot.el")
-  (load "~/.emacs.d/init/30_yasnippet.el")
+  ;;(load "~/.emacs.d/init/30_yasnippet.el")
   (load "~/.emacs.d/init/50_misc.el")
   )
 

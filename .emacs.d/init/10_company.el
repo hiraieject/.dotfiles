@@ -15,6 +15,7 @@
         ("C-p" . company-select-previous)
         ("C-h" . nil)
 	("C-m" . company-complete-selection)
+        ("<tab>" . nil)
 	)
   :config
   (global-company-mode)
