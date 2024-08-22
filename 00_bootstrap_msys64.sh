@@ -7,3 +7,4 @@ sed -i 's/#MSYS=winsymlinks:nativestrict/MSYS=winsymlinks:nativestrict/g' /c/msy
 sed -i 's/#MSYS=winsymlinks:nativestrict/MSYS=winsymlinks:nativestrict/g' /c/msys64/clang64.ini
 sed -i 's/#MSYS=winsymlinks:nativestrict/MSYS=winsymlinks:nativestrict/g' /c/msys64/clangarm64.ini
 
+echo 'NEXT STEP REBOOT'
