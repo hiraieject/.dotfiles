@@ -7,3 +7,4 @@
 .emacs.d/eln-cache
 .emacs.d/anaconda-mode
 *.bak
+wget-log*
