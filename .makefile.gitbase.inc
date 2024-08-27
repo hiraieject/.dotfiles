@@ -204,7 +204,3 @@ _gdiff_commit:
 _gstatus:
 	git status
 
-
-
-
-
