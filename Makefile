@@ -14,7 +14,7 @@ REPOSITORIES = \
   .dotfiles \
   MyLinux MyWindows \
   develop-nuvo develop-en develop-pj develop-fp develop-home develop-win \
-  develop-diff
+  develop-diff develop-archive
 
 cloneall pullall statusall gcommitall:
 	@set -e; for repo in $(REPOSITORIES); do \
