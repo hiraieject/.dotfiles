@@ -191,12 +191,14 @@ _gpull:
 	(cd $(__TGTFOLDER); git pull)
 _gpush:
 	(cd $(__TGTFOLDER); git push)
+
 _gdiff:
 ##	(cd $(__TGTFOLDER); git diff)
 	(cd $(__TGTFOLDER); mkdir -p $(YEAR_STRING); git diff > $(DIFFFOLDER)/$(YEAR_STRING)/diff_$(DATE_STRING)-`(pwd | sed "s/.*\///g")`.txt)
 _gdiff_commit:
 	(cd $(__TGTFOLDER); mkdir -p $(YEAR_STRING); git diff > $(DIFFFOLDER)/$(YEAR_STRING)/diff_commit_$(DATE_STRING)-`(pwd | sed "s/.*\///g")`.txt)
 	(cd $(DIFFFOLDER); git pull; git add */*.txt; git commit -m "commit diff" .; git push)
+
 _gstatus:
 	git status
 
