@@ -13,7 +13,7 @@ uninstall_code:
 REPOSITORIES = \
   .dotfiles \
   MyLinux MyWindows \
-  develop-nuvo develop-en develop-pj develop-fp develop-home develop-win \
+  develop-nuvo develop-en develop-pj develop-fp develop-home \
   develop-diff develop-archive
 
 cloneall pullall statusall gcommitall:
