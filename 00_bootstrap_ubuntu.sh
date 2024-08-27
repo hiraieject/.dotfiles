@@ -9,9 +9,10 @@ sudo apt -y install emacs net-tools global emacs-mozc-bin
 sudo apt -y install xterm
 sudo apt -y install curl
 sudo apt -y install cifs-utils
-sudo apt -y install nodejs npm
+sudo apt -y install libjansson-dev
 
 ## Node.js
+sudo apt -y install nodejs npm
 sudo npm config set strict-ssl false
 sudo npm install n -g  # update latest
 

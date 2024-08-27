@@ -2,23 +2,14 @@ DIFFFOLDER    ?= ~/diff-folder
 DATE_STRING   ?= $(shell date +%Y%m%d_%H%M%S)
 
 ## # ------------------------------------------------ svn
-scommitm:
-	@make __TGTFOLDER=$(__TGTFOLDER) _scommit
-	(cd $(__TGTFOLDER); svn status)
-scommit:
-	@make __TGTFOLDER=$(__TGTFOLDER) _scommit_noedit
-	(cd $(__TGTFOLDER); svn status)
-
 
 _scommit:
-##	(cd $(__TGTFOLDER); svn update)
 	make __TGTFOLDER="$(__TGTFOLDER)" _sdiff_commit
-	-(cd $(__TGTFOLDER); svn ci .)
+	-(cd $(__TGTFOLDER); svn ci .; svn status)
 	
-_scommit_noedit:
-##	(cd $(__TGTFOLDER); svn update)
-	make __TGTFOLDER="$(__TGTFOLDER)" _sdiff_commit
-	-(cd $(__TGTFOLDER); git ci . -m "today's snapshot")
+#_scommit:
+#	make __TGTFOLDER="$(__TGTFOLDER)" _sdiff_commit
+#	-(cd $(__TGTFOLDER); git ci . -m "today's snapshot";  svn status)
 	
 _sdiff:
 	(cd $(__TGTFOLDER); svn diff > $(DIFFFOLDER)/diff_$(DATE_STRING)-`(pwd | sed "s/.*\///g")`.txt)
