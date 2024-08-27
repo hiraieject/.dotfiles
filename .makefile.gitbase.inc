@@ -1,8 +1,6 @@
 
 ## # ------------------------------------------------ template
 #PROJ_REPOSITORYNAME = emmcimguty
-#DIFFFOLDER    = ~/diff-folder
-
 #CLONE_OPTION = -b BRANCH_NAME          option, enable if add git commandline option
 #ARCHIVE_REPOSITORYNAME = emmcimguty_archives
 #                                       option, enable if use archive repository
@@ -26,8 +24,9 @@ else
 endif
 
 
-DIFFFOLDER    ?= ~/diff-folder
+DIFFFOLDER    ?= ~/develop-diff
 DATE_STRING   ?= $(shell date +%Y%m%d_%H%M%S)
+YEAR_STRING   ?= $(shell date +%Y)
 
 
 CURRENTFILE = .current_folder
@@ -194,10 +193,10 @@ _gpush:
 	(cd $(__TGTFOLDER); git push)
 _gdiff:
 ##	(cd $(__TGTFOLDER); git diff)
-	(cd $(__TGTFOLDER); git diff > $(DIFFFOLDER)/diff_$(DATE_STRING)-`(pwd | sed "s/.*\///g")`.txt)
+	(cd $(__TGTFOLDER); mkdir -p $(YEAR_STRING); git diff > $(DIFFFOLDER)/$(YEAR_STRING)/diff_$(DATE_STRING)-`(pwd | sed "s/.*\///g")`.txt)
 _gdiff_commit:
-	(cd $(__TGTFOLDER); git diff > $(DIFFFOLDER)/diff_commit_$(DATE_STRING)-`(pwd | sed "s/.*\///g")`.txt)
-	(cd $(DIFFFOLDER); git pull; git add *.txt; git commit -m "commit diff" .; git push)
+	(cd $(__TGTFOLDER); mkdir -p $(YEAR_STRING); git diff > $(DIFFFOLDER)/$(YEAR_STRING)/diff_commit_$(DATE_STRING)-`(pwd | sed "s/.*\///g")`.txt)
+	(cd $(DIFFFOLDER); git pull; git add */*.txt; git commit -m "commit diff" .; git push)
 _gstatus:
 	git status
 

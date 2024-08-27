@@ -1,5 +1,6 @@
-DIFFFOLDER    ?= ~/diff-folder
+DIFFFOLDER    ?= ~/develop-diff
 DATE_STRING   ?= $(shell date +%Y%m%d_%H%M%S)
+YEAR_STRING   ?= $(shell date +%Y)
 
 ## # ------------------------------------------------ svn
 
@@ -12,11 +13,11 @@ _scommit:
 #	-(cd $(__TGTFOLDER); git ci . -m "today's snapshot";  svn status)
 	
 _sdiff:
-	(cd $(__TGTFOLDER); svn diff > $(DIFFFOLDER)/diff_$(DATE_STRING)-`(pwd | sed "s/.*\///g")`.txt)
+	(cd $(__TGTFOLDER); mkdir -p $(YEAR_STRING); svn diff > $(DIFFFOLDER)/$(YEAR_STRING)/diff_$(DATE_STRING)-`(pwd | sed "s/.*\///g")`.txt)
 
 _sdiff_commit:
-	(cd $(__TGTFOLDER); svn diff > $(DIFFFOLDER)/diff_commit_$(DATE_STRING)-`(pwd | sed "s/.*\///g")`.txt)
-	(cd $(DIFFFOLDER); git pull; git add *.txt; git commit -m "commit diff" .; git push)
+	(cd $(__TGTFOLDER); mkdir -p $(YEAR_STRING); svn diff > $(DIFFFOLDER)/$(YEAR_STRING)/diff_commit_$(DATE_STRING)-`(pwd | sed "s/.*\///g")`.txt)
+	(cd $(DIFFFOLDER); git pull; git add */*.txt; git commit -m "commit diff" .; git push)
 
 _sstatus:
 	svn status
