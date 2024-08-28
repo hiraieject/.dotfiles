@@ -1,3 +1,4 @@
+## -*- Mode: Makefile -*- ##
 
 ## # ------------------------------------------------ template
 #PROJ_REPOSITORYNAME = emmcimguty

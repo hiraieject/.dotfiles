@@ -1,3 +1,4 @@
+## -*- Mode: Makefile -*- ##
 
 tohome_archive tohome_download tohome_extract tohome_archive_local tohome_extract_local tohome_extract_local_nonewtree:
 	make _$@

@@ -1,3 +1,4 @@
+## -*- Mode: Makefile -*- ##
 
 _apt_aptupdate:
 	@if [ -z "$(shell find /var/lib/apt/periodic/update-success-stamp -mtime -1 2>/dev/null)" ]; then \
