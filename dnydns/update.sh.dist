@@ -1,7 +1,0 @@
-#!/bin/sh
-
-#
-# TEST1.MYDNS.JP
-/usr/bin/wget -O - 'http(s)://mydns548699:@ipv4.mydns.jp/login.html'
-/usr/bin/wget -O - 'http(s)://mydns548699:@ipv6.mydns.jp/login.html'
-
