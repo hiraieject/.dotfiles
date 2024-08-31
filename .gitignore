@@ -8,4 +8,4 @@
 .emacs.d/anaconda-mode
 *.bak
 wget-log*
-dnydns/update.sh
+dyndns/update.sh
