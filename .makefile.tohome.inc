@@ -28,3 +28,21 @@ _tohome_extract_local_nonewtree:
 	(cd $(PROJ_REPOSITORYNAME); rm -rf src)
 	(cd $(PROJ_REPOSITORYNAME); tar xvf ~/tohome/$(PROJ_REPOSITORYNAME).tar.gz)
 	(cd $(PROJ_REPOSITORYNAME); git status)
+
+# new target
+_folder_archive:
+	(cd $(FOLDER); touch .aaaaa; tar -cvhz $(TOHOME_EXCLUDE) -f ~/tohome/$(ARCHIVENAME) * .??*; rm .aaaaa)
+	ls -l ~/tohome/
+_folder_clean_archive:
+	(cd $(FOLDER); make clean)
+	@make FOLDER=$(FOLDER) ARCHIVENAME=$(ARCHIVENAME) _folder_archive
+_folder_extract:
+	ls -l ~/tohome/$(ARCHIVENAME)
+	(cd $(FOLDER); tar xvf ~/tohome/$(ARCHIVENAME); rm .aaaaa)
+	(cd $(FOLDER); git status)
+
+_archive_upload:
+	scp -P20022 ~/tohome/$(ARCHIVENAME) hirai@hirai.cc:~/ToHome/ 
+
+_archive_download:
+	scp -P20022 hirai@hirai.cc:~/ToHome/$(ARCHIVENAME) ~/tohome
