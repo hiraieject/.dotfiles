@@ -12,7 +12,7 @@ uninstall_code:
 # ------------------------------------------------ develop folders
 REPOSITORIES = \
   .dotfiles \
-  MyLinux MyWindows \
+  MemoData mirrors \
   develop-nuvo develop-en develop-pj develop-fp develop-home develop-ku \
   develop-diff develop-archive
 
