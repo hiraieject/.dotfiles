@@ -58,8 +58,8 @@ if [ ! -f ~/.openai-credential ] ; then
 fi
 
 ## CIFS
-if [ ! -f ~/.cifs-credential ] ; then
-    cp .cifs-credential-template ~/.cifs-credential
-    chmod og-rwx ~/.cifs-credential
+if [ ! -f ~/.smbcredentials ] ; then
+    cp .smbcredentials-template ~/.smbcredentials
+    chmod og-rw ~/.smbcredentials
 fi
 

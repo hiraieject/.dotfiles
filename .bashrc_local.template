@@ -33,3 +33,18 @@ export DEFAULT_LANG=ja_JP.utf8
 #export DEFAULT_LANG=C
 
 #export PYTHONHTTPSVERIFY=0
+
+# for SAMBA
+#
+#export CIFS_SERVER='192.168.0.86'
+#mkdir -p $HOME/cc $HOME/dd
+#
+#alias winmount='\
+#sudo mount -t cifs //$CIFS_SERVER/cc$ $HOME/cc -o credentials=$HOME/.smbcredentials,uid=hirai,gid=hirai,vers=3.0; \
+#sudo mount -t cifs //$CIFS_SERVER/dd$ $HOME/dd -o credentials=$HOME/.smbcredentials,uid=hirai,gid=hirai,vers=3.0; \
+#'
+#
+#alias winumount='\
+#sudo umount $HOME/cc;\
+#sudo umount $HOME/dd;\
+#'

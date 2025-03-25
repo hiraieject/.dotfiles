@@ -15,15 +15,22 @@
 
 HOSTNAME := $(shell hostname)
 
-ifeq ($(USE_PAVCT_GIT), yes)
-     GITUSER     ?= hirai.yoshikazu
-     PAVCT_GIT   ?= git@172.16.179.142:$(GITUSER)
-     PROJ_GITURL ?= $(PAVCT_GIT)
-else
-     GITUSER     ?= hiraieject
-     PROJ_GITURL ?= https://github.com/$(GITUSER)
-endif
+GITHUB_GITUSER  ?= hiraieject
+GITHUB_GITURL   ?= https://github.com/$(GITHUB_GITUSER)
 
+PAVCT_GITUSER   ?= hirai.yoshikazu
+PAVCT_GITURL    ?= git@172.16.179.142:$(PAVCT_GITUSER)
+
+PAVCT_GIT2USER  ?= hirai.yoshikazu
+PAVCT_GIT2URL   ?= http://advanced.pavct.internal/gitlab/(PAVCT_GIT2USER)
+
+ifeq ($(USE_PAVCT_GIT), yes)
+     PROJ_GITURL = $(PAVCT_GITURL)
+endif
+ifeq ($(USE_PAVCT_GIT2), yes)
+     PROJ_GITURL = $(PAVCT_GIT2URL)
+endif
+PROJ_GITURL ?= $(GITHUB_GITURL)
 
 DIFFFOLDER    ?= ~/develop-diff
 DATE_STRING   ?= $(shell date +%Y%m%d_%H%M%S)
