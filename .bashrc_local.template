@@ -40,8 +40,8 @@ export DEFAULT_LANG=ja_JP.utf8
 #mkdir -p $HOME/cc $HOME/dd
 #
 #alias winmount='\
-#sudo mount -t cifs //$CIFS_SERVER/cc$ $HOME/cc -o credentials=$HOME/.smbcredentials,uid=hirai,gid=hirai,vers=3.0; \
-#sudo mount -t cifs //$CIFS_SERVER/dd$ $HOME/dd -o credentials=$HOME/.smbcredentials,uid=hirai,gid=hirai,vers=3.0; \
+#sudo mount -t cifs //$CIFS_SERVER/cc$ $HOME/cc -o credentials=$HOME/.smbcredentials,uid=hirai,gid=hirai,vers=3.0,nobrl; \
+#sudo mount -t cifs //$CIFS_SERVER/dd$ $HOME/dd -o credentials=$HOME/.smbcredentials,uid=hirai,gid=hirai,vers=3.0,nobrl; \
 #'
 #
 #alias winumount='\

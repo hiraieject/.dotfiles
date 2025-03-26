@@ -40,6 +40,9 @@
 (which-function-mode 1)			; 現在の関数名をモードラインに表示
 (setq truncate-partial-width-windows nil)
 
+;; disable lock for CIFS mount
+(setq create-lockfiles nil)
+
 ;;; デフォルトの文字コード
 ;(set-default-coding-systems 'euc-jp-unix)  <- shell等で文字化けするので無効化
 (setq-default buffer-file-coding-system 'utf-8)
