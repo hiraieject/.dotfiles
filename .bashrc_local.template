@@ -36,7 +36,7 @@ export DEFAULT_LANG=ja_JP.utf8
 
 # for SAMBA
 #
-#export CIFS_SERVER='192.168.0.86'
+#export CIFS_SERVER='192.168.56.1'
 #mkdir -p $HOME/cc $HOME/dd
 #
 #alias winmount='\

@@ -35,9 +35,6 @@ source $HOME/.dotfiles/.bashrc_local
 if [ -f ~/.openai-credential ] ; then
    source ~/.openai-credential
 fi
-if [ -f ~/.cifs-credential ] ; then
-   source ~/.cifs-credential
-fi
 
 #export PATH=$HOME/mybin/bin:$HOME/bin:$PATH
 #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/mybin/lib
