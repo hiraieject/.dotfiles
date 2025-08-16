@@ -55,11 +55,8 @@
 ;;   https://qiita.com/blue0513/items/2634fcb3757629124c87
 ;;
 (when (not (equal (getenv "EMACS_IGNORE_COMPAMYTABNINE") "YES"))
-  (use-package company-tabnine 
-    :after company
-    :ensure t
-    :config
-    (add-to-list 'company-backends 'company-tabnine))
+  (use-package company-tabnine :ensure t)
+  (add-to-list 'company-backends #'company-tabnine)
 
   ;; auto install tabnine bin
   ;; M-x company-tabnine-install-binary
