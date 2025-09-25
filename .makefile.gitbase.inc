@@ -19,10 +19,15 @@ GITHUB_GITUSER  ?= hiraieject
 GITHUB_GITURL   ?= https://github.com/$(GITHUB_GITUSER)
 
 PAVCT_GITUSER   ?= hirai.yoshikazu
-PAVCT_GITURL    ?= git@172.16.179.142:$(PAVCT_GITUSER)
+PAVCT_GITURL    ?= ssh://git@172.16.179.142/$(PAVCT_GITUSER)
 
 PAVCT_GIT2USER  ?= hirai.yoshikazu
-PAVCT_GIT2URL   ?= http://advanced.pavct.internal/gitlab/(PAVCT_GIT2USER)
+PAVCT_GIT2URL   ?= ssh://git@base-gitlab.persol-avct.co.jp:2222/$(PAVCT_GIT2USER)
+
+#PAVCT_GI3URL    ?= git@base-gitlab.persol-avct.co.jp:2222:$(PAVCT_GITUSER)
+#/r2400057/afedevelopment/autoevaluation/eva01_dynamo.git
+##PAVCT_GIT2URL   ?= https://base-gitlab.persol-avct.co.jp/r2400057/afedevelopment/autoevaluation/eva01_dynamo.git
+
 
 ifeq ($(USE_PAVCT_GIT), yes)
      PROJ_GITURL = $(PAVCT_GITURL)
