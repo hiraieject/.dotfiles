@@ -4,8 +4,9 @@
 #sudo ip route add `host jp01.www.mydns.jp | head -1 | awk '{print $4}'` via 192.168.1.1 dev enp0s3 1> /dev/null 2> /dev/null
 #/usr/bin/wget -O - 'http://mydns548699:パスワード@jp01.www.mydns.jp/login.html'
 #
-/usr/bin/wget -O - 'http(s)://mydns548699:パスワード@ipv4.mydns.jp/login.html'
 #/usr/bin/wget -O - 'http(s)://mydns548699:パスワード@ipv6.mydns.jp/login.html'
+
+/usr/bin/wget -O - 'http(s)://mydns548699:パスワード@ipv4.mydns.jp/login.html'
 
 
 # Usage
@@ -13,4 +14,4 @@
 #  $ パスワードを追記
 #  $ crontab -e
 #  以下を追記
-#  */3 * * * * /home/xxxx/.dotfiles/dyndns/mydns.sh 1> /dev/null 2> /dev/null
+#  */3 * * * * /home/xxxx/.dotfiles/dyndns/update.sh 1> /dev/null 2> /dev/null

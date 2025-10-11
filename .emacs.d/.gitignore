@@ -5,3 +5,4 @@ session*
 #
 bak/*
 !bak/.gitkeep
+tramp
