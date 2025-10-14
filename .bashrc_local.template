@@ -33,6 +33,9 @@ export DEFAULT_LANG=ja_JP.utf8
 
 export PYTHONHTTPSVERIFY=0
 
+#export XTERMOPT=
+export XTERMOPT=-fn 8x16
+
 # for SAMBA
 #
 export CIFS_SERVER='192.168.0.86'

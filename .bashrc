@@ -48,7 +48,7 @@ if [ -f /usr/bin/terminator ]; then
 	export TERMAPP='terminator'
 else
 if [ -f /usr/bin/xterm ]; then
-	export TERMAPP='xterm'
+	export TERMAPP='xterm -fs 8x16 -fg white -bg black'
 fi
 fi
 
@@ -94,7 +94,10 @@ alias       em="export DISPLAY=$XDISPLAY; emacs &"
 alias       em86="export DISPLAY=$XDISPLAY; emacs &"
 alias       gt="export DISPLAY=$XDISPLAY; export NO_AT_BRIDGE=1; $TERMAPP &"
 alias       gt86="export DISPLAY=$XDISPLAY; export NO_AT_BRIDGE=1; $TERMAPP &"
-alias       xt="export DISPLAY=$XDISPLAY; export NO_AT_BRIDGE=1; xterm &"
+
+alias       xt8='xterm -fa "Noto Mono" -fs 8 -fx  "-misc-fixed-medium-r-normal--14-130-75-75-c-140-jisx0208.1983-0" -fg white -bg black'
+alias       xt10='xterm -fa "Noto Mono" -fs 10 -fx  "-misc-fixed-medium-r-normal--14-130-75-75-c-140-jisx0208.1983-0" -fg white -bg black'
+alias       xt12='xterm -fa "Noto Mono" -fs 12 -fx  "-misc-fixed-medium-r-normal--14-130-75-75-c-140-jisx0208.1983-0" -fg white -bg black'
 
 alias       gt862="export DISPLAY=$XDISPLAY2; export NO_AT_BRIDGE=1; $TERMAPP &"
 
