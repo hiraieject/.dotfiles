@@ -4,13 +4,13 @@ export PROXY_SERVER=NONE
 #export PROXY_SERVER="http://10.77.8.70:8080"
 
 #export EMACSCOLOR=BLUE
-#export EMACSCOLOR=DARKBLUE
-export EMACSCOLOR=GREEN
+export EMACSCOLOR=DARKBLUE
+#export EMACSCOLOR=GREEN
 #export EMACSCOLOR=RED
 #export EMACSCOLOR=GRAY
 
-#export EMACSSTRAIGHT=YES
-export EMACSSTRAIGHT=NO
+export EMACSSTRAIGHT=YES
+#export EMACSSTRAIGHT=NO
 
 if [ -f /usr/bin/mozc_emacs_helper ] ; then
    export EMACSMOZC=YES
@@ -21,30 +21,43 @@ fi
 ##export EMACSSIZEX=120
 ##export EMACSSIZEY=40
 
-##export EMACSTAB=TAB
-export EMACSTAB=SPACE
-
 export XDISPLAY=192.168.0.86:0.0
 #export XDISPLAY=192.168.1.6:0.0
 
-export XDISPLAY2=192.168.0.10:0.0
+export XDISPLAY2=192.168.56.1:0.0
+#export XDISPLAY2=192.168.0.27:0.0
+export XDISPLAY3=192.168.0.10:0.0
 
 export DEFAULT_LANG=ja_JP.utf8
 #export DEFAULT_LANG=C
 
-#export PYTHONHTTPSVERIFY=0
+export PYTHONHTTPSVERIFY=0
 
 # for SAMBA
 #
-#export CIFS_SERVER='192.168.56.1'
-#mkdir -p $HOME/cc $HOME/dd
+export CIFS_SERVER='192.168.0.86'
 #
-#alias winmount='\
-#sudo mount -t cifs //$CIFS_SERVER/cc$ $HOME/cc -o credentials=$HOME/.smbcredentials,uid=hirai,gid=hirai,vers=3.0,nobrl; \
-#sudo mount -t cifs //$CIFS_SERVER/dd$ $HOME/dd -o credentials=$HOME/.smbcredentials,uid=hirai,gid=hirai,vers=3.0,nobrl; \
-#'
+alias winmount='\
+mkdir -p $HOME/cc; sudo mount -t cifs //$CIFS_SERVER/cc$ $HOME/cc -o credentials=$HOME/.smbcredentials,uid=hirai,gid=hirai,vers=3.0,nobrl; \
+mkdir -p $HOME/dd; sudo mount -t cifs //$CIFS_SERVER/dd$ $HOME/dd -o credentials=$HOME/.smbcredentials,uid=hirai,gid=hirai,vers=3.0,nobrl; \
+'
+alias winmountee='\
+mkdir -p $HOME/ee; sudo mount -t cifs //$CIFS_SERVER/ee$ $HOME/ee -o credentials=$HOME/.smbcredentials,uid=hirai,gid=hirai,vers=3.0,nobrl; \
+'
+alias winmountff='\
+mkdir -p $HOME/ff; sudo mount -t cifs //$CIFS_SERVER/ff$ $HOME/ff -o credentials=$HOME/.smbcredentials,uid=hirai,gid=hirai,vers=3.0,nobrl; \
+'
+alias mounthirai='\
+mkdir -p $HOME/hirai.yoshikazu; sudo mount -t cifs //$CIFS_SERVER/hirai.yoshikazu $HOME/hirai.yoshikazu -o credentials=$HOME/.smbcredentials,uid=hirai,gid=hirai,vers=3.0,nobrl; \
+'
 #
-#alias winumount='\
-#sudo umount $HOME/cc;\
-#sudo umount $HOME/dd;\
-#'
+alias winumount='\
+sudo umount $HOME/cc;\
+sudo umount $HOME/dd;\
+'
+alias winumountee='\
+sudo umount $HOME/ee;\
+'
+alias winumountff='\
+sudo umount $HOME/ff;\
+'
