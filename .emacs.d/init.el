@@ -365,3 +365,62 @@
 ;;(defvar gud-gdb-history (list "/home/hirai/sigma/131002_lfbc70/sdk4.2.1rc4/cs_rootfs_1.3.0/host/bin/mipsel-linux-gdb --annotate=1 drawtool"))
 					; M-x gdb のデフォルトコマンドライン
 
+;; ===========================================================================
+;; 背景色と文字色を設定する関数
+(defun set-dark-theme (bg-color)
+  "Set background to BG-COLOR and foreground to white."
+  (interactive "sBackground color: ")
+  (set-face-background 'default bg-color)
+  ;;(set-face-foreground 'default "white")
+  )
+
+;; 個別の色コマンド
+(defun blue ()
+  "Set dark blue background."
+  (interactive)
+  (set-dark-theme "#001f3f")) ;; 暗めのダークブルー
+
+(defun green ()
+  "Set dark green background."
+  (interactive)
+  (set-dark-theme "#003300")) ;; 暗めのダークグリーン
+
+(defun orange ()
+  "Set dark orange background."
+  (interactive)
+  (set-dark-theme "#331a00")) ;; 暗めのオレンジ系
+
+(defun purple ()
+  "Set dark purple background."
+  (interactive)
+  (set-dark-theme "#1a0033")) ;; 暗めのパープル
+
+(defun gray ()
+  "Set dark gray background."
+  (interactive)
+  (set-dark-theme "#1a1a1a")) ;; 暗めのグレー
+
+;; パスに応じて背景色を切り替える関数
+(defun set-background-by-path ()
+  "Change background color based on file path."
+  (let ((file (buffer-file-name)))
+    (when file
+      (cond
+       ;; panasonic-energy
+       ((string-match "/home/hirai/develop-en/" file)
+        (set-dark-theme "#003300") ;; ダークグリーン
+        (setq frame-title-format "Panasonic-ENERGY"))
+       ;; hitachi
+       ((string-match "/home/hirai/develop-ht/" file)
+        (set-dark-theme "#331a00") ;; ダークオレンジ
+        (setq frame-title-format "HITACHI-Linux"))
+       ;; デフォルトは何もしない
+       ))))
+;;       ;; デフォルト
+;;       (t
+;;        (set-dark-theme "#1a1a1a")))))) ;; ダークグレー
+
+;; フックに追加
+(add-hook 'find-file-hook 'set-background-by-path)
+
+

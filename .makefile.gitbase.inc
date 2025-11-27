@@ -16,7 +16,14 @@
 HOSTNAME := $(shell hostname)
 
 GITHUB_GITUSER  ?= hiraieject
-GITHUB_GITURL   ?= https://github.com/$(GITHUB_GITUSER)
+GITHUB_GITURL   ?= https://$(GITHUB_GITUSER)@github.com/$(GITHUB_GITUSER)
+
+# USE_PAVCT_GITHUB = yes
+# PAVCTGITHUB_GITURL   = https://$(PAVCTGITHUB_GITUSER)@github.com/pavct-organization
+PAVCTGITHUB_GITUSER    ?= hirai-yoshikazu_pavct
+PAVCTGITHUB_ORG        ?= pavct-organization
+PAVCTGITHUB_ORG_GITURL ?= https://$(PAVCTGITHUB_GITUSER)@github.com/pavct-organization
+PAVCTGITHUB_GITURL     ?= https://$(PAVCTGITHUB_GITUSER)@github.com/$(PAVCTGITHUB_GITUSER)
 
 PAVCT_GITUSER   ?= hirai.yoshikazu
 PAVCT_GITURL    ?= ssh://git@172.16.179.142/$(PAVCT_GITUSER)
@@ -40,6 +47,12 @@ ifeq ($(USE_PAVCT_GIT2), yes)
 endif
 ifeq ($(USE_PAVCT_GIT3), yes)
      PROJ_GITURL ?= $(PAVCT_GIT3URL)
+endif
+ifeq ($(USE_PAVCT_GITHUB), yes)
+     PROJ_GITURL ?= $(PAVCTGITHUB_GITURL)
+endif
+ifeq ($(USE_PAVCT_GITHUB_ORG), yes)
+     PROJ_GITURL ?= $(PAVCTGITHUB_ORG_GITURL)
 endif
 PROJ_GITURL ?= $(GITHUB_GITURL)
 
@@ -138,22 +151,22 @@ endif
 # 最初に１回やる操作。ローカルに対象ブランチが無い状態のとき、リモートの対象ブランチをローカルに作成して同期、チェックアウトはしない
 gb1 get_branch_1st:
 	@make _chk_branchname_env
-	git fetch
-	git branch $(BRANCH_NAME) origin/$(BRANCH_NAME)
-	git status
+	(cd  `cat $(CURRENTFILE)`; git fetch)
+	(cd  `cat $(CURRENTFILE)`; git branch $(BRANCH_NAME) origin/$(BRANCH_NAME))
+	(cd  `cat $(CURRENTFILE)`; git status)
 
 # 最初に１回やる操作。ローカルに対象ブランチが無い状態のとき、リモートの対象ブランチをローカルに作成して同期、チェックアウトする
 cb1 checkout_branch_1st:
 	@make _chk_branchname_env
-	git checkout -b $(BRANCH_NAME) origin/$(BRANCH_NAME)
-	git status
+	(cd  `cat $(CURRENTFILE)`; git checkout -b $(BRANCH_NAME) origin/$(BRANCH_NAME))
+	(cd  `cat $(CURRENTFILE)`; git status)
 
 # ２回目以降。リモートの対象ブランチをローカルに同期して、チェックアウトする
 cb checkout_branch:
 	@make _chk_branchname_env
-	git fetch
-	git checkout $(BRANCH_NAME)
-	git status
+	(cd  `cat $(CURRENTFILE)`; git fetch)
+	(cd  `cat $(CURRENTFILE)`; git checkout $(BRANCH_NAME))
+	(cd  `cat $(CURRENTFILE)`; git status)
 
 
 # リモートの対象ブランチからローカルに同期

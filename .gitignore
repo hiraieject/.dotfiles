@@ -6,6 +6,7 @@
 .emacs.d/.emacs.d
 .emacs.d/eln-cache
 .emacs.d/anaconda-mode
+.emacs.d/.cache
 *.bak
 wget-log*
 dyndns/update.sh
