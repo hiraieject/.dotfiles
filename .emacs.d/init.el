@@ -401,26 +401,33 @@
   (set-dark-theme "#1a1a1a")) ;; 暗めのグレー
 
 ;; パスに応じて背景色を切り替える関数
-(defun set-background-by-path ()
-  "Change background color based on file path."
-  (let ((file (buffer-file-name)))
-    (when file
+(defun set-background-by-path-or-dir ()
+  "Change background color and title based on file or dired directory."
+  (let ((path (or (buffer-file-name) default-directory)))
+    (when path
       (cond
-       ;; panasonic-energy
-       ((string-match "/home/hirai/develop-en/" file)
-        (set-dark-theme "#003300") ;; ダークグリーン
+       ((string-match "/home/hirai/develop-en/" path)
+        (set-dark-theme "#003300")
         (setq frame-title-format "Panasonic-ENERGY"))
-       ;; hitachi
-       ((string-match "/home/hirai/develop-ht/" file)
-        (set-dark-theme "#331a00") ;; ダークオレンジ
+       ((string-match "/home/hirai/develop-ht/" path)
+        (set-dark-theme "#331a00")
         (setq frame-title-format "HITACHI-Linux"))
-       ;; デフォルトは何もしない
-       ))))
-;;       ;; デフォルト
-;;       (t
-;;        (set-dark-theme "#1a1a1a")))))) ;; ダークグレー
+       ((string-match "/home/hirai/develop-pj/" path)
+        (setq frame-title-format "Panasonic-PJ"))
+       ((string-match "/home/hirai/develop-fp/" path)
+        (setq frame-title-format "Panasonic-FP"))
+       ((string-match "/home/hirai/develop-home/" path)
+        (setq frame-title-format "hirai-private"))
+       ((string-match "/home/hirai/MemoData/" path)
+        (setq frame-title-format "hirai-MemoData"))))))
 
-;; フックに追加
-(add-hook 'find-file-hook 'set-background-by-path)
+;; ファイルを開いたとき
+(add-hook 'find-file-hook 'set-background-by-path-or-dir)
+;; 以下はうまくいかんので、DIREDでの色替えは封印
+;;  ;; Diredでディレクトリ移動時に対応（Emacs 27用）
+;;  (advice-add 'dired-advertised-find-file :after
+;;              (lambda (&rest _) (set-background-by-path-or-dir)))
+;;  ;; Diredで再読み込み時にも対応
+;;  (add-hook 'dired-after-readin-hook 'set-background-by-path-or-dir)
 
 

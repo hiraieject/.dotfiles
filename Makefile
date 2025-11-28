@@ -24,7 +24,7 @@ cloneall pullall statusall gcommitall:
 
 sub_cloneall:
 	@set -e; if [ ! -d ~/$(REPO) ] ; then \
-		(cd ~; git clone https://github.com/hiraieject/$(REPO)); \
+		(cd ~; git clone https://hiraieject@github.com/hiraieject/$(REPO)); \
 	fi
 sub_pullall:
 	@set -e; if [ -d ~/$(REPO) ] ; then \
