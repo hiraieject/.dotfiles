@@ -1,5 +1,5 @@
 
-(when (not (equal (getenv "EMACS_IGNORE_CHATGPT") "YES"))
+(when (not (equal (getenv "EMACSUSECHATGPT") "YES"))
 
   ;; -------------------------------------------- charGPT
   (use-package openai  :straight (:host github :repo "emacs-openai/openai"))
