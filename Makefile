@@ -11,8 +11,7 @@ uninstall_code:
 	sudo apt remove -y code
 # ------------------------------------------------ develop folders
 REPOSITORIES = \
-  .dotfiles \
-  MemoData MyLinux MyWindows mirrors \
+  .dotfiles MemoData \
   develop-nuvo develop-en develop-pj develop-fp develop-home develop-ku \
   develop-diff develop-archive develop-ht
 
