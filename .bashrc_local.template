@@ -1,32 +1,11 @@
 
 export PROXY_SERVER=NONE
-#export PROXY_SERVER="http://192.168.0.86:8080"
-#export PROXY_SERVER="http://10.77.8.70:8080"
+# export PROXY_SERVER="http://192.168.0.86:8080"
+# export PROXY_SERVER="http://10.77.8.70:8080"
 
-#export EMACSCOLOR=BLUE
-export EMACSCOLOR=DARKBLUE
-#export EMACSCOLOR=GREEN
-#export EMACSCOLOR=RED
-#export EMACSCOLOR=GRAY
-
-export EMACSSTRAIGHT=YES
-export EMACSUSECHATGPT=NO
-export EMACSUSECOPILOT=YES
-
-if [ -f /usr/bin/mozc_emacs_helper ] ; then
-   export EMACSMOZC=YES
-else
-   export EMACSMOZC=NO
-fi
-
-##export EMACSSIZEX=120
-##export EMACSSIZEY=40
-
+# XDISPLAY 192.168.0.86:0.0 | 192.168.1.6:0.0 | 192.168.56.1:0.0 | 192.168.0.27:0.0 | 192.168.0.10:0.0
 export XDISPLAY=192.168.0.86:0.0
-#export XDISPLAY=192.168.1.6:0.0
-
 export XDISPLAY2=192.168.56.1:0.0
-#export XDISPLAY2=192.168.0.27:0.0
 export XDISPLAY3=192.168.0.10:0.0
 
 export DEFAULT_LANG=ja_JP.utf8
@@ -37,6 +16,28 @@ export PYTHONHTTPSVERIFY=0
 #export XTERMOPT=
 export XTERMOPT=-fn 8x16
 
+# -------------------------------
+# for EMACS
+#
+# YES|NO
+export EMACSSTRAIGHT=YES
+export EMACSUSECHATGPT=NO
+export EMACSUSECOPILOT=YES
+
+# BLUE|DARKBLUE|GREEN|RED|GRAY
+export EMACSCOLOR=DARKBLUE
+
+if [ -f /usr/bin/mozc_emacs_helper ] ; then
+   export EMACSMOZC=YES
+else
+   export EMACSMOZC=NO
+fi
+
+##export EMACSSIZEX=120
+##export EMACSSIZEY=40
+# -------------------------------
+
+# -------------------------------
 # for SAMBA
 #
 export CIFS_SERVER='192.168.0.86'
@@ -64,4 +65,5 @@ sudo umount $HOME/ee;\
 '
 alias winumountff='\
 sudo umount $HOME/ff;\
+# -------------------------------
 '

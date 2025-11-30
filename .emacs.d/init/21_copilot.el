@@ -51,6 +51,7 @@
     (add-to-list 'copilot-indentation-alist '(clojure-mode 2))
     )
   (require 'copilot)
+  (setq copilot-indent-offset 4) ;; デフォルト4スペース
 
   (use-package copilot-chat
     :straight (:host github :repo "chep/copilot-chat.el" :files ("*.el"))
