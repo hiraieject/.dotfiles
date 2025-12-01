@@ -6,68 +6,72 @@
 ;;   https://company-mode.github.io/
 ;;
 ;;   https://tam5917.hatenablog.com/entry/2021/03/29/154958
-(use-package company
-  :bind
-  (:map company-active-map
-        ("M-n" . nil)
-        ("M-p" . nil)
-        ("C-n" . company-select-next)
-        ("C-p" . company-select-previous)
-        ("C-h" . nil)
-	("C-m" . company-complete-selection)
-        ("<tab>" . nil)
-	)
-  :config
-  (global-company-mode)
-  ;; 遅延なしにする。
-  (setq company-idle-delay 0.4)
-  ;; デフォルトは4。より少ない文字数から補完が始まる様にする。
-  (setq company-minimum-prefix-length 2)
-  ;; 候補の一番下でさらに下に行こうとすると一番上に戻る。
-  (setq company-selection-wrap-around t)
-  ;; 番号を表示する。
-  (setq company-show-numbers t)
-  )
+(when (equal (getenv "EMACSUSECOMPANY") "YES")
+  
+  (use-package company
+    :bind
+    (:map company-active-map
+          ("M-n" . nil)
+          ("M-p" . nil)
+          ("C-n" . company-select-next)
+          ("C-p" . company-select-previous)
+          ("C-h" . nil)
+	  ("C-m" . company-complete-selection)
+          ("<tab>" . nil)
+	  )
+    :config
+    (global-company-mode)
+    ;; 遅延なしにする。
+    (setq company-idle-delay 0.4)
+    ;; デフォルトは4。より少ない文字数から補完が始まる様にする。
+    (setq company-minimum-prefix-length 2)
+    ;; 候補の一番下でさらに下に行こうとすると一番上に戻る。
+    (setq company-selection-wrap-around t)
+    ;; 番号を表示する。
+    (setq company-show-numbers t)
+    )
 
-;; --------------------------------------------------------------
-;;  https://github.com/randomphrase/company-c-headers
-;;
-(use-package company-c-headers
-  :after company
-  :config
-  (add-to-list 'company-backends 'company-c-headers)
-  (add-to-list 'company-c-headers-path-system "/usr/include/")
-  (add-to-list 'company-c-headers-path-system "/usr/include/c++/11/")
-  )
+  ;; --------------------------------------------------------------
+  ;;  https://github.com/randomphrase/company-c-headers
+  ;;
+  (use-package company-c-headers
+    :after company
+    :config
+    (add-to-list 'company-backends 'company-c-headers)
+    (add-to-list 'company-c-headers-path-system "/usr/include/")
+    (add-to-list 'company-c-headers-path-system "/usr/include/c++/11/")
+    )
+  
+  ;; -------------------------------------------------------------- Python
+  ;;  https://github.com/pythonic-emacs/company-anaconda
+  ;;
+  (use-package company-anaconda
+    :after company
+    :config
+    (add-to-list 'company-backends 'company-anaconda)
+    (add-hook 'python-mode-hook 'anaconda-mode)
+    )
 
-;; -------------------------------------------------------------- Python
-;;  https://github.com/pythonic-emacs/company-anaconda
-;;
-(use-package company-anaconda
-  :after company
-  :config
-  (add-to-list 'company-backends 'company-anaconda)
-  (add-hook 'python-mode-hook 'anaconda-mode)
-  )
-
-
-;; -------------------------------------------------------------- Tabnine deep learning
-;;   https://qiita.com/blue0513/items/2634fcb3757629124c87
-;;
-(when (not (equal (getenv "EMACS_IGNORE_COMPAMYTABNINE") "YES"))
-  (use-package company-tabnine :ensure t)
-  (add-to-list 'company-backends #'company-tabnine)
-
-  ;; auto install tabnine bin
-  ;; M-x company-tabnine-install-binary
-  (let ((my-directory "~/.TabNine"))
-    (unless (file-exists-p my-directory)
-      (message "Directory does not exist: %s" my-directory)
-      (message "Running install_tabnine bin install...")
-      (company-tabnine-install-binary)
-      (message "Files have been installed.")))
-  ;; どこでもいいから TabNine::version バージョンが見えます。
-  ;; どこでもいいから TabNine::sem Semantic Completion を有効化
+  
+  ;; -------------------------------------------------------------- Tabnine deep learning
+  ;;   https://qiita.com/blue0513/items/2634fcb3757629124c87
+  ;;
+  (when (not (equal (getenv "EMACS_IGNORE_COMPAMYTABNINE") "YES"))
+    (use-package company-tabnine :ensure t)
+    (add-to-list 'company-backends #'company-tabnine)
+    
+    ;; auto install tabnine bin
+    ;; M-x company-tabnine-install-binary
+    (let ((my-directory "~/.TabNine"))
+      (unless (file-exists-p my-directory)
+	(message "Directory does not exist: %s" my-directory)
+	(message "Running install_tabnine bin install...")
+	(company-tabnine-install-binary)
+	(message "Files have been installed.")))
+    ;; どこでもいいから TabNine::version バージョンが見えます。
+    ;; どこでもいいから TabNine::sem Semantic Completion を有効化
+    )
+  
   )
 
 ;; (use-package irony
