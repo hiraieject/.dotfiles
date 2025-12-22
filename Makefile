@@ -13,7 +13,7 @@ uninstall_code:
 REPOSITORIES = \
   .dotfiles MemoData \
   develop-nuvo develop-en develop-pj develop-fp develop-home develop-ku \
-  develop-diff develop-archive develop-ht
+  develop-diff develop-archive develop-ht develop-peak
 
 cloneall pullall statusall gcommitall:
 	@set -e; for repo in $(REPOSITORIES); do \
