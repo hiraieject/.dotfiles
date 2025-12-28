@@ -12,7 +12,7 @@ uninstall_code:
 # ------------------------------------------------ develop folders
 REPOSITORIES = \
   .dotfiles \
-  docs devprivate devwork devlfs devdiff
+  docs devprivate devwork devbinfile devdiff
 
 cloneall pullall statusall gcommitall:
 	@set -e; for repo in $(REPOSITORIES); do \
