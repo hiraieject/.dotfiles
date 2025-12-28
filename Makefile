@@ -11,10 +11,8 @@ uninstall_code:
 	sudo apt remove -y code
 # ------------------------------------------------ develop folders
 REPOSITORIES = \
-  .dotfiles MemoData \
-  dev_private dev_work \
-  develop-nuvo develop-pj develop-fp develop-home develop-ku \
-  develop-diff develop-archive
+  .dotfiles \
+  docs devprivate devwork devlfs devdiff
 
 cloneall pullall statusall gcommitall:
 	@set -e; for repo in $(REPOSITORIES); do \
