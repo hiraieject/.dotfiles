@@ -96,9 +96,11 @@ _clonebranches:
 	make BRANCHSUB="feature" BRANCHES="$(FEATURE_BRANCHES)" _clonebranches_sub
 	make BRANCHSUB="copilot" BRANCHES="$(COPILOT_BRANCHES)" _clonebranches_sub
 _clonebranches_sub:
-	for branch in $(BRANCHES) ; do \
+	(cd worktree/$(DEFAULT_BRANCH); git pull)
+	@for branch in $(BRANCHES) ; do \
 	  if [ ! -d worktree/$(BRANCHSUB)_$$branch ] ; then \
 	    echo "Adding branch worktree: $$branch" ; \
+	    echo "(cd worktree/$(DEFAULT_BRANCH); git worktree add ../$(BRANCHSUB)_$$branch $(BRANCHSUB)/$$branch)" ; \
 	    (cd worktree/$(DEFAULT_BRANCH); git worktree add ../$(BRANCHSUB)_$$branch $(BRANCHSUB)/$$branch) ; \
 	    rm -f $(BRANCHSUB)_$$branch ; ln -s worktree/$(BRANCHSUB)_$$branch $(BRANCHSUB)_$$branch ; \
 	  else \
