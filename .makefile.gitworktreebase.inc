@@ -78,8 +78,10 @@ help:
 	@echo 'make remove_current	## remove current tree'
 	@echo 'make remove_all		## remove all tree'
 
-newtree clonebranches newarchive distclean linkcurrent:
+newtree clonebranches newarchive distclean linkcurrent pullall:
 	make _$@
+
+cloneall: clonebranches
 
 _newtree:
 	echo $(DATE_STRING)_worktree > $(CURRENTFILE)
@@ -103,6 +105,17 @@ _clonebranches_sub:
 	    rm -f $(BRANCHSUB)_$$branch ; ln -s worktree/$(BRANCHSUB)_$$branch $(BRANCHSUB)_$$branch ; \
 	  else \
 	    echo "Branch worktree already exists: $$branch" ; \
+	  fi ; \
+	done
+
+_pullall:
+	(cd worktree/$(DEFAULT_BRANCH); git pull)
+	make BRANCHSUB="feature" BRANCHES="$(FEATURE_BRANCHES)" _pullall_sub
+	make BRANCHSUB="copilot" BRANCHES="$(COPILOT_BRANCHES)" _pullall_sub
+_pullall_sub:
+	for branch in $(BRANCHES) ; do \
+	  if [ -d worktree/$(BRANCHSUB)_$$branch ] ; then \
+	    (cd worktree/$(BRANCHSUB); git pull); \
 	  fi ; \
 	done
 
