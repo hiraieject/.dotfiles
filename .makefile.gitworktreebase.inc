@@ -75,8 +75,13 @@ ACURRENTFILE = .archive_current_folder
 
 help:
 	@echo 'make newtree		## get newtree'
-	@echo 'make remove_current	## remove current tree'
-	@echo 'make remove_all		## remove all tree'
+	@echo 'make cloneall		## clone all branches as worktree'
+	@echo 'make pullall		## pull all branches'
+	@echo 'make distclean		## clean all worktrees and current links'
+	@echo ''
+	@echo '(cd main; git worktree list)			## list worktrees'
+	@echo '(cd main; git worktree remove ../FOLDERNAME)	## remove worktree'
+
 
 newtree clonebranches newarchive distclean linkcurrent pullall:
 	make _$@
