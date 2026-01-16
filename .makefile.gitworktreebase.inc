@@ -73,10 +73,16 @@ ACURRENTFILE = .archive_current_folder
 
 .PHONY: help newtree clonebranches
 
-help:
+gitworktreebase_help:
+	@echo "=============================="
 	@echo 'make newtree		## get newtree'
-	@echo 'make remove_current	## remove current tree'
-	@echo 'make remove_all		## remove all tree'
+	@echo 'make cloneall		## clone all subtree'
+	@echo 'make pullall		## pull main and all subtree'
+	@echo 'make distclean		## remove all tree'
+	@echo "=============================="
+	@echo 'make FOLDER=feature_XXXX remove_worktree		## remove feature subtree'
+	@echo 'make FOLDER=copilot_XXXX remove_worktree		## remove copilot subtree'
+	@echo "=============================="
 
 newtree clonebranches newarchive distclean linkcurrent pullall:
 	make _$@
@@ -101,7 +107,7 @@ _clonebranches_sub:
 	(cd worktree/$(DEFAULT_BRANCH); git pull)
 	@for branch in $(BRANCHES) ; do \
 	  if [ ! -d worktree/$(BRANCHSUB)_$$branch ] ; then \
-	    echo "Adding branch worktree: $$branch" ; \
+	    echo "--- Adding branch worktree: $(BRANCHSUB)_$$branch ---" ; \
 	    echo "(cd worktree/$(DEFAULT_BRANCH); git worktree add ../$(BRANCHSUB)_$$branch $(BRANCHSUB)/$$branch)" ; \
 	    (cd worktree/$(DEFAULT_BRANCH); git worktree add ../$(BRANCHSUB)_$$branch $(BRANCHSUB)/$$branch) ; \
 	    rm -f $(BRANCHSUB)_$$branch ; ln -s worktree/$(BRANCHSUB)_$$branch $(BRANCHSUB)_$$branch ; \
@@ -115,9 +121,10 @@ _pullall:
 	make BRANCHSUB="feature" BRANCHES="$(FEATURE_BRANCHES)" _pullall_sub
 	make BRANCHSUB="copilot" BRANCHES="$(COPILOT_BRANCHES)" _pullall_sub
 _pullall_sub:
-	for branch in $(BRANCHES) ; do \
+	@for branch in $(BRANCHES) ; do \
 	  if [ -d worktree/$(BRANCHSUB)_$$branch ] ; then \
-	    (cd worktree/$(BRANCHSUB); git pull); \
+	    echo "--- UPDATING branch $(BRANCHSUB)_$$branch ---" ; \
+	    (cd worktree/$(BRANCHSUB)_$$branch; git pull); \
 	  fi ; \
 	done
 
@@ -134,6 +141,10 @@ _distclean_sub:
 	for branch in $(BRANCHES) ; do \
 	  rm -f $(BRANCHSUB)_$$branch; \
 	done
+
+remove_worktree:
+	@echo "--- now remove $(FOLDER) ---" ; \
+	(cd $(DEFAULT_BRANCH); git worktree remove ../$(FOLDER)); rm $(FOLDER)
 
 ## # ------------------------------------------------ git merge
 git githelp:
