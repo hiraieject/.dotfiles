@@ -77,6 +77,7 @@ gitworktreebase_help:
 	@echo "=============================="
 	@echo 'make newtree		## get newtree'
 	@echo 'make cloneall		## clone all subtree'
+	@echo 'make force_cloneall	## clone all subtree force if no exist'
 	@echo 'make pullall		## pull main and all subtree'
 	@echo 'make distclean		## remove all tree'
 	@echo "=============================="
@@ -88,6 +89,8 @@ newtree clonebranches newarchive distclean linkcurrent pullall:
 	make _$@
 
 cloneall: clonebranches
+force_cloneall:
+	make CLONE_OPT='-f' clonebranches
 
 _newtree:
 	echo $(DATE_STRING)_worktree > $(CURRENTFILE)
@@ -101,19 +104,19 @@ _newtree:
 	make clonebranches
 
 _clonebranches:
-	make BRANCHSUB="feature" BRANCHES="$(FEATURE_BRANCHES)" _clonebranches_sub
-	make BRANCHSUB="copilot" BRANCHES="$(COPILOT_BRANCHES)" _clonebranches_sub
+	make BRANCHSUB="feature" BRANCHES="$(FEATURE_BRANCHES)" CLONE_OPT=$(CLONE_OPT) _clonebranches_sub
+	make BRANCHSUB="copilot" BRANCHES="$(COPILOT_BRANCHES)" CLONE_OPT=$(CLONE_OPT) _clonebranches_sub
 _clonebranches_sub:
 	(cd worktree/$(DEFAULT_BRANCH); git pull)
 	@for branch in $(BRANCHES) ; do \
 	  if [ ! -d worktree/$(BRANCHSUB)_$$branch ] ; then \
 	    echo "--- Adding branch worktree: $(BRANCHSUB)_$$branch ---" ; \
 	    echo "(cd worktree/$(DEFAULT_BRANCH); git worktree add ../$(BRANCHSUB)_$$branch $(BRANCHSUB)/$$branch)" ; \
-	    (cd worktree/$(DEFAULT_BRANCH); git worktree add ../$(BRANCHSUB)_$$branch $(BRANCHSUB)/$$branch) ; \
-	    rm -f $(BRANCHSUB)_$$branch ; ln -s worktree/$(BRANCHSUB)_$$branch $(BRANCHSUB)_$$branch ; \
+	    (cd worktree/$(DEFAULT_BRANCH); git worktree add $(CLONE_OPT) ../$(BRANCHSUB)_$$branch $(BRANCHSUB)/$$branch) ; \
 	  else \
 	    echo "Branch worktree already exists: $$branch" ; \
 	  fi ; \
+	  rm -f $(BRANCHSUB)_$$branch ; ln -s worktree/$(BRANCHSUB)_$$branch $(BRANCHSUB)_$$branch ; \
 	done
 
 _pullall:
@@ -126,6 +129,7 @@ _pullall_sub:
 	    echo "--- UPDATING branch $(BRANCHSUB)_$$branch ---" ; \
 	    (cd worktree/$(BRANCHSUB)_$$branch; git pull); \
 	  fi ; \
+	  rm -f $(BRANCHSUB)_$$branch ; ln -s worktree/$(BRANCHSUB)_$$branch $(BRANCHSUB)_$$branch ; \
 	done
 
 _linkcurrent:
