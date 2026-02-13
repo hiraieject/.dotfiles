@@ -11,6 +11,11 @@ sudo apt -y install curl
 sudo apt -y install cifs-utils
 sudo apt -y install libjansson-dev
 
+sudo apt -y install terminator
+mkdir -p ~/.config/terminator
+#touch ~/.config/terminator/config
+cp terminator.config ~/.config/terminator/config
+
 ## Node.js
 sudo apt -y install nodejs npm
 sudo npm config set strict-ssl false

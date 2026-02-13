@@ -73,7 +73,8 @@ ACURRENTFILE = .archive_current_folder
 
 .PHONY: help newtree clonebranches
 
-help:
+gitworktreebase_help:
+	@echo "=============================="
 	@echo 'make newtree		## get newtree'
 	@echo 'make cloneall		## clone all branches as worktree'
 	@echo 'make pullall		## pull all branches'
@@ -82,11 +83,12 @@ help:
 	@echo '(cd main; git worktree list)			## list worktrees'
 	@echo '(cd main; git worktree remove ../FOLDERNAME)	## remove worktree'
 
-
 newtree clonebranches newarchive distclean linkcurrent pullall:
 	make _$@
 
 cloneall: clonebranches
+force_cloneall:
+	make CLONE_OPT='-f' clonebranches
 
 _newtree:
 	echo $(DATE_STRING)_worktree > $(CURRENTFILE)
@@ -100,17 +102,19 @@ _newtree:
 	make clonebranches
 
 _clonebranches:
-	make BRANCHSUB="feature" BRANCHES="$(FEATURE_BRANCHES)" _clonebranches_sub
-	make BRANCHSUB="copilot" BRANCHES="$(COPILOT_BRANCHES)" _clonebranches_sub
+	make BRANCHSUB="feature" BRANCHES="$(FEATURE_BRANCHES)" CLONE_OPT=$(CLONE_OPT) _clonebranches_sub
+	make BRANCHSUB="copilot" BRANCHES="$(COPILOT_BRANCHES)" CLONE_OPT=$(CLONE_OPT) _clonebranches_sub
 _clonebranches_sub:
-	for branch in $(BRANCHES) ; do \
+	(cd worktree/$(DEFAULT_BRANCH); git pull)
+	@for branch in $(BRANCHES) ; do \
 	  if [ ! -d worktree/$(BRANCHSUB)_$$branch ] ; then \
-	    echo "Adding branch worktree: $$branch" ; \
-	    (cd worktree/$(DEFAULT_BRANCH); git worktree add ../$(BRANCHSUB)_$$branch $(BRANCHSUB)/$$branch) ; \
-	    rm -f $(BRANCHSUB)_$$branch ; ln -s worktree/$(BRANCHSUB)_$$branch $(BRANCHSUB)_$$branch ; \
+	    echo "--- Adding branch worktree: $(BRANCHSUB)_$$branch ---" ; \
+	    echo "(cd worktree/$(DEFAULT_BRANCH); git worktree add ../$(BRANCHSUB)_$$branch $(BRANCHSUB)/$$branch)" ; \
+	    (cd worktree/$(DEFAULT_BRANCH); git worktree add $(CLONE_OPT) ../$(BRANCHSUB)_$$branch $(BRANCHSUB)/$$branch) ; \
 	  else \
 	    echo "Branch worktree already exists: $$branch" ; \
 	  fi ; \
+	  rm -f $(BRANCHSUB)_$$branch ; ln -s worktree/$(BRANCHSUB)_$$branch $(BRANCHSUB)_$$branch ; \
 	done
 
 _pullall:
@@ -118,10 +122,12 @@ _pullall:
 	make BRANCHSUB="feature" BRANCHES="$(FEATURE_BRANCHES)" _pullall_sub
 	make BRANCHSUB="copilot" BRANCHES="$(COPILOT_BRANCHES)" _pullall_sub
 _pullall_sub:
-	for branch in $(BRANCHES) ; do \
+	@for branch in $(BRANCHES) ; do \
 	  if [ -d worktree/$(BRANCHSUB)_$$branch ] ; then \
-	    (cd worktree/$(BRANCHSUB); git pull); \
+	    echo "--- UPDATING branch $(BRANCHSUB)_$$branch ---" ; \
+	    (cd worktree/$(BRANCHSUB)_$$branch; git pull); \
 	  fi ; \
+	  rm -f $(BRANCHSUB)_$$branch ; ln -s worktree/$(BRANCHSUB)_$$branch $(BRANCHSUB)_$$branch ; \
 	done
 
 _linkcurrent:
@@ -137,6 +143,10 @@ _distclean_sub:
 	for branch in $(BRANCHES) ; do \
 	  rm -f $(BRANCHSUB)_$$branch; \
 	done
+
+remove_worktree:
+	@echo "--- now remove $(FOLDER) ---" ; \
+	(cd $(DEFAULT_BRANCH); git worktree remove ../$(FOLDER)); rm $(FOLDER)
 
 ## # ------------------------------------------------ git merge
 git githelp:
