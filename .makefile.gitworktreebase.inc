@@ -83,7 +83,7 @@ gitworktreebase_help:
 	@echo '(cd main; git worktree list)			## list worktrees'
 	@echo '(cd main; git worktree remove ../FOLDERNAME)	## remove worktree'
 
-newtree clonebranches newarchive distclean linkcurrent pullall:
+newtree clonebranches removebranches newarchive distclean linkcurrent pullall:
 	make _$@
 
 cloneall: clonebranches
@@ -115,6 +115,20 @@ _clonebranches_sub:
 	    echo "Branch worktree already exists: $$branch" ; \
 	  fi ; \
 	  rm -f $(BRANCHSUB)_$$branch ; ln -s worktree/$(BRANCHSUB)_$$branch $(BRANCHSUB)_$$branch ; \
+	done
+
+removeall: removebranches
+_removebranches:
+	make BRANCHSUB="feature" BRANCHES="$(FEATURE_REMOVED)" CLONE_OPT='--force' _removebranches_sub
+	make BRANCHSUB="copilot" BRANCHES="$(COPILOT_REMOVED)" CLONE_OPT='--force' _removebranches_sub
+_removebranches_sub:
+	@for branch in $(BRANCHES) ; do \
+	  if [ -d worktree/$(BRANCHSUB)_$$branch ] ; then \
+	    echo "--- Remove branch worktree: $(BRANCHSUB)_$$branch ---" ; \
+	    echo "(cd worktree/$(DEFAULT_BRANCH); git worktree remove ../$(BRANCHSUB)_$$branch" ; \
+	    (cd worktree/$(DEFAULT_BRANCH); git worktree remove $(CLONE_OPT) ../$(BRANCHSUB)_$$branch) ; \
+	  fi ; \
+	  rm -f $(BRANCHSUB)_$$branch; \
 	done
 
 _pullall:
