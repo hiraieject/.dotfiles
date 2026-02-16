@@ -77,6 +77,7 @@ gitworktreebase_help:
 	@echo "=============================="
 	@echo 'make newtree		## get newtree'
 	@echo 'make cloneall		## clone all branches as worktree'
+	@echo 'make removeall		## remove all unnecessary branches as worktree'
 	@echo 'make pullall		## pull all branches'
 	@echo 'make distclean		## clean all worktrees and current links'
 	@echo ''
@@ -87,8 +88,6 @@ newtree clonebranches removebranches newarchive distclean linkcurrent pullall:
 	make _$@
 
 cloneall: clonebranches
-force_cloneall:
-	make CLONE_OPT='-f' clonebranches
 
 _newtree:
 	echo $(DATE_STRING)_worktree > $(CURRENTFILE)
