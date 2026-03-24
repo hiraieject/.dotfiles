@@ -126,6 +126,7 @@ _removebranches_sub:
 	    echo "--- Remove branch worktree: $(BRANCHSUB)_$$branch ---" ; \
 	    echo "(cd worktree/$(DEFAULT_BRANCH); git worktree remove ../$(BRANCHSUB)_$$branch" ; \
 	    (cd worktree/$(DEFAULT_BRANCH); git worktree remove $(CLONE_OPT) ../$(BRANCHSUB)_$$branch) ; \
+	    (cd worktree; sudo rm -rf $(BRANCHSUB)_$$branch) ; \
 	  fi ; \
 	  rm -f $(BRANCHSUB)_$$branch; \
 	done

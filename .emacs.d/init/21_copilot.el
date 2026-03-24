@@ -30,6 +30,11 @@
 
 ;; -------------------------------------------- copilot
 
+
+;; Emacs は GUI/daemon だとシェルと PATH がズレがち。copilot-node-executable でパスを明示する。
+;; init.el に追記（Node 22 の実パスに合わせて）
+(setq copilot-node-executable (expand-file-name "~/.nvm/versions/node/v20.20.0/bin/node"))
+
 (when (and (>= emacs-major-version 27)
            (equal (getenv "EMACSUSECOPILOT") "YES"))
 
