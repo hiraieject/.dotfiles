@@ -17,9 +17,9 @@ mkdir -p ~/.config/terminator
 cp terminator.config ~/.config/terminator/config
 
 ## Node.js
-sudo apt -y install nodejs npm
-sudo npm config set strict-ssl false
-sudo npm install n -g  # update latest
+#sudo apt -y install nodejs npm
+#sudo npm config set strict-ssl false
+#sudo npm install n -g  # update latest
 
 ## Python
 sudo apt -y install python3 python3-pip python-is-python3
