@@ -14,7 +14,7 @@ export DEFAULT_LANG=ja_JP.utf8
 export PYTHONHTTPSVERIFY=0
 
 #export XTERMOPT=
-export XTERMOPT=-fn 8x16
+export XTERMOPT="-fn 8x16"
 
 # -------------------------------
 # for EMACS

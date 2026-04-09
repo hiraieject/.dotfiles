@@ -183,4 +183,6 @@ if [ -d ~/.node ] ; then
     export NODE_PATH=$NODE_HOME/lib/node_modules
     export PATH=$NODE_HOME/bin:$PATH
 fi
+export NODE_TLS_REJECT_UNAUTHORIZED=0
+
 
