@@ -10,6 +10,7 @@ sudo apt -y install xterm
 sudo apt -y install curl
 sudo apt -y install cifs-utils
 sudo apt -y install libjansson-dev
+sudo apt -y install ripgrep
 
 sudo apt -y install terminator
 mkdir -p ~/.config/terminator
