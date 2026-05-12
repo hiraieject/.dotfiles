@@ -13,28 +13,37 @@ uninstall_code:
 REPOSITORIES = \
   .dotfiles \
   docs devprivate devwork devbinfile devdiff
+WSLREPOSITORIES = \
+  devwsl
 
 cloneall pullall statusall gcommitall:
 	@set -e; for repo in $(REPOSITORIES); do \
 		echo "### =================== $$repo"; \
-		$(MAKE) sub_$@ REPO=$$repo; \
+		$(MAKE) sub_$@ REPO=$$repo BASE=~; \
+	done
+	@set -e; for repo in $(WSLREPOSITORIES); do \
+		if [ -d ~/wsl ] ; then \
+			echo "### =================== $$repo"; \
+			$(MAKE) sub_$@ REPO=$$repo BASE=~/wsl; \
+			rm -f $$repo; ln -s ~/wsl/$$repo .; \
+		fi;\
 	done
 
 sub_cloneall:
-	@set -e; if [ ! -d ~/$(REPO) ] ; then \
-		(cd ~; git clone https://hiraieject@github.com/hiraieject/$(REPO)); \
+	@set -e; if [ ! -d $(BASE)/$(REPO) ] ; then \
+		(cd $(BASE); git clone https://hiraieject@github.com/hiraieject/$(REPO)); \
 	fi
 sub_pullall:
-	@set -e; if [ -d ~/$(REPO) ] ; then \
-		(cd ~/$(REPO); pwd; git pull); \
+	@set -e; if [ -d $(BASE)/$(REPO) ] ; then \
+		(cd $(BASE)/$(REPO); pwd; git pull); \
 	fi
 sub_statusall:
-	@set -e; if [ -d ~/$(REPO) ] ; then \
-		(cd ~/$(REPO); pwd; git status); \
+	@set -e; if [ -d $(BASE)/$(REPO) ] ; then \
+		(cd $(BASE)/$(REPO); pwd; git status); \
 	fi
 sub_gcommitall:
-	@set -e; if [ -d ~/$(REPO) ] ; then \
-		(cd ~/$(REPO); make gcommit); \
+	@set -e; if [ -d $(BASE)/$(REPO) ] ; then \
+		(cd $(BASE)/$(REPO); make gcommit); \
 	fi
 
 # ------------------------------------------------
