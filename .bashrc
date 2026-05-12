@@ -185,4 +185,7 @@ if [ -d ~/.node ] ; then
 fi
 export NODE_TLS_REJECT_UNAUTHORIZED=0
 
+if [ -f "$HOME/.local/bin/env" ] ; then
+    . "$HOME/.local/bin/env"
+fi
 

@@ -29,3 +29,7 @@ pip3 install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-ho
 
 ## old
 rm -rf ~/.node
+
+## install uv
+wget -qO- https://astral.sh/uv/install.sh | sh
+
