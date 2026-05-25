@@ -409,12 +409,15 @@
        ((string-match "/home/hirai/devwork/en" path)
         (set-dark-theme "#003300")
         (setq frame-title-format "ENERGY"))
+
        ((string-match "/home/hirai/devwork/ht" path)
         (set-dark-theme "#331a00")
         (setq frame-title-format "HITACHI"))
-       ((string-match "/home/hirai/devwork/wt" path)
+
+       ((string-match "wt.refboard" path)
         (set-dark-theme "#331a00")
         (setq frame-title-format "WAVETECH"))
+       
        ((string-match "/home/hirai/devwork/pc" path)
         (set-dark-theme "#1a1a1a")
         (setq frame-title-format "PEAC"))
