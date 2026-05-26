@@ -41,6 +41,7 @@ PAVCT_GIT3URL   ?= ssh://git@172.16.170.145/$(PAVCT_GIT3USER)
 DEFAULT_BRANCH      ?= main
 FEATURE_BRANCHES    ?= 
 COPILOTS_BRANCHES   ?= 
+ROOT_BRANCHES       ?= 
 
 
 ifeq ($(USE_PAVCT_GIT), yes)
@@ -101,47 +102,50 @@ _newtree:
 	make clonebranches
 
 _clonebranches:
-	make BRANCHSUB="feature" BRANCHES="$(FEATURE_BRANCHES)" CLONE_OPT=$(CLONE_OPT) _clonebranches_sub
-	make BRANCHSUB="copilot" BRANCHES="$(COPILOT_BRANCHES)" CLONE_OPT=$(CLONE_OPT) _clonebranches_sub
+	make BRANCHSUB="feature" SLA="/" BAR="_" BRANCHES="$(FEATURE_BRANCHES)" CLONE_OPT=$(CLONE_OPT) _clonebranches_sub
+	make BRANCHSUB="copilot" SLA="/" BAR="_" BRANCHES="$(COPILOT_BRANCHES)" CLONE_OPT=$(CLONE_OPT) _clonebranches_sub
+	make BRANCHSUB=""        SLA="" BAR=""   BRANCHES="$(ROOT_BRANCHES)"    CLONE_OPT=$(CLONE_OPT) _clonebranches_sub
 _clonebranches_sub:
 	(cd worktree/$(DEFAULT_BRANCH); git pull)
 	@for branch in $(BRANCHES) ; do \
-	  if [ ! -d worktree/$(BRANCHSUB)_$$branch ] ; then \
-	    echo "--- Adding branch worktree: $(BRANCHSUB)_$$branch ---" ; \
-	    echo "(cd worktree/$(DEFAULT_BRANCH); git worktree add ../$(BRANCHSUB)_$$branch $(BRANCHSUB)/$$branch)" ; \
-	    (cd worktree/$(DEFAULT_BRANCH); git worktree add $(CLONE_OPT) ../$(BRANCHSUB)_$$branch $(BRANCHSUB)/$$branch) ; \
+	  if [ ! -d worktree/$(BRANCHSUB)$(BAR)$$branch ] ; then \
+	    echo "--- Adding branch worktree: $(BRANCHSUB)$(BAR)$$branch ---" ; \
+	    echo "(cd worktree/$(DEFAULT_BRANCH); git worktree add ../$(BRANCHSUB)$(BAR)$$branch $(BRANCHSUB)$(SLA)$$branch)" ; \
+	    (cd worktree/$(DEFAULT_BRANCH); git worktree add $(CLONE_OPT) ../$(BRANCHSUB)$(BAR)$$branch $(BRANCHSUB)$(SLA)$$branch) ; \
 	  else \
 	    echo "Branch worktree already exists: $$branch" ; \
 	  fi ; \
-	  rm -f $(BRANCHSUB)_$$branch ; ln -s worktree/$(BRANCHSUB)_$$branch $(BRANCHSUB)_$$branch ; \
+	  rm -f $(BRANCHSUB)$(BAR)$$branch ; ln -s worktree/$(BRANCHSUB)$(BAR)$$branch $(BRANCHSUB)$(BAR)$$branch ; \
 	done
 
 removeall: removebranches
 _removebranches:
-	make BRANCHSUB="feature" BRANCHES="$(FEATURE_REMOVED)" CLONE_OPT='--force' _removebranches_sub
-	make BRANCHSUB="copilot" BRANCHES="$(COPILOT_REMOVED)" CLONE_OPT='--force' _removebranches_sub
+	make BRANCHSUB="feature" SLA="/" BAR="_" BRANCHES="$(FEATURE_REMOVED)" CLONE_OPT='--force' _removebranches_sub
+	make BRANCHSUB="copilot" SLA="/" BAR="_" BRANCHES="$(COPILOT_REMOVED)" CLONE_OPT='--force' _removebranches_sub
+	make BRANCHSUB=""        SLA=""  BAR=""  BRANCHES="$(ROOT_REMOVED)"    CLONE_OPT='--force' _removebranches_sub
 _removebranches_sub:
 	@for branch in $(BRANCHES) ; do \
-	  if [ -d worktree/$(BRANCHSUB)_$$branch ] ; then \
-	    echo "--- Remove branch worktree: $(BRANCHSUB)_$$branch ---" ; \
-	    echo "(cd worktree/$(DEFAULT_BRANCH); git worktree remove ../$(BRANCHSUB)_$$branch" ; \
-	    (cd worktree/$(DEFAULT_BRANCH); git worktree remove $(CLONE_OPT) ../$(BRANCHSUB)_$$branch) ; \
-	    (cd worktree; sudo rm -rf $(BRANCHSUB)_$$branch) ; \
+	  if [ -d worktree/$(BRANCHSUB)$(BAR)$$branch ] ; then \
+	    echo "--- Remove branch worktree: $(BRANCHSUB)$(BAR)$$branch ---" ; \
+	    echo "(cd worktree/$(DEFAULT_BRANCH); git worktree remove ../$(BRANCHSUB)$(BAR)$$branch" ; \
+	    (cd worktree/$(DEFAULT_BRANCH); git worktree remove $(CLONE_OPT) ../$(BRANCHSUB)$(BAR)$$branch) ; \
+	    (cd worktree; sudo rm -rf $(BRANCHSUB)$(BAR)$$branch) ; \
 	  fi ; \
-	  rm -f $(BRANCHSUB)_$$branch; \
+	  rm -f $(BRANCHSUB)$(BAR)$$branch; \
 	done
 
 _pullall:
 	(cd worktree/$(DEFAULT_BRANCH); git pull)
-	make BRANCHSUB="feature" BRANCHES="$(FEATURE_BRANCHES)" _pullall_sub
-	make BRANCHSUB="copilot" BRANCHES="$(COPILOT_BRANCHES)" _pullall_sub
+	make BRANCHSUB="feature" SLA="/" BAR="_" BRANCHES="$(FEATURE_BRANCHES)" _pullall_sub
+	make BRANCHSUB="copilot" SLA="/" BAR="_" BRANCHES="$(COPILOT_BRANCHES)" _pullall_sub
+	make BRANCHSUB=""        SLA=""  BAR=""  BRANCHES="$(ROOT_BRANCHES)"    _pullall_sub
 _pullall_sub:
 	@for branch in $(BRANCHES) ; do \
-	  if [ -d worktree/$(BRANCHSUB)_$$branch ] ; then \
-	    echo "--- UPDATING branch $(BRANCHSUB)_$$branch ---" ; \
-	    (cd worktree/$(BRANCHSUB)_$$branch; git pull); \
+	  if [ -d worktree/$(BRANCHSUB)$(BAR)$$branch ] ; then \
+	    echo "--- UPDATING branch $(BRANCHSUB)$(BAR)$$branch ---" ; \
+	    (cd worktree/$(BRANCHSUB)$(BAR)$$branch; git pull); \
 	  fi ; \
-	  rm -f $(BRANCHSUB)_$$branch ; ln -s worktree/$(BRANCHSUB)_$$branch $(BRANCHSUB)_$$branch ; \
+	  rm -f $(BRANCHSUB)$(BAR)$$branch ; ln -s worktree/$(BRANCHSUB)$(BAR)$$branch $(BRANCHSUB)$(BAR)$$branch ; \
 	done
 
 _linkcurrent:
@@ -150,12 +154,13 @@ _linkcurrent:
 _distclean:
 	rm -rf worktree *_worktree .current_folder $(DEFAULT_BRANCH)
 
-	make BRANCHSUB="feature" BRANCHES="$(FEATURE_BRANCHES)" _distclean_sub
-	make BRANCHSUB="copilot" BRANCHES="$(COPILOT_BRANCHES)" _distclean_sub
+	make BRANCHSUB="feature" SLA="/" BAR="_" BRANCHES="$(FEATURE_BRANCHES)" _distclean_sub
+	make BRANCHSUB="copilot" SLA="/" BAR="_" BRANCHES="$(COPILOT_BRANCHES)" _distclean_sub
+	make BRANCHSUB=""        SLA=""  BAR=""  BRANCHES="$(ROOT_BRANCHES)"    _distclean_sub
 
 _distclean_sub:
 	for branch in $(BRANCHES) ; do \
-	  rm -f $(BRANCHSUB)_$$branch; \
+	  rm -f $(BRANCHSUB)$(BAR)$$branch; \
 	done
 
 remove_worktree:
