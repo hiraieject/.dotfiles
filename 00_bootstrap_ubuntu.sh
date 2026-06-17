@@ -12,6 +12,7 @@ sudo apt -y install cifs-utils
 sudo apt -y install usbutils
 sudo apt -y install libjansson-dev
 sudo apt -y install ripgrep
+sudo apt -y install plantuml
 
 sudo apt -y install terminator
 mkdir -p ~/.config/terminator
