@@ -414,9 +414,6 @@
         (set-dark-theme "#331a00")
         (setq frame-title-format "HITACHI"))
 
-       ((string-match "/home/hirai/devwsl/cm" path)
-        (set-dark-theme "#331a00")
-        (setq frame-title-format "COSMEDY"))
        ((string-match "cm.cgm" path)
         (set-dark-theme "#331a00")
         (setq frame-title-format "COSMEDY"))
