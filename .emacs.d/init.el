@@ -414,9 +414,12 @@
         (set-dark-theme "#331a00")
         (setq frame-title-format "HITACHI"))
 
-       ((string-match "wt.refboard" path)
+       ((string-match "/home/hirai/devwsl/cm" path)
         (set-dark-theme "#331a00")
-        (setq frame-title-format "WAVETECH"))
+        (setq frame-title-format "COSMEDY"))
+       ((string-match "cm.cgm" path)
+        (set-dark-theme "#331a00")
+        (setq frame-title-format "COSMEDY"))
        
        ((string-match "/home/hirai/devwork/pc" path)
         (set-dark-theme "#1a1a1a")
